@@ -16,14 +16,17 @@ public class BotConfig {
     @Value("${telegram.bot.token}")
     private String token;
 
-    @Value("${telegram.bot.msg.startText}")
-    private String startText;
+    private String startText = "Добро пожаловать в приют для животных";
 
-    @Value("${telegram.bot.msg.infoText}")
-    private String infoText;
+    private String infoText = "Мы приют животных из Астаны," +
+            " который хочет помочь людям, " +
+            "которые задумываются о том," +
+            " чтобы забрать собаку или кошку домой";
 
-    @Value("${telegram.bot.msg.workdays}")
-    private String workDays;
+    private String animalisticText = "Ведутся тех. работы скоро тут будет (Как взять животное из приюта)";
+    private String reportText = "Ведутся тех. работы скоро тут будет (Прислать отчет о питомце)";
+
+    private String helpText = "Ведутся тех. работы скоро тут будет (Позвать волонтера )";
 
     public String getBotName() {
         return botName;
@@ -57,11 +60,27 @@ public class BotConfig {
         this.infoText = infoText;
     }
 
-    public String getWorkDays() {
-        return workDays;
+    public String getAnimalisticText() {
+        return animalisticText;
     }
 
-    public void setWorkDays(String workdays) {
-        this.workDays = workdays;
+    public void setAnimalisticText(String animalisticText) {
+        this.animalisticText = animalisticText;
+    }
+
+    public String getReportText() {
+        return reportText;
+    }
+
+    public void setReportText(String reportText) {
+        this.reportText = reportText;
+    }
+
+    public String getHelpText() {
+        return helpText;
+    }
+
+    public void setHelpText(String helpText) {
+        this.helpText = helpText;
     }
 }

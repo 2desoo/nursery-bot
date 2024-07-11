@@ -26,12 +26,15 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     BotConfig config;
 
+
     public TelegramBot(BotConfig config) {
         this.config = config;
         List<BotCommand> listofCommands = new ArrayList<>();
         listofCommands.add(new BotCommand("/start", "Приветствие."));
-        listofCommands.add(new BotCommand("/info", "Информация о приюте"));
-        listofCommands.add(new BotCommand("/workdays", "Расписание работы приюта."));
+        listofCommands.add(new BotCommand("/info", "Информация о приюте."));
+        listofCommands.add(new BotCommand("/animalistic", "Как взять животное из приюта."));
+        listofCommands.add(new BotCommand("/report", "Прислать отчет о питомце."));
+        listofCommands.add(new BotCommand("/help", "Позвать волонтера."));
 
         try {
             this.execute(new SetMyCommands(listofCommands, new BotCommandScopeDefault(), null));
@@ -55,54 +58,73 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "/info":
                     infoCommandReceived(chatId, update.getMessage().getChat().getFirstName());
                     break;
-                case "/workdays":
-                    workdaysCommandReceived(chatId, update.getMessage().getChat().getFirstName());
+                case "/animalistic":
+                    animalisticCommandReceived(chatId, update.getMessage().getChat().getFirstName());
                     break;
+                case "/report":
+                    reportCommandReceived(chatId, update.getMessage().getChat().getFirstName());
+                    break;
+                case "/help":
+                    helpCommandReceived(chatId, update.getMessage().getChat().getFirstName());
+                    break;
+
                 default:
                     sendMassage(chatId, "Not commands.", null);
             }
+        }
 
+        if (update.hasCallbackQuery()) {
 
-        } else if (update.hasCallbackQuery()) {
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
-            if(update.getCallbackQuery().getData().equals("/start")) {
-                startCommandReceivedTest(chatId, "TestStart");
-            } else if (update.getCallbackQuery().getData().equals("/info")) {
-                infoCommandReceived(chatId, "TestInfo");
+
+            if (update.getCallbackQuery().getData().equals("/info")) {
+                infoCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            } else if (update.getCallbackQuery().getData().equals("/animalistic")) {
+                animalisticCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            } else if (update.getCallbackQuery().getData().equals("/report")) {
+                reportCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            } else if (update.getCallbackQuery().getData().equals("/help")) {
+                helpCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            } else if (update.getCallbackQuery().getData().equals("/back")) {
+                startCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             }
         }
     }
 
-    private void startCommandReceived(Long chatId, String name  ) {
+    private void startCommandReceived(Long chatId, String name) {
 
         String answer = "Привет " + name + ".\n" +
                         config.getStartText();
 
-        sendMassage(chatId, answer, createKeyboard1());
-    }
-
-    private void startCommandReceivedTest(Long chatId, String name) {
-
-        String answer = "Привет " + name + ".\n" +
-                config.getStartText();
-
-        sendMassage(chatId, answer, null);
+        sendMassage(chatId, answer, startKeyboard());
     }
 
     private void infoCommandReceived(Long chatId, String name) {
 
-        String answer = "Привет " + name + ". info test. \n" +
-                config.getInfoText();
+        String answer = config.getInfoText();
 
-        sendMassage(chatId, answer, null);
+        sendMassage(chatId, answer, startKeyboard());
     }
 
-    private void workdaysCommandReceived(Long chatId, String name) {
+    private void animalisticCommandReceived(Long chatId, String name) {
 
-        String answer = "Привет " + name + ".\n" +
-                config.getWorkDays();
+        String answer = config.getAnimalisticText();
 
-        sendMassage(chatId, answer, null );
+        sendMassage(chatId, answer, startKeyboard());
+    }
+
+    private void reportCommandReceived(Long chatId, String name) {
+
+        String answer = config.getReportText();
+
+        sendMassage(chatId, answer, startKeyboard());
+    }
+
+    private void helpCommandReceived(Long chatId, String name) {
+
+        String answer = config.getHelpText();
+
+        sendMassage(chatId, answer, startKeyboard());
     }
 
     private void sendMassage(Long chatId, String textToSend,InlineKeyboardMarkup createKeyboard1) {
@@ -126,15 +148,26 @@ public class TelegramBot extends TelegramLongPollingBot {
         return editMessageReplyMarkup;
     }
 
-    // Main keyboard
-    private InlineKeyboardMarkup createKeyboard1() {
+    private InlineKeyboardMarkup startKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
-        List<InlineKeyboardButton> row = new ArrayList<>();
-        row.add(createButtonWithCallbackData("Button #1", "/start"));
-        row.add(createButtonWithCallbackData("Button #2", "/info"));
-        keyboard.add(row);
-        keyboardMarkup.setKeyboard(keyboard);
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> rowFirst = new ArrayList<>();
+        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/info"));
+        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalistic"));
+        StartKeyboard.add(rowFirst);
+
+        List<InlineKeyboardButton> rowSecond  = new ArrayList<>();
+        rowSecond.add(createButtonWithCallbackData("Отчет.", "/report"));
+        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/help"));
+        StartKeyboard.add(rowSecond);
+
+        List<InlineKeyboardButton> rowThird  = new ArrayList<>();
+        rowSecond.add(createButtonWithCallbackData("Назад", "/back"));
+        StartKeyboard.add(rowThird);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
         return keyboardMarkup;
     }
 
