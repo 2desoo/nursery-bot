@@ -16,7 +16,13 @@ public class BotConfig {
     @Value("${telegram.bot.token}")
     private String token;
 
-    private String startText = "Добро пожаловать в приют для животных";
+    private String startText = "Я бот который хочет помочь людям.\n" +
+            "Которые задумываются о том, чтобы забрать собаку или кошку домой.\n" +
+            "Выбери пожалуйста кого хочешь взять.";
+
+    private String startTextCat = "Вы выбрал приют для кошек, что хочешь узнать.";
+
+    private String startTextDog = "Вы выбрал приют для Собак, что хочешь узнать.";
 
     private String infoText = "Мы приют животных из Астаны," +
             " который хочет помочь людям, " +
@@ -50,6 +56,22 @@ public class BotConfig {
 
     public void setStartText(String startText) {
         this.startText = startText;
+    }
+
+    public String getStartTextCat() {
+        return startTextCat;
+    }
+
+    public void setStartTextCat(String startTextCat) {
+        this.startTextCat = startTextCat;
+    }
+
+    public String getStartTextDog() {
+        return startTextDog;
+    }
+
+    public void setStartTextDog(String startTextDog) {
+        this.startTextDog = startTextDog;
     }
 
     public String getInfoText() {

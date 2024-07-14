@@ -26,12 +26,16 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     BotConfig config;
 
+    private ShelterCatServiceImpl shelterService;
 
-    public TelegramBot(BotConfig config) {
+    public TelegramBot(BotConfig config, ShelterCatServiceImpl shelterService) {
         this.config = config;
+        this.shelterService = shelterService;
         List<BotCommand> listofCommands = new ArrayList<>();
         listofCommands.add(new BotCommand("/start", "Приветствие."));
-        listofCommands.add(new BotCommand("/info", "Информация о приюте."));
+        listofCommands.add(new BotCommand("/catshelter", "Кошачий приют."));
+        listofCommands.add(new BotCommand("/dogshelter", "Собачий приют ."));
+        listofCommands.add(new BotCommand("/infocatshelter", "Информация о приюте для кошек."));
         listofCommands.add(new BotCommand("/animalistic", "Как взять животное из приюта."));
         listofCommands.add(new BotCommand("/report", "Прислать отчет о питомце."));
         listofCommands.add(new BotCommand("/help", "Позвать волонтера."));
@@ -52,11 +56,20 @@ public class TelegramBot extends TelegramLongPollingBot {
             Long chatId = update.getMessage().getChatId();
 
             switch (massageText) {
+                //Приветствие с выбором кот или собака
                 case "/start":
                     startCommandReceived(chatId, update.getMessage().getChat().getFirstName());
                     break;
-                case "/info":
-                    infoCommandReceived(chatId, update.getMessage().getChat().getFirstName());
+                //Приветственное сообщения приюта кота
+                case "/catshelter":
+                    startShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
+                    break;
+                case "/dogshelter":
+                    startShelterDog(chatId, update.getMessage().getChat().getFirstName());
+                    break;
+                //Информация о приюте для кошек
+                case "/infocatshelter":
+                    infoShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
                     break;
                 case "/animalistic":
                     animalisticCommandReceived(chatId, update.getMessage().getChat().getFirstName());
@@ -77,8 +90,15 @@ public class TelegramBot extends TelegramLongPollingBot {
 
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
 
+            if (update.getCallbackQuery().getData().equals("/catShelter")) {
+                //Приветственное сообщения приюта кота
+                startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            }else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
+                startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            }
+            //Информация о приюте для кошек
             if (update.getCallbackQuery().getData().equals("/info")) {
-                infoCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+                infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/animalistic")) {
                 animalisticCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             } else if (update.getCallbackQuery().getData().equals("/report")) {
@@ -91,19 +111,36 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    //Приветствие с выбором кот или собака
     private void startCommandReceived(Long chatId, String name) {
 
         String answer = "Привет " + name + ".\n" +
                         config.getStartText();
 
+        sendMassage(chatId, answer, chooseShelter());
+    }
+
+    //Приветственное сообщения приюта кота
+    private void startShelterCat(Long chatId, String name, Long id) {
+
+        String answer = shelterService.welcomesUser(id);
+
         sendMassage(chatId, answer, startKeyboard());
     }
 
-    private void infoCommandReceived(Long chatId, String name) {
+    private void startShelterDog(Long chatId, String name) {
 
-        String answer = config.getInfoText();
+        String answer = config.getStartTextDog();
 
         sendMassage(chatId, answer, startKeyboard());
+    }
+
+    //Информация о приюте для кошек
+    private void infoShelterCat(Long chatId, String name, Long id) {
+
+        String answer = shelterService.info(id);
+
+        sendMassage(chatId, answer, infoKeyboard());
     }
 
     private void animalisticCommandReceived(Long chatId, String name) {
@@ -148,6 +185,20 @@ public class TelegramBot extends TelegramLongPollingBot {
         return editMessageReplyMarkup;
     }
 
+    private InlineKeyboardMarkup chooseShelter() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> rowFirst = new ArrayList<>();
+        rowFirst.add(createButtonWithCallbackData("Кота", "/catShelter"));
+        rowFirst.add(createButtonWithCallbackData("Собаку", "/dogShelter"));
+        StartKeyboard.add(rowFirst);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
     private InlineKeyboardMarkup startKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
@@ -165,6 +216,36 @@ public class TelegramBot extends TelegramLongPollingBot {
         List<InlineKeyboardButton> rowThird  = new ArrayList<>();
         rowSecond.add(createButtonWithCallbackData("Назад", "/back"));
         StartKeyboard.add(rowThird);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    private InlineKeyboardMarkup infoKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Информацию о приюте", "/tellAboutShelter"));
+        row1.add(createButtonWithCallbackData("Расписание работы приюта", "/scheduleWorkShelter"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Адрес приюта", "/addressShelter"));
+        row2.add(createButtonWithCallbackData("Схему проезда", "/travelMap"));
+        StartKeyboard.add(row2);
+
+        List<InlineKeyboardButton> row3  = new ArrayList<>();
+        row3.add(createButtonWithCallbackData("Контактные данные охраны", "/contactInformationSecurity"));
+        row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/contactInformationSecurity"));
+        StartKeyboard.add(row3);
+
+        List<InlineKeyboardButton> row4  = new ArrayList<>();
+        row4.add(createButtonWithCallbackData("Запись", "/record"));
+        row4.add(createButtonWithCallbackData("Назад", "/back"));
+        row4.add(createButtonWithCallbackData("Волонтер", "/help"));
+        StartKeyboard.add(row4);
 
         keyboardMarkup.setKeyboard(StartKeyboard);
 
