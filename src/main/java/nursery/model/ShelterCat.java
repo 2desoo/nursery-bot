@@ -2,35 +2,31 @@ package nursery.model;
 
 import jakarta.persistence.*;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
-public class Shelter {
+public class ShelterCat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
     private String welcomesUserShelter;
     private String tellAboutShelter;
     private String scheduleWorkShelter;
     private String addressShelter;
-    @Lob
-    private byte[] drivingDirectionsShelter;
     private String contactInformationSecurity;
     private String safetyRecommendations;
 
-    public Shelter() {}
+    public ShelterCat() {}
 
-    public Shelter(Long id, String welcomesUserShelter, String tellAboutShelter,
-                   String scheduleWorkShelter, String addressShelter, byte[] drivingDirectionsShelter,
-                   String contactInformationSecurity, String safetyRecommendations) {
+    public ShelterCat(Long id, String name, String welcomesUserShelter, String tellAboutShelter, String scheduleWorkShelter, String addressShelter, String contactInformationSecurity, String safetyRecommendations) {
         this.id = id;
+        this.name = name;
         this.welcomesUserShelter = welcomesUserShelter;
         this.tellAboutShelter = tellAboutShelter;
         this.scheduleWorkShelter = scheduleWorkShelter;
         this.addressShelter = addressShelter;
-        this.drivingDirectionsShelter = drivingDirectionsShelter;
         this.contactInformationSecurity = contactInformationSecurity;
         this.safetyRecommendations = safetyRecommendations;
     }
@@ -41,6 +37,14 @@ public class Shelter {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getWelcomesUserShelter() {
@@ -75,14 +79,6 @@ public class Shelter {
         this.addressShelter = addressShelter;
     }
 
-    public byte[] getDrivingDirectionsShelter() {
-        return drivingDirectionsShelter;
-    }
-
-    public void setDrivingDirectionsShelter(byte[] drivingDirectionsShelter) {
-        this.drivingDirectionsShelter = drivingDirectionsShelter;
-    }
-
     public String getContactInformationSecurity() {
         return contactInformationSecurity;
     }
@@ -103,26 +99,24 @@ public class Shelter {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Shelter shelter = (Shelter) o;
-        return Objects.equals(id, shelter.id) && Objects.equals(welcomesUserShelter, shelter.welcomesUserShelter) && Objects.equals(tellAboutShelter, shelter.tellAboutShelter) && Objects.equals(scheduleWorkShelter, shelter.scheduleWorkShelter) && Objects.equals(addressShelter, shelter.addressShelter) && Arrays.equals(drivingDirectionsShelter, shelter.drivingDirectionsShelter) && Objects.equals(contactInformationSecurity, shelter.contactInformationSecurity) && Objects.equals(safetyRecommendations, shelter.safetyRecommendations);
+        ShelterCat shelterCat = (ShelterCat) o;
+        return Objects.equals(id, shelterCat.id) && Objects.equals(name, shelterCat.name) && Objects.equals(welcomesUserShelter, shelterCat.welcomesUserShelter) && Objects.equals(tellAboutShelter, shelterCat.tellAboutShelter) && Objects.equals(scheduleWorkShelter, shelterCat.scheduleWorkShelter) && Objects.equals(addressShelter, shelterCat.addressShelter) && Objects.equals(contactInformationSecurity, shelterCat.contactInformationSecurity) && Objects.equals(safetyRecommendations, shelterCat.safetyRecommendations);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, welcomesUserShelter, tellAboutShelter, scheduleWorkShelter, addressShelter, contactInformationSecurity, safetyRecommendations);
-        result = 31 * result + Arrays.hashCode(drivingDirectionsShelter);
-        return result;
+        return Objects.hash(id, name, welcomesUserShelter, tellAboutShelter, scheduleWorkShelter, addressShelter, contactInformationSecurity, safetyRecommendations);
     }
 
     @Override
     public String toString() {
         return "Shelter{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", welcomesUserShelter='" + welcomesUserShelter + '\'' +
                 ", tellAboutShelter='" + tellAboutShelter + '\'' +
                 ", scheduleWorkShelter='" + scheduleWorkShelter + '\'' +
                 ", addressShelter='" + addressShelter + '\'' +
-                ", drivingDirectionsShelter=" + Arrays.toString(drivingDirectionsShelter) +
                 ", contactInformationSecurity='" + contactInformationSecurity + '\'' +
                 ", safetyRecommendations='" + safetyRecommendations + '\'' +
                 '}';
