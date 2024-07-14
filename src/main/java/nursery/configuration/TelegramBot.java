@@ -130,7 +130,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         String answer = "Добро пожаловать " + name +
                 "\nЭто чат бот приюта для животных." +
                 "\nВыберите из предложенного меню нужное.";
-        sendMessage(chatId, answer,null);
+        sendMessage(chatId, answer, chooseShelter());
     }
 
     //Приветственное сообщения приюта кота
@@ -227,23 +227,22 @@ public class TelegramBot extends TelegramLongPollingBot {
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> row1 = new ArrayList<>();
-        row1.add(createButtonWithCallbackData("Информацию о приюте", "/tellAboutShelter"));
         row1.add(createButtonWithCallbackData("Расписание работы приюта", "/scheduleWorkShelter"));
+        row1.add(createButtonWithCallbackData("Адрес приюта", "/addressShelter"));
         StartKeyboard.add(row1);
 
         List<InlineKeyboardButton> row2  = new ArrayList<>();
-        row2.add(createButtonWithCallbackData("Адрес приюта", "/addressShelter"));
         row2.add(createButtonWithCallbackData("Схему проезда", "/travelMap"));
+        row2.add(createButtonWithCallbackData("Контактные данные охраны", "/contactInformationSecurity"));
         StartKeyboard.add(row2);
 
         List<InlineKeyboardButton> row3  = new ArrayList<>();
-        row3.add(createButtonWithCallbackData("Контактные данные охраны", "/contactInformationSecurity"));
         row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/contactInformationSecurity"));
+        row3.add(createButtonWithCallbackData("Запись", "/record"));
         StartKeyboard.add(row3);
 
         List<InlineKeyboardButton> row4  = new ArrayList<>();
-        row4.add(createButtonWithCallbackData("Запись", "/record"));
-        row4.add(createButtonWithCallbackData("Назад", "/back"));
+        row4.add(createButtonWithCallbackData("Назад", "/backStart"));
         row4.add(createButtonWithCallbackData("Волонтер", "/help"));
         StartKeyboard.add(row4);
 
