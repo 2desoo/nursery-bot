@@ -1,23 +1,23 @@
 -- formated sql
 
 -- changeset dubrovsky:2
- CREATE TABLE "shelterCat"
+ CREATE TABLE shelterCat
  (
-     "id"              BIGSERIAL NOT NULL,
-     "name"            varchar, -- имя приюта
-     "welcomes_user_shelter"                   varchar, -- о приюте
-     "tell_about_shelter"          varchar,
-     "schedule_work_shelter"     varchar,
-     "address_shelter"             varchar,
-     "contact_information_security"           varchar,
-     "safety_recommendations"             varchar,
+     id              BIGSERIAL NOT NULL,
+     name varchar,
+     welcomes_user_shelter varchar,
+     tell_about_shelter varchar,
+     schedule_work_shelter varchar,
+     address_shelter varchar,
+     contact_information_security varchar,
+     safety_recommendations varchar,
  );
 
- CREATE TABLE "travelMap"
+ CREATE TABLE travelMap
  (
-    "id" BIGSERIAL NOT NULL,
-    "file_path" VARCHAR,
-    "file_size" BIGSERIAL,
-    "media_type" VARCHAR,
-    "date" TIMESTAMP,
+    id BIGSERIAL NOT NULL,
+    file_path VARCHAR,
+    file_size BIGSERIAL,
+    media_type VARCHAR,
+    date TIMESTAMP,
  );
