@@ -133,10 +133,14 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void saveNewUser(String name, Long chatId) {
-        logger.info("User is saved");
-        Users user1 = new Users();
-        user1.setName(name);
-        user1.setChatId(chatId);
-        userRepository.save(user1);
+        if (userRepository.findByChatId(chatId) == null) {
+            logger.info("User is saved");
+            Users user1 = new Users();
+            user1.setName(name);
+            user1.setChatId(chatId);
+            userRepository.save(user1);
+        } else {
+            sendMessage(chatId, "С возвращением " + name, null);
+        }
     }
 }
