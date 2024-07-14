@@ -1,4 +1,4 @@
-package nursery.model;
+package nursery.entity;
 
 import jakarta.persistence.*;
 
@@ -38,28 +38,12 @@ public class TravelMap {
         this.id = id;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public ShelterCat getShelterCat() {
+        return shelterCat;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public Long getFileSize() {
-        return fileSize;
-    }
-
-    public void setFileSize(Long fileSize) {
-        this.fileSize = fileSize;
-    }
-
-    public String getMediaType() {
-        return mediaType;
-    }
-
-    public void setMediaType(String mediaType) {
-        this.mediaType = mediaType;
+    public void setShelterCat(ShelterCat shelterCat) {
+        this.shelterCat = shelterCat;
     }
 
     public byte[] getDate() {
@@ -70,12 +54,28 @@ public class TravelMap {
         this.date = date;
     }
 
-    public ShelterCat getShelter() {
-        return shelterCat;
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setShelter(ShelterCat shelterCat) {
-        this.shelterCat = shelterCat;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    public Long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override

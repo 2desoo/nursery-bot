@@ -5,8 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import nursery.exception.EntityNotFoundException;
-import nursery.model.ShelterCat;
-import nursery.model.TravelMap;
+import nursery.entity.ShelterCat;
+import nursery.entity.TravelMap;
 import nursery.repository.TravelMapRepository;
 import nursery.service.impl.ShelterCatService;
 import nursery.service.impl.TravelMapService;
@@ -66,7 +66,7 @@ public class TravelMapServiceImpl implements TravelMapService {
             }
 
             TravelMap travelMap = findOrCreateTravelMap(shelterCatId);
-            travelMap.setShelter(shelterCat);
+            travelMap.setShelterCat(shelterCat);
             travelMap.setFilePath(filePath.toString());
             travelMap.setFileSize(file.getSize());
             travelMap.setMediaType(file.getContentType());

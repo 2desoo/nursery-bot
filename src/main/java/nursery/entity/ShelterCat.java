@@ -1,4 +1,4 @@
-package nursery.model;
+package nursery.entity;
 
 import jakarta.persistence.*;
 

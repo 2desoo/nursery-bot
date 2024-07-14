@@ -1,6 +1,6 @@
 package nursery.repository;
 
-import nursery.model.ShelterCat;
+import nursery.entity.ShelterCat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

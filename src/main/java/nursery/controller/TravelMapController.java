@@ -3,7 +3,7 @@ package nursery.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
-import nursery.model.TravelMap;
+import nursery.entity.TravelMap;
 import nursery.service.impl.TravelMapService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

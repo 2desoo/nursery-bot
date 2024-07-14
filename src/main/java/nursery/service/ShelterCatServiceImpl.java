@@ -1,7 +1,7 @@
 package nursery.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import nursery.model.ShelterCat;
+import nursery.entity.ShelterCat;
 import nursery.repository.ShelterCatRepository;
 import nursery.service.impl.ShelterCatService;
 import org.slf4j.Logger;
@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ShelterCatServiceImpl implements ShelterCatService {
+
     private final Logger logger = LoggerFactory.getLogger(ShelterCatServiceImpl.class);
-    private ShelterCatRepository shelterCatRepository;
+    private final ShelterCatRepository shelterCatRepository;
 
     public ShelterCatServiceImpl(ShelterCatRepository shelterCatRepository) {
         this.shelterCatRepository = shelterCatRepository;

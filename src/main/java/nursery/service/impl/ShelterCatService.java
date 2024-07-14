@@ -1,14 +1,12 @@
 package nursery.service.impl;
 
-import nursery.model.ShelterCat;
+import nursery.entity.ShelterCat;
 
 public interface ShelterCatService {
-
     ShelterCat createShelterCat(ShelterCat shelterCat);
     ShelterCat findShelterCat(Long id);
     ShelterCat updateShelterCat(Long id, ShelterCat shelterCat);
     void deleteShelterCat(Long id);
-
-    public String welcomesUser(Long id);
-    public String info(Long id);
+    String welcomesUser(Long id);
+    String info(Long id);
 }
