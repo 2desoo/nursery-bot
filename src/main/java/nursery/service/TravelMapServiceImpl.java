@@ -41,6 +41,11 @@ public class TravelMapServiceImpl implements TravelMapService {
     }
 
     @Override
+    public String findTravelMapTelegram(Long id) {
+        return travelMapRepository.findFilePathById(id);
+    }
+
+    @Override
     public TravelMap findOrCreateTravelMap(Long shelterCatId) {
         logger.info("Method findOrCreateTravelMap was invoked.");
         return travelMapRepository.findByShelterCatId(shelterCatId).orElse(new TravelMap());
@@ -77,6 +82,8 @@ public class TravelMapServiceImpl implements TravelMapService {
             logger.warn("No file provided for upload.");
         }
     }
+
+
 
     private String getExtensions(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);

@@ -9,4 +9,6 @@ public interface ShelterCatService {
     void deleteShelterCat(Long id);
     String welcomesUser(Long id);
     String info(Long id);
+    String workShelter(Long id);
+    String addressShelter(Long id);
 }

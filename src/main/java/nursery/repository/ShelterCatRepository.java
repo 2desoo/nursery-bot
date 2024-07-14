@@ -12,4 +12,10 @@ public interface ShelterCatRepository extends JpaRepository<ShelterCat, Long> {
 
     @Query(value = "SELECT s.welcomes_user_shelter FROM shelter_cat s WHERE s.id = id", nativeQuery = true)
     String findWelcomesUserShelterById(@Param("id") Long id);
+
+    @Query(value = "SELECT s.schedule_work_shelter FROM shelter_cat s WHERE s.id = id", nativeQuery = true)
+    String findScheduleWorkShelterById(@Param("id") Long id);
+
+    @Query(value = "select s.address_shelter from shelter_cat s where id = id", nativeQuery = true)
+    String findAddressShelterById(@Param("id") Long id);
 }
