@@ -68,7 +68,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             }
 
             if (update.hasMessage() && update.getMessage().hasText()) {
-                logger.info("Choose buttons {}", updatesMessageText);
+                logger.info("Select the button {}", updatesMessageText);
                 switch (updatesMessageText) {
                     //Приветствие с выбором кот или собака
                     case "/start":
@@ -135,32 +135,38 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     //Приветственное сообщения приюта кота
     private void startShelterCat(Long chatId, String name, Long id) {
+        logger.info("Select the button shelter cat");
         String answer = shelterService.welcomesUser(id);
         sendMessage(chatId, answer, startKeyboard());
     }
 
     private void startShelterDog(Long chatId, String name) {
+        logger.info("Select the button shelter dog");
         String answer = config.getStartTextDog();
         sendMessage(chatId, answer, startKeyboard());
     }
 
     //Информация о приюте для кошек
-    private void infoShelterCat(Long chatId, String name, Long id) {
+    private void infoShelterCat(Long chatId, String name, long id) {
+        logger.info("Select the button info for shelter cat");
         String answer = shelterService.info(id);
         sendMessage(chatId, answer, infoKeyboard());
     }
 
     private void animalisticCommandReceived(Long chatId, String name) {
+        logger.info("Select the button how to adopt an animal from a shelter");
         String answer = config.getAnimalisticText();
         sendMessage(chatId, answer, startKeyboard());
     }
 
     private void reportCommandReceived(Long chatId, String name) {
+        logger.info("Select the button to send a pet report");
         String answer = config.getReportText();
         sendMessage(chatId, answer, startKeyboard());
     }
 
     private void helpCommandReceived(Long chatId, String name) {
+        logger.info("Select the button call a volunteer");
         String answer = config.getHelpText();
         sendMessage(chatId, answer, startKeyboard());
     }
@@ -178,13 +184,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    private EditMessageReplyMarkup createEditMessageReplyMarkup(Update update, InlineKeyboardMarkup replyMarkup) {
-        EditMessageReplyMarkup editMessageReplyMarkup = new EditMessageReplyMarkup();
-        editMessageReplyMarkup.setReplyMarkup(replyMarkup);
-        return editMessageReplyMarkup;
-    }
-
     private InlineKeyboardMarkup chooseShelter() {
+        logger.info("Choosing a shelter");
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
