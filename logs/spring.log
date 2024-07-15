@@ -2144,6 +2144,841 @@ Caused by: org.postgresql.util.PSQLException: ОШИБКА: повторяюще
 2024-07-14T20:47:18.012+03:00  INFO 6560 --- [nursery-bot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-07-14T20:47:18.014+03:00  INFO 6560 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-14T20:47:18.017+03:00  INFO 6560 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T22:15:32.828+03:00  INFO 7760 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 7760 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T22:15:32.830+03:00  INFO 7760 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T22:15:33.291+03:00  INFO 7760 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T22:15:33.346+03:00  INFO 7760 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 1 JPA repository interface.
+2024-07-15T22:15:33.753+03:00  INFO 7760 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T22:15:33.767+03:00  INFO 7760 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T22:15:33.767+03:00  INFO 7760 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T22:15:33.817+03:00  INFO 7760 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T22:15:33.817+03:00  INFO 7760 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 954 ms
+2024-07-15T22:15:33.917+03:00  INFO 7760 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T22:15:34.173+03:00  INFO 7760 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4cc7d00d
+2024-07-15T22:15:34.174+03:00  INFO 7760 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T22:15:34.275+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T22:15:34.525+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T22:15:34.549+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-15T22:15:34.550+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T22:15:34.555+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-15T22:15:34.555+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : Run:                          0
+2024-07-15T22:15:34.555+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : Previously run:               1
+2024-07-15T22:15:34.555+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : Filtered out:                 0
+2024-07-15T22:15:34.555+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : -------------------------------
+2024-07-15T22:15:34.555+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : Total change sets:            1
+2024-07-15T22:15:34.556+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.util                           : Update summary generated
+2024-07-15T22:15:34.572+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-15T22:15:34.573+03:00  INFO 7760 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T22:15:34.634+03:00  INFO 7760 --- [nursery-bot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-15T22:15:34.690+03:00  INFO 7760 --- [nursery-bot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-15T22:15:34.723+03:00  INFO 7760 --- [nursery-bot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-15T22:15:34.973+03:00  INFO 7760 --- [nursery-bot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-15T22:15:35.571+03:00  INFO 7760 --- [nursery-bot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-15T22:15:35.595+03:00  INFO 7760 --- [nursery-bot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-15T22:15:36.254+03:00  WARN 7760 --- [nursery-bot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-15T22:15:36.504+03:00  INFO 7760 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-15T22:15:36.570+03:00  INFO 7760 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Started NurseryBotApplication in 4.058 seconds (process running for 4.355)
+2024-07-15T22:17:05.841+03:00  INFO 7760 --- [nursery-bot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-15T22:17:05.843+03:00  INFO 7760 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T22:17:05.845+03:00  INFO 7760 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T22:17:07.517+03:00  INFO 6316 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 6316 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T22:17:07.519+03:00  INFO 6316 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T22:17:07.943+03:00  INFO 6316 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T22:17:07.990+03:00  INFO 6316 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interface.
+2024-07-15T22:17:08.370+03:00  INFO 6316 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T22:17:08.379+03:00  INFO 6316 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T22:17:08.379+03:00  INFO 6316 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T22:17:08.429+03:00  INFO 6316 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T22:17:08.430+03:00  INFO 6316 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 880 ms
+2024-07-15T22:17:08.522+03:00  INFO 6316 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T22:17:08.658+03:00  INFO 6316 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@47248a48
+2024-07-15T22:17:08.659+03:00  INFO 6316 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T22:17:08.752+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T22:17:09.001+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T22:17:09.041+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-07-15T22:17:09.042+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.command                        : Using deploymentId: 1071029042
+2024-07-15T22:17:09.044+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T22:17:09.048+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.ui                             : Running Changeset: liquibase/create_table_shelter_cat.sql::raw::includeAll
+2024-07-15T22:17:09.062+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.changelog                      : Custom SQL executed
+2024-07-15T22:17:09.063+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.changelog                      : ChangeSet liquibase/create_table_shelter_cat.sql::raw::includeAll ran successfully in 14ms
+2024-07-15T22:17:09.071+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-15T22:17:09.071+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : Run:                          1
+2024-07-15T22:17:09.071+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : Previously run:               1
+2024-07-15T22:17:09.071+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : Filtered out:                 0
+2024-07-15T22:17:09.071+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : -------------------------------
+2024-07-15T22:17:09.071+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : Total change sets:            2
+2024-07-15T22:17:09.072+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.util                           : Update summary generated
+2024-07-15T22:17:09.074+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.command                        : Update command completed successfully.
+2024-07-15T22:17:09.074+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 1
+2024-07-15T22:17:09.076+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-15T22:17:09.077+03:00  INFO 6316 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T22:17:09.128+03:00  INFO 6316 --- [nursery-bot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-15T22:17:09.167+03:00  INFO 6316 --- [nursery-bot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-15T22:17:09.191+03:00  INFO 6316 --- [nursery-bot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-15T22:17:09.418+03:00  INFO 6316 --- [nursery-bot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-15T22:17:09.922+03:00  INFO 6316 --- [nursery-bot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-15T22:17:09.940+03:00  INFO 6316 --- [nursery-bot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-15T22:17:10.572+03:00  WARN 6316 --- [nursery-bot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-15T22:17:10.787+03:00  INFO 6316 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-15T22:17:10.857+03:00  INFO 6316 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Started NurseryBotApplication in 3.651 seconds (process running for 3.922)
+2024-07-15T22:19:39.562+03:00  INFO 6316 --- [nursery-bot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-15T22:19:39.564+03:00  INFO 6316 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T22:19:39.566+03:00  INFO 6316 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T22:19:41.167+03:00  INFO 4328 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 4328 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T22:19:41.169+03:00  INFO 4328 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T22:19:41.617+03:00  INFO 4328 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T22:19:41.660+03:00  INFO 4328 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 JPA repository interface.
+2024-07-15T22:19:42.051+03:00  INFO 4328 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T22:19:42.061+03:00  INFO 4328 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T22:19:42.061+03:00  INFO 4328 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T22:19:42.110+03:00  INFO 4328 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T22:19:42.110+03:00  INFO 4328 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 907 ms
+2024-07-15T22:19:42.203+03:00  INFO 4328 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T22:19:42.423+03:00  INFO 4328 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@47248a48
+2024-07-15T22:19:42.424+03:00  INFO 4328 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T22:19:42.525+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T22:19:42.775+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T22:19:42.813+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-07-15T22:19:42.814+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.command                        : Using deploymentId: 1071182814
+2024-07-15T22:19:42.816+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T22:19:42.820+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.ui                             : Running Changeset: liquibase/create_table_travel_map.sql::raw::includeAll
+2024-07-15T22:19:42.834+03:00 ERROR 4328 --- [nursery-bot] [main] liquibase.changelog                      : ChangeSet liquibase/create_table_travel_map.sql::raw::includeAll encountered an exception.
+
+liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at nursery.NurseryBotApplication.main(NurseryBotApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-07-15T22:19:42.843+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-15T22:19:42.843+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : Run:                          0
+2024-07-15T22:19:42.844+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : Previously run:               2
+2024-07-15T22:19:42.844+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : Filtered out:                 0
+2024-07-15T22:19:42.844+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : -------------------------------
+2024-07-15T22:19:42.844+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : Total change sets:            2
+2024-07-15T22:19:42.844+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.util                           : Update summary generated
+2024-07-15T22:19:42.845+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.command                        : Update command encountered an exception.
+2024-07-15T22:19:42.848+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-15T22:19:42.849+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.command                        : Logging exception.
+2024-07-15T22:19:42.849+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Details
+2024-07-15T22:19:42.849+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Class:  PSQLException
+2024-07-15T22:19:42.849+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104
+2024-07-15T22:19:42.850+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Source:  PostgreSQL 16.2
+2024-07-15T22:19:42.850+03:00  INFO 4328 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T22:19:42.851+03:00  WARN 4328 --- [nursery-bot] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+2024-07-15T22:19:42.852+03:00  INFO 4328 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T22:19:42.981+03:00  INFO 4328 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T22:19:42.984+03:00  INFO 4328 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-15T22:19:42.990+03:00  INFO 4328 --- [nursery-bot] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-15T22:19:43.006+03:00 ERROR 4328 --- [nursery-bot] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at nursery.NurseryBotApplication.main(NurseryBotApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/create_table_travel_map.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104 [Failed SQL: (0) CREATE TABLE travelMap(id BIGSERIAL, file_path VARCHAR, file_size BIGSERIAL,
+ media_type VARCHAR, date BOTH)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 58 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: ошибка синтаксиса (примерное положение: "BOTH")
+  Позиция: 104
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-07-15T23:01:03.824+03:00  INFO 12836 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 12836 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T23:01:03.826+03:00  INFO 12836 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T23:01:04.245+03:00  INFO 12836 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T23:01:04.290+03:00  INFO 12836 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interface.
+2024-07-15T23:01:04.620+03:00  INFO 12836 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T23:01:04.629+03:00  INFO 12836 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T23:01:04.629+03:00  INFO 12836 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T23:01:04.680+03:00  INFO 12836 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T23:01:04.680+03:00  INFO 12836 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 825 ms
+2024-07-15T23:01:04.764+03:00  INFO 12836 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T23:01:04.895+03:00  INFO 12836 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@31e739bf
+2024-07-15T23:01:04.897+03:00  INFO 12836 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T23:01:05.002+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T23:01:05.196+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.command                        : Logging exception.
+2024-07-15T23:01:05.197+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Details
+2024-07-15T23:01:05.197+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Class:  ChangeLogParseException
+2024-07-15T23:01:05.197+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+2024-07-15T23:01:05.197+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Source:  4.27.0
+2024-07-15T23:01:05.197+03:00  INFO 12836 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T23:01:05.199+03:00  WARN 12836 --- [nursery-bot] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+2024-07-15T23:01:05.200+03:00  INFO 12836 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T23:01:05.240+03:00  INFO 12836 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T23:01:05.242+03:00  INFO 12836 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-15T23:01:05.248+03:00  INFO 12836 --- [nursery-bot] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-15T23:01:05.257+03:00 ERROR 12836 --- [nursery-bot] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at nursery.NurseryBotApplication.main(NurseryBotApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:96) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.lambda$getDatabaseChangeLog$0(DatabaseChangelogCommandStep.java:129) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:175) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.getDatabaseChangeLog(DatabaseChangelogCommandStep.java:128) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:87) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.SetupException: The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:465) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.load(DatabaseChangeLog.java:390) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:90) ~[liquibase-core-4.27.0.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.include(DatabaseChangeLog.java:987) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:455) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: The file db.changelog.2024.07/15.01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.include(DatabaseChangeLog.java:949) ~[liquibase-core-4.27.0.jar:na]
+	... 44 common frames omitted
+
+2024-07-15T23:03:13.943+03:00  INFO 12712 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 12712 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T23:03:13.946+03:00  INFO 12712 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T23:03:14.361+03:00  INFO 12712 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T23:03:14.393+03:00  INFO 12712 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interface.
+2024-07-15T23:03:14.739+03:00  INFO 12712 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T23:03:14.747+03:00  INFO 12712 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T23:03:14.748+03:00  INFO 12712 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T23:03:14.784+03:00  INFO 12712 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T23:03:14.784+03:00  INFO 12712 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 812 ms
+2024-07-15T23:03:14.869+03:00  INFO 12712 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T23:03:15.108+03:00  INFO 12712 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@552cede7
+2024-07-15T23:03:15.109+03:00  INFO 12712 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T23:03:15.202+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T23:03:15.383+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.command                        : Logging exception.
+2024-07-15T23:03:15.384+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Details
+2024-07-15T23:03:15.384+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Class:  ChangeLogParseException
+2024-07-15T23:03:15.384+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+2024-07-15T23:03:15.384+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Source:  4.27.0
+2024-07-15T23:03:15.385+03:00  INFO 12712 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T23:03:15.388+03:00  WARN 12712 --- [nursery-bot] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+2024-07-15T23:03:15.388+03:00  INFO 12712 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T23:03:15.553+03:00  INFO 12712 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T23:03:15.555+03:00  INFO 12712 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-15T23:03:15.559+03:00  INFO 12712 --- [nursery-bot] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-15T23:03:15.570+03:00 ERROR 12712 --- [nursery-bot] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at nursery.NurseryBotApplication.main(NurseryBotApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: Error parsing classpath:liquibase/changelog-master.yml : The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:96) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.lambda$getDatabaseChangeLog$0(DatabaseChangelogCommandStep.java:129) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:175) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.getDatabaseChangeLog(DatabaseChangelogCommandStep.java:128) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:87) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.SetupException: The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:465) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.load(DatabaseChangeLog.java:390) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:90) ~[liquibase-core-4.27.0.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.include(DatabaseChangeLog.java:987) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:455) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: The file db.changelog.2024.07/15-01-changelog.xml was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.include(DatabaseChangeLog.java:949) ~[liquibase-core-4.27.0.jar:na]
+	... 44 common frames omitted
+
+2024-07-15T23:04:11.477+03:00  INFO 11236 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 11236 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T23:04:11.480+03:00  INFO 11236 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T23:04:11.881+03:00  INFO 11236 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T23:04:11.924+03:00  INFO 11236 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interface.
+2024-07-15T23:04:12.248+03:00  INFO 11236 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T23:04:12.256+03:00  INFO 11236 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T23:04:12.256+03:00  INFO 11236 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T23:04:12.297+03:00  INFO 11236 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T23:04:12.298+03:00  INFO 11236 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 786 ms
+2024-07-15T23:04:12.378+03:00  INFO 11236 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T23:04:12.497+03:00  INFO 11236 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@19e21f89
+2024-07-15T23:04:12.498+03:00  INFO 11236 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T23:04:12.600+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T23:04:12.901+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2024-07-15T23:04:12.931+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T23:04:12.973+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-07-15T23:04:12.974+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.command                        : Using deploymentId: 1073852974
+2024-07-15T23:04:12.975+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T23:04:12.988+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : Running Changeset: liquibase/create_table.sql::raw::includeAll
+2024-07-15T23:04:13.004+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : Custom SQL executed
+2024-07-15T23:04:13.006+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : ChangeSet liquibase/create_table.sql::raw::includeAll ran successfully in 16ms
+2024-07-15T23:04:13.010+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : Running Changeset: liquibase/15-01-changelog.xml::1721073522082-1::Vova
+2024-07-15T23:04:13.016+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : Table shelter_cat created
+2024-07-15T23:04:13.017+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.changelog                      : ChangeSet liquibase/15-01-changelog.xml::1721073522082-1::Vova ran successfully in 6ms
+2024-07-15T23:04:13.019+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : Running Changeset: liquibase/15-01-changelog.xml::1721073522082-2::Vova
+2024-07-15T23:04:13.024+03:00 ERROR 11236 --- [nursery-bot] [main] liquibase.changelog                      : ChangeSet liquibase/15-01-changelog.xml::1721073522082-2::Vova encountered an exception.
+
+liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at nursery.NurseryBotApplication.main(NurseryBotApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: отношение "users" уже существует
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-07-15T23:04:13.033+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-15T23:04:13.033+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : Run:                          2
+2024-07-15T23:04:13.033+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : Previously run:               0
+2024-07-15T23:04:13.033+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : Filtered out:                 0
+2024-07-15T23:04:13.033+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : -------------------------------
+2024-07-15T23:04:13.034+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : Total change sets:            2
+2024-07-15T23:04:13.034+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.util                           : Update summary generated
+2024-07-15T23:04:13.036+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.command                        : Update command encountered an exception.
+2024-07-15T23:04:13.038+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-15T23:04:13.039+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.command                        : Logging exception.
+2024-07-15T23:04:13.039+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Details
+2024-07-15T23:04:13.039+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Class:  PSQLException
+2024-07-15T23:04:13.039+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  ОШИБКА: отношение "users" уже существует
+2024-07-15T23:04:13.039+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.ui                             : ERROR: Exception Primary Source:  PostgreSQL 16.2
+2024-07-15T23:04:13.039+03:00  INFO 11236 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T23:04:13.041+03:00  WARN 11236 --- [nursery-bot] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+2024-07-15T23:04:13.041+03:00  INFO 11236 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T23:04:13.096+03:00  INFO 11236 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-15T23:04:13.099+03:00  INFO 11236 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-15T23:04:13.107+03:00  INFO 11236 --- [nursery-bot] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-15T23:04:13.124+03:00 ERROR 11236 --- [nursery-bot] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at nursery.NurseryBotApplication.main(NurseryBotApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset liquibase/15-01-changelog.xml::1721073522082-2::Vova:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ОШИБКА: отношение "users" уже существует [Failed SQL: (0) CREATE TABLE public.users (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(255), chat_id BIGINT, CONSTRAINT pk_users PRIMARY KEY (id))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 58 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: отношение "users" уже существует
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-07-15T23:04:47.815+03:00  INFO 3096 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 3096 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-15T23:04:47.818+03:00  INFO 3096 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-15T23:04:48.218+03:00  INFO 3096 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-15T23:04:48.254+03:00  INFO 3096 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interface.
+2024-07-15T23:04:48.574+03:00  INFO 3096 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-15T23:04:48.582+03:00  INFO 3096 --- [nursery-bot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-15T23:04:48.582+03:00  INFO 3096 --- [nursery-bot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-15T23:04:48.628+03:00  INFO 3096 --- [nursery-bot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-15T23:04:48.629+03:00  INFO 3096 --- [nursery-bot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 779 ms
+2024-07-15T23:04:48.718+03:00  INFO 3096 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-15T23:04:48.835+03:00  INFO 3096 --- [nursery-bot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@feb098f
+2024-07-15T23:04:48.837+03:00  INFO 3096 --- [nursery-bot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-15T23:04:48.933+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.database                       : Set default schema name to public
+2024-07-15T23:04:49.245+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T23:04:49.270+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-15T23:04:49.271+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-15T23:04:49.276+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-15T23:04:49.277+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : Run:                          0
+2024-07-15T23:04:49.277+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : Previously run:               2
+2024-07-15T23:04:49.277+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : Filtered out:                 0
+2024-07-15T23:04:49.277+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : -------------------------------
+2024-07-15T23:04:49.277+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : Total change sets:            2
+2024-07-15T23:04:49.277+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.util                           : Update summary generated
+2024-07-15T23:04:49.291+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-15T23:04:49.292+03:00  INFO 3096 --- [nursery-bot] [main] liquibase.command                        : Command execution complete
+2024-07-15T23:04:49.343+03:00  INFO 3096 --- [nursery-bot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-15T23:04:49.377+03:00  INFO 3096 --- [nursery-bot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-15T23:04:49.403+03:00  INFO 3096 --- [nursery-bot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-15T23:04:49.615+03:00  INFO 3096 --- [nursery-bot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-15T23:04:50.221+03:00  INFO 3096 --- [nursery-bot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-15T23:04:50.240+03:00  INFO 3096 --- [nursery-bot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-15T23:04:50.887+03:00  WARN 3096 --- [nursery-bot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-15T23:04:51.124+03:00  INFO 3096 --- [nursery-bot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-15T23:04:51.189+03:00  INFO 3096 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Started NurseryBotApplication in 3.662 seconds (process running for 4.047)
+2024-07-15T23:05:49.033+03:00  INFO 3096 --- [nursery-bot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-15T23:05:49.035+03:00  INFO 3096 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-15T23:05:49.039+03:00  INFO 3096 --- [nursery-bot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 2024-07-14T22:37:38.202+03:00  INFO 7316 --- [nursery-bot] [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.9 with PID 7316 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
 2024-07-14T22:37:38.205+03:00  INFO 7316 --- [nursery-bot] [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
 2024-07-14T22:37:38.803+03:00  INFO 7316 --- [nursery-bot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
