@@ -50,6 +50,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         listofCommands.add(new BotCommand("/info_cat_shelter", "Информация о приюте для кошек."));
         listofCommands.add(new BotCommand("/schedule_work_shelter", "Расписание работы приюта для кошек."));
         listofCommands.add(new BotCommand("/address_shelter", "Адрес приюта для кошек."));
+        listofCommands.add(new BotCommand("/travel_map_cat", "Схема проезда к приюту для кошек."));
+        listofCommands.add(new BotCommand("/contact_security_cat", "Контактные данные охраны приюта для кошек."));
+        listofCommands.add(new BotCommand("/safety_shelter_cat", "Тех. безопасности в приюте для кошек."));
         listofCommands.add(new BotCommand("/animalistic", "Как взять животное из приюта."));
         listofCommands.add(new BotCommand("/report", "Прислать отчет о питомце."));
         listofCommands.add(new BotCommand("/help", "Позвать волонтера."));
@@ -96,6 +99,15 @@ public class TelegramBot extends TelegramLongPollingBot {
                     case "/address_shelter":
                         addressShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
                         break;
+                    case "/travel_map_cat":
+                        travelMapShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
+                        break;
+                    case "/contact_security_cat":
+                        contactInfoSecurityShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
+                        break;
+                    case "/safety_shelter_cat":
+                        safetyMeasuresCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
+                        break;
                     case "/animalistic":
                         animalisticCommandReceived(chatId, update.getMessage().getChat().getFirstName());
                         break;
@@ -137,6 +149,10 @@ public class TelegramBot extends TelegramLongPollingBot {
                 addressShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/travelMap")) { //Схему проезда
                 travelMapShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            } else if (update.getCallbackQuery().getData().equals("/contactInformationSecurity")) { //Контактные данные охраны приюта для кошек
+                contactInfoSecurityShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
+            } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelter")) { //Тех. безопасности в приюте для кошек
+                safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/backStartCat")) { //Вернутся в меню (Приветственное сообщения приюта кота)
                 startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             }
@@ -187,8 +203,21 @@ public class TelegramBot extends TelegramLongPollingBot {
     //Схему проезда до приюта для кошек
     private void travelMapShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button Travel Map for shelter cat");
-        sendPhoto(chatId, id);
-        sendMessage(chatId, name, infoKeyboard());
+        sendPhoto(chatId, id, infoKeyboard());
+    }
+
+    //Контактные данные охраны приюта для кошек
+    private void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
+        logger.info("Select the button InfoSecurityCat for shelter cat");
+        String answer = shelterService.contactInfoSecurityShelter(id);
+        sendMessage(chatId, answer, infoKeyboard());
+    }
+
+    //Тех. безопасности в приюте для кошек
+    private void safetyMeasuresCat(Long chatId, String name, Long id) {
+        logger.info("Select the button safetyMeasuresCat for shelter cat");
+        String answer = shelterService.safetyRecommendationsShelter(id);
+        sendMessage(chatId, answer, infoKeyboard());
     }
 
     private void animalisticCommandReceived(Long chatId, String name) {
@@ -248,6 +277,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         return keyboardMarkup;
     }
 
+    //Информационная клавиатура для приюта кошек
     private InlineKeyboardMarkup infoKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
@@ -263,7 +293,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         StartKeyboard.add(row2);
 
         List<InlineKeyboardButton> row3  = new ArrayList<>();
-        row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/contactInformationSecurity"));
+        row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/safetyMeasuresShelter"));
         row3.add(createButtonWithCallbackData("Запись", "/record"));
         StartKeyboard.add(row3);
 
@@ -298,12 +328,13 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    public void sendPhoto(Long chatId, Long shelterCatId) {
+    public void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
         try {
-            String filePath = travelMapService.findTravelMapTelegram(shelterCatId);
+            String filePath = travelMapService.findTravelMapTelegram(id);
             SendPhoto sendPhotoRequest = new SendPhoto();
             sendPhotoRequest.setChatId(chatId);
             sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
+            sendPhotoRequest.setReplyMarkup(createKeyboard1);
             execute(sendPhotoRequest);
         } catch (TelegramApiException e) {
             logger.error("Error sending photo", e);

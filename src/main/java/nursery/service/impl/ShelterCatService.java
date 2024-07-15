@@ -11,4 +11,6 @@ public interface ShelterCatService {
     String info(Long id);
     String workShelter(Long id);
     String addressShelter(Long id);
+    String contactInfoSecurityShelter(Long id);
+    String safetyRecommendationsShelter(Long id);
 }
