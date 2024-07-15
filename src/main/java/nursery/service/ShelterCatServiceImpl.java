@@ -54,4 +54,12 @@ public class ShelterCatServiceImpl implements ShelterCatService {
     public String info(Long id) {
         return shelterCatRepository.findTellAboutShelterById(id);
     }
+
+    public String workShelter(Long id) {
+        return shelterCatRepository.findScheduleWorkShelterById(id);
+    }
+
+    public String addressShelter(Long id) {
+        return shelterCatRepository.findAddressShelterById(id);
+    }
 }
