@@ -5,18 +5,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.util.Objects;
+
 @Entity
 public class ShelterCat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String welcomes_user_shelter;
-    private String tell_about_shelter;
-    private String schedule_work_shelter;
-    private String address_shelter;
-    private String contact_information_security;
-    private String safety_recommendations;
+    private String welcomesUserShelter;
+    private String tellAboutShelter;
+    private String scheduleWorkShelter;
+    private String addressShelter;
+    private String contactInformationSecurity;
+    private String safetyRecommendations;
 
     public ShelterCat() {
     }
@@ -37,51 +39,78 @@ public class ShelterCat {
         this.name = name;
     }
 
-    public String getWelcomes_user_shelter() {
-        return welcomes_user_shelter;
+    public String getWelcomesUserShelter() {
+        return welcomesUserShelter;
     }
 
-    public void setWelcomes_user_shelter(String welcomes_user_shelter) {
-        this.welcomes_user_shelter = welcomes_user_shelter;
+    public void setWelcomesUserShelter(String welcomesUserShelter) {
+        this.welcomesUserShelter = welcomesUserShelter;
     }
 
-    public String getTell_about_shelter() {
-        return tell_about_shelter;
+    public String getTellAboutShelter() {
+        return tellAboutShelter;
     }
 
-    public void setTell_about_shelter(String tell_about_shelter) {
-        this.tell_about_shelter = tell_about_shelter;
+    public void setTellAboutShelter(String tellAboutShelter) {
+        this.tellAboutShelter = tellAboutShelter;
     }
 
-    public String getSchedule_work_shelter() {
-        return schedule_work_shelter;
+    public String getScheduleWorkShelter() {
+        return scheduleWorkShelter;
     }
 
-    public void setSchedule_work_shelter(String schedule_work_shelter) {
-        this.schedule_work_shelter = schedule_work_shelter;
+    public void setScheduleWorkShelter(String scheduleWorkShelter) {
+        this.scheduleWorkShelter = scheduleWorkShelter;
     }
 
-    public String getAddress_shelter() {
-        return address_shelter;
+    public String getAddressShelter() {
+        return addressShelter;
     }
 
-    public void setAddress_shelter(String address_shelter) {
-        this.address_shelter = address_shelter;
+    public void setAddressShelter(String addressShelter) {
+        this.addressShelter = addressShelter;
     }
 
-    public String getContact_information_security() {
-        return contact_information_security;
+    public String getContactInformationSecurity() {
+        return contactInformationSecurity;
     }
 
-    public void setContact_information_security(String contact_information_security) {
-        this.contact_information_security = contact_information_security;
+    public void setContactInformationSecurity(String contactInformationSecurity) {
+        this.contactInformationSecurity = contactInformationSecurity;
     }
 
-    public String getSafety_recommendations() {
-        return safety_recommendations;
+    public String getSafetyRecommendations() {
+        return safetyRecommendations;
     }
 
-    public void setSafety_recommendations(String safety_recommendations) {
-        this.safety_recommendations = safety_recommendations;
+    public void setSafetyRecommendations(String safetyRecommendations) {
+        this.safetyRecommendations = safetyRecommendations;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShelterCat that = (ShelterCat) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(welcomesUserShelter, that.welcomesUserShelter) && Objects.equals(tellAboutShelter, that.tellAboutShelter) && Objects.equals(scheduleWorkShelter, that.scheduleWorkShelter) && Objects.equals(addressShelter, that.addressShelter) && Objects.equals(contactInformationSecurity, that.contactInformationSecurity) && Objects.equals(safetyRecommendations, that.safetyRecommendations);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, welcomesUserShelter, tellAboutShelter, scheduleWorkShelter, addressShelter, contactInformationSecurity, safetyRecommendations);
+    }
+
+    @Override
+    public String toString() {
+        return "ShelterCat{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", welcomesUserShelter='" + welcomesUserShelter + '\'' +
+                ", tellAboutShelter='" + tellAboutShelter + '\'' +
+                ", scheduleWorkShelter='" + scheduleWorkShelter + '\'' +
+                ", addressShelter='" + addressShelter + '\'' +
+                ", contactInformationSecurity='" + contactInformationSecurity + '\'' +
+                ", safetyRecommendations='" + safetyRecommendations + '\'' +
+                '}';
     }
 }
