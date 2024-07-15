@@ -38,6 +38,8 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private final UserRepository userRepository;
 
+    private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
+
     public TelegramBot(BotConfig config, ShelterCatServiceImpl shelterService, UserRepository userRepository, TravelMapService travelMapService) {
         this.config = config;
         this.shelterService = shelterService;
@@ -330,7 +332,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     public void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
         try {
-            String filePath = travelMapService.findTravelMapTelegram(id);
+            String filePath = filePathCatShelterCat;
             SendPhoto sendPhotoRequest = new SendPhoto();
             sendPhotoRequest.setChatId(chatId);
             sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));

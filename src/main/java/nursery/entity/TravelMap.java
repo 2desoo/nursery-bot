@@ -14,19 +14,19 @@ public class TravelMap {
     private String filePath;
     private Long fileSize;
     private String mediaType;
-    private byte[] date;
+    private byte[] picture;
     @OneToOne
     private ShelterCat shelterCat;
 
     public TravelMap() {
     }
 
-    public TravelMap(Long id, String filePath, Long fileSize, String mediaType, byte[] date, ShelterCat shelterCat) {
+    public TravelMap(Long id, String filePath, Long fileSize, String mediaType, byte[] picture, ShelterCat shelterCat) {
         this.id = id;
         this.filePath = filePath;
         this.fileSize = fileSize;
         this.mediaType = mediaType;
-        this.date = date;
+        this.picture = picture;
         this.shelterCat = shelterCat;
     }
 
@@ -46,12 +46,12 @@ public class TravelMap {
         this.shelterCat = shelterCat;
     }
 
-    public byte[] getDate() {
-        return date;
+    public byte[] getPicture() {
+        return picture;
     }
 
-    public void setDate(byte[] date) {
-        this.date = date;
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     public String getMediaType() {
@@ -83,13 +83,13 @@ public class TravelMap {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TravelMap travelMap = (TravelMap) o;
-        return Objects.equals(id, travelMap.id) && Objects.equals(filePath, travelMap.filePath) && Objects.equals(fileSize, travelMap.fileSize) && Objects.equals(mediaType, travelMap.mediaType) && Arrays.equals(date, travelMap.date) && Objects.equals(shelterCat, travelMap.shelterCat);
+        return Objects.equals(id, travelMap.id) && Objects.equals(filePath, travelMap.filePath) && Objects.equals(fileSize, travelMap.fileSize) && Objects.equals(mediaType, travelMap.mediaType) && Arrays.equals(picture, travelMap.picture) && Objects.equals(shelterCat, travelMap.shelterCat);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(id, filePath, fileSize, mediaType, shelterCat);
-        result = 31 * result + Arrays.hashCode(date);
+        result = 31 * result + Arrays.hashCode(picture);
         return result;
     }
 
@@ -100,7 +100,7 @@ public class TravelMap {
                 ", filePath='" + filePath + '\'' +
                 ", fileSize=" + fileSize +
                 ", mediaType='" + mediaType + '\'' +
-                ", date=" + Arrays.toString(date) +
+                ", date=" + Arrays.toString(picture) +
                 ", shelter=" + shelterCat +
                 '}';
     }
