@@ -75,7 +75,7 @@ public class TravelMapServiceImpl implements TravelMapService {
             travelMap.setFilePath(filePath.toString());
             travelMap.setFileSize(file.getSize());
             travelMap.setMediaType(file.getContentType());
-            travelMap.setDate(file.getBytes());
+            travelMap.setPicture(file.getBytes());
 
             travelMapRepository.save(travelMap);
         } else {

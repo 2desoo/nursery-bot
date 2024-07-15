@@ -44,11 +44,11 @@ public class TravelMapController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType(travelMap.getMediaType()));
-        headers.setContentLength(travelMap.getDate().length);
+        headers.setContentLength(travelMap.getPicture().length);
 
         return ResponseEntity.status(HttpStatus.OK)
                 .headers(headers)
-                .body(travelMap.getDate());
+                .body(travelMap.getPicture());
     }
 
     @GetMapping(value = "/{id}/travelMap-from-file")
