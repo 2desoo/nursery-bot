@@ -90,7 +90,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                         startShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
                         break;
                     case "/dog_shelter":
-                        startShelterDog(chatId, update.getMessage().getChat().getFirstName());
+                        startShelterDog(chatId, update.getMessage().getChat().getFirstName(), 2L);
                         break;
                     case "/info_cat_shelter":
                         infoShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
@@ -126,12 +126,15 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
 
         if (update.hasCallbackQuery()) {
+
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
+
             if (update.getCallbackQuery().getData().equals("/catShelter")) {
                 //Приветственное сообщения приюта кота
                 startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             }else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
-                startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName());
+                //Приветственное сообщения приюта кота
+                startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/animalistic")) {
                 animalisticCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             } else if (update.getCallbackQuery().getData().equals("/report")) {
@@ -143,7 +146,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             }
 
             //Информация о приюте для кошек
-            if (update.getCallbackQuery().getData().equals("/info")) {
+            if (update.getCallbackQuery().getData().equals("/infoCat")) {
                 infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/scheduleWorkShelter")){ //Расписание работы приюта для кошек
                 workShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
@@ -157,6 +160,23 @@ public class TelegramBot extends TelegramLongPollingBot {
                 safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/backStartCat")) { //Вернутся в меню (Приветственное сообщения приюта кота)
                 startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            }
+
+            //Информация о приюте для собак
+            if (update.getCallbackQuery().getData().equals("/infoDog")) {
+                infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            } else if (update.getCallbackQuery().getData().equals("/scheduleWorkDog")){ //Расписание работы приюта для собак
+                workShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            } else if (update.getCallbackQuery().getData().equals("/addressShelterDog")) { //Адрес приюта для собак
+                addressShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            } else if (update.getCallbackQuery().getData().equals("/travelMapDog")) { //Схему проезда
+                travelMapShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            } else if (update.getCallbackQuery().getData().equals("/InfoSecurityDog")) { //Контактные данные охраны приюта для собак
+                contactInfoSecurityShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);;
+            } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelterDog")) { //Тех. безопасности в приюте для собак
+                safetyMeasuresDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            } else if (update.getCallbackQuery().getData().equals("/backStartDog")) { //Вернутся в меню (Приветственное сообщения приюта собак)
+                startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             }
         }
     }
@@ -172,72 +192,113 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void startShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button shelter cat");
         String answer = shelterService.welcomesUser(id);
-        sendMessage(chatId, answer, startKeyboard());
+        sendMessage(chatId, answer, startCatKeyboard());
     }
 
-    private void startShelterDog(Long chatId, String name) {
+    private void startShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button shelter dog");
-        String answer = config.getStartTextDog();
-        sendMessage(chatId, answer, startKeyboard());
+        String answer = shelterService.welcomesUser(id);
+        sendMessage(chatId, answer, startDogKeyboard());
     }
 
     //Информация о приюте для кошек
     private void infoShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button info for shelter cat");
         String answer = shelterService.info(id);
-        sendMessage(chatId, answer, infoKeyboard());
+        sendMessage(chatId, answer, infoCatKeyboard());
+    }
+
+    //Информация о приюте для собак
+    private void infoShelterDog(Long chatId, String name, Long id) {
+        logger.info("Select the button info for shelter cat");
+        String answer = shelterService.info(id);
+        sendMessage(chatId, answer, infoDogKeyboard());
     }
 
     //Расписание работы приюта для кошек
     private void workShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
         String answer = shelterService.workShelter(id);
-        sendMessage(chatId, answer, infoKeyboard());
+        sendMessage(chatId, answer, infoCatKeyboard());
+    }
+
+    //Расписание работы приюта для собак
+    private void workShelterDog(Long chatId, String name, Long id) {
+        logger.info("Select the button work for shelter cat");
+        String answer = shelterService.workShelter(id);
+        sendMessage(chatId, answer, infoDogKeyboard());
     }
 
     //Адрес приюта для кошек
     private void addressShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
         String answer = shelterService.addressShelter(id);
-        sendMessage(chatId, answer, infoKeyboard());
+        sendMessage(chatId, answer, infoCatKeyboard());
+    }
+
+    //Адрес приюта для собак
+    private void addressShelterDog(Long chatId, String name, Long id) {
+        logger.info("Select the button address for shelter cat");
+        String answer = shelterService.addressShelter(id);
+        sendMessage(chatId, answer, infoDogKeyboard());
     }
 
     //Схему проезда до приюта для кошек
     private void travelMapShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button Travel Map for shelter cat");
-        sendPhoto(chatId, id, infoKeyboard());
+        sendPhoto(chatId, id, infoCatKeyboard());
+    }
+
+    //Схему проезда до приюта для собак
+    private void travelMapShelterDog(Long chatId, String name, Long id) {
+        logger.info("Select the button Travel Map for shelter cat");
+        sendPhoto(chatId, id, infoCatKeyboard());
     }
 
     //Контактные данные охраны приюта для кошек
     private void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
         String answer = shelterService.contactInfoSecurityShelter(id);
-        sendMessage(chatId, answer, infoKeyboard());
+        sendMessage(chatId, answer, infoCatKeyboard());
+    }
+
+    //Контактные данные охраны приюта для собак
+    private void contactInfoSecurityShelterDog(Long chatId, String name, Long id) {
+        logger.info("Select the button InfoSecurityCat for shelter cat");
+        String answer = shelterService.contactInfoSecurityShelter(id);
+        sendMessage(chatId, answer, infoCatKeyboard());
     }
 
     //Тех. безопасности в приюте для кошек
     private void safetyMeasuresCat(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
         String answer = shelterService.safetyRecommendationsShelter(id);
-        sendMessage(chatId, answer, infoKeyboard());
+        sendMessage(chatId, answer, infoCatKeyboard());
+    }
+
+    //Тех. безопасности в приюте для собак
+    private void safetyMeasuresDog(Long chatId, String name, Long id) {
+        logger.info("Select the button safetyMeasuresCat for shelter cat");
+        String answer = shelterService.safetyRecommendationsShelter(id);
+        sendMessage(chatId, answer, infoCatKeyboard());
     }
 
     private void animalisticCommandReceived(Long chatId, String name) {
         logger.info("Select the button how to adopt an animal from a shelter");
         String answer = config.getAnimalisticText();
-        sendMessage(chatId, answer, startKeyboard());
+        sendMessage(chatId, answer, startCatKeyboard());
     }
 
     private void reportCommandReceived(Long chatId, String name) {
         logger.info("Select the button to send a pet report");
         String answer = config.getReportText();
-        sendMessage(chatId, answer, startKeyboard());
+        sendMessage(chatId, answer, startCatKeyboard());
     }
 
     private void helpCommandReceived(Long chatId, String name) {
         logger.info("Select the button call a volunteer");
         String answer = config.getHelpText();
-        sendMessage(chatId, answer, startKeyboard());
+        sendMessage(chatId, answer, startCatKeyboard());
     }
 
 
@@ -256,18 +317,41 @@ public class TelegramBot extends TelegramLongPollingBot {
         return keyboardMarkup;
     }
 
-    private InlineKeyboardMarkup startKeyboard() {
+    private InlineKeyboardMarkup startCatKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> rowFirst = new ArrayList<>();
-        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/info"));
-        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalistic"));
+        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/infoCat"));
+        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalisticCat"));
         StartKeyboard.add(rowFirst);
 
         List<InlineKeyboardButton> rowSecond  = new ArrayList<>();
-        rowSecond.add(createButtonWithCallbackData("Отчет.", "/report"));
-        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/help"));
+        rowSecond.add(createButtonWithCallbackData("Отчет.", "/reportCat"));
+        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/helpCat"));
+        StartKeyboard.add(rowSecond);
+
+        List<InlineKeyboardButton> rowThird  = new ArrayList<>();
+        rowSecond.add(createButtonWithCallbackData("Назад", "/back"));
+        StartKeyboard.add(rowThird);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    private InlineKeyboardMarkup startDogKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> rowFirst = new ArrayList<>();
+        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/infoDog"));
+        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalisticDog"));
+        StartKeyboard.add(rowFirst);
+
+        List<InlineKeyboardButton> rowSecond  = new ArrayList<>();
+        rowSecond.add(createButtonWithCallbackData("Отчет.", "/reportDog"));
+        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/helpDog"));
         StartKeyboard.add(rowSecond);
 
         List<InlineKeyboardButton> rowThird  = new ArrayList<>();
@@ -280,7 +364,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     //Информационная клавиатура для приюта кошек
-    private InlineKeyboardMarkup infoKeyboard() {
+    private InlineKeyboardMarkup infoCatKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
@@ -302,6 +386,37 @@ public class TelegramBot extends TelegramLongPollingBot {
         List<InlineKeyboardButton> row4  = new ArrayList<>();
         //Вернутся в меню (Приветственное сообщения приюта кота)
         row4.add(createButtonWithCallbackData("Назад", "/backStartCat"));
+        row4.add(createButtonWithCallbackData("Волонтер", "/help"));
+        StartKeyboard.add(row4);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    //Информационная клавиатура для приюта собак
+    private InlineKeyboardMarkup infoDogKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Расписание работы приюта", "/scheduleWorkDog"));
+        row1.add(createButtonWithCallbackData("Адрес приюта", "/addressShelterDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Схему проезда", "/travelMapDog"));
+        row2.add(createButtonWithCallbackData("Контактные данные охраны", "/InfoSecurityDog"));
+        StartKeyboard.add(row2);
+
+        List<InlineKeyboardButton> row3  = new ArrayList<>();
+        row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/safetyMeasuresShelterDog"));
+        row3.add(createButtonWithCallbackData("Запись", "/record"));
+        StartKeyboard.add(row3);
+
+        List<InlineKeyboardButton> row4  = new ArrayList<>();
+        //Вернутся в меню (Приветственное сообщения приюта собак)
+        row4.add(createButtonWithCallbackData("Назад", "/backStartDog"));
         row4.add(createButtonWithCallbackData("Волонтер", "/help"));
         StartKeyboard.add(row4);
 

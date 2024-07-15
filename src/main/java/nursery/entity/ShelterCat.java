@@ -20,7 +20,20 @@ public class ShelterCat {
     private String contactInformationSecurity;
     private String safetyRecommendations;
 
+
+
     public ShelterCat() {
+    }
+
+    public ShelterCat(Long id, String name, String welcomesUserShelter, String tellAboutShelter, String scheduleWorkShelter, String addressShelter, String contactInformationSecurity, String safetyRecommendations) {
+        this.id = id;
+        this.name = name;
+        this.welcomesUserShelter = welcomesUserShelter;
+        this.tellAboutShelter = tellAboutShelter;
+        this.scheduleWorkShelter = scheduleWorkShelter;
+        this.addressShelter = addressShelter;
+        this.contactInformationSecurity = contactInformationSecurity;
+        this.safetyRecommendations = safetyRecommendations;
     }
 
     public Long getId() {
