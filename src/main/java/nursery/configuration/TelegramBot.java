@@ -39,6 +39,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final UserRepository userRepository;
 
     private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
+    private final String filePathCatShelterDog = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\dog_shelter.png";
 
     public TelegramBot(BotConfig config, ShelterCatServiceImpl shelterService, UserRepository userRepository, TravelMapService travelMapService) {
         this.config = config;
@@ -252,7 +253,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     //Схему проезда до приюта для собак
     private void travelMapShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button Travel Map for shelter cat");
-        sendPhoto(chatId, id, infoCatKeyboard());
+        sendPhotoDog(chatId, id, infoDogKeyboard());
     }
 
     //Контактные данные охраны приюта для кошек
@@ -266,7 +267,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void contactInfoSecurityShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
         String answer = shelterService.contactInfoSecurityShelter(id);
-        sendMessage(chatId, answer, infoCatKeyboard());
+        sendMessage(chatId, answer, infoDogKeyboard());
     }
 
     //Тех. безопасности в приюте для кошек
@@ -280,7 +281,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void safetyMeasuresDog(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
         String answer = shelterService.safetyRecommendationsShelter(id);
-        sendMessage(chatId, answer, infoCatKeyboard());
+        sendMessage(chatId, answer, infoDogKeyboard());
     }
 
     private void animalisticCommandReceived(Long chatId, String name) {
@@ -448,6 +449,19 @@ public class TelegramBot extends TelegramLongPollingBot {
     public void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
         try {
             String filePath = filePathCatShelterCat;
+            SendPhoto sendPhotoRequest = new SendPhoto();
+            sendPhotoRequest.setChatId(chatId);
+            sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
+            sendPhotoRequest.setReplyMarkup(createKeyboard1);
+            execute(sendPhotoRequest);
+        } catch (TelegramApiException e) {
+            logger.error("Error sending photo", e);
+        }
+    }
+
+    public void sendPhotoDog(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
+        try {
+            String filePath = filePathCatShelterDog;
             SendPhoto sendPhotoRequest = new SendPhoto();
             sendPhotoRequest.setChatId(chatId);
             sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
