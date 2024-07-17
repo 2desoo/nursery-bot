@@ -1,4 +1,4 @@
-package nursery.service;
+package nursery.service.impl;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -8,8 +8,8 @@ import nursery.exception.EntityNotFoundException;
 import nursery.entity.ShelterCat;
 import nursery.entity.TravelMap;
 import nursery.repository.TravelMapRepository;
-import nursery.service.impl.ShelterCatService;
-import nursery.service.impl.TravelMapService;
+import nursery.service.ShelterCatService;
+import nursery.service.TravelMapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,10 +1,9 @@
 package nursery.configuration;
 
-import nursery.config.BotConfig;
 import nursery.entity.Users;
 import nursery.repository.UserRepository;
-import nursery.service.ShelterCatServiceImpl;
-import nursery.service.impl.TravelMapService;
+import nursery.service.impl.ShelterCatServiceImpl;
+import nursery.service.TravelMapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

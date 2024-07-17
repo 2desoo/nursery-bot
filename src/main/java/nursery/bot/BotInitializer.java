@@ -1,7 +1,9 @@
 package nursery.bot;
 
+import jakarta.annotation.PostConstruct;
 import nursery.configuration.TelegramBot;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -12,10 +14,13 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @Configuration
 public class BotInitializer {
 
-    @Autowired
-    TelegramBot telegramBot;
+    private TelegramBot telegramBot;
 
-    @EventListener({ContextRefreshedEvent.class})
+    public BotInitializer(TelegramBot telegramBot) {
+        this.telegramBot = telegramBot;
+    }
+
+    @PostConstruct
     public void init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         try {

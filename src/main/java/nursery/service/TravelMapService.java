@@ -1,4 +1,4 @@
-package nursery.service.impl;
+package nursery.service;
 
 import nursery.entity.TravelMap;
 import org.springframework.web.multipart.MultipartFile;

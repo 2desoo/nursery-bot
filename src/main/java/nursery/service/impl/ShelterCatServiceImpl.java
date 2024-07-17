@@ -1,9 +1,9 @@
-package nursery.service;
+package nursery.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import nursery.entity.ShelterCat;
 import nursery.repository.ShelterCatRepository;
-import nursery.service.impl.ShelterCatService;
+import nursery.service.ShelterCatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
