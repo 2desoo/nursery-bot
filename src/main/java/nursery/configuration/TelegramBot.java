@@ -34,6 +34,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     @Value("${bot.name")
     private String name;
 
+    /**
+     * List of buttons for working with the bot
+     */
     public List<BotCommand> botCommands = new ArrayList<>(List.of(
             new BotCommand("/main", "Узнать информацию о приюте"),
             new BotCommand("/start","Начало"),
@@ -53,16 +56,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    @Override
-    public String getBotUsername() {
-        return name;
-    }
-
-    @Override
-    public String getBotToken() {
-        return token;
-    }
-
+    /**
+     * Processing response to button clicks
+     * It also checks for an empty message.
+     * @param update
+     */
     @Override
     public void onUpdateReceived(Update update) {
         logger.info("Processing update: {}", update);
@@ -102,6 +100,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * Start message for processing the /start button
+     * @param chatId chat ID user
+     * @param name Name user
+     */
     private void standardAnswer(Long chatId, String name) {
         logger.info("Started bot");
         String answer = "Добро пожаловать " + name +
@@ -110,6 +113,12 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage(chatId,answer,null);
     }
 
+    /**
+     * Methods for sending messages
+     * @param chatId chat ID user
+     * @param textToSend text for sending
+     * @param keyboardMarkup
+     */
     private void sendMessage(Long chatId, String textToSend, ReplyKeyboardMarkup keyboardMarkup) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(String.valueOf(chatId));
@@ -124,6 +133,10 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * New menu for choose animal
+     * @return
+     */
     private ReplyKeyboardMarkup keyButtons() {
         logger.info("Next lvl for choose animal");
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -132,6 +145,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         return replyKeyboardMarkup;
     }
 
+    /**
+     * Methods for saving new users in the database
+     * @param name Name user
+     * @param chatId chat ID user
+     */
     private void saveNewUser(String name, Long chatId) {
         if (userRepository.findByChatId(chatId) == null) {
             logger.info("User is saved");
@@ -142,5 +160,15 @@ public class TelegramBot extends TelegramLongPollingBot {
         } else {
             sendMessage(chatId, "С возвращением " + name, null);
         }
+    }
+
+    @Override
+    public String getBotUsername() {
+        return name;
+    }
+
+    @Override
+    public String getBotToken() {
+        return token;
     }
 }

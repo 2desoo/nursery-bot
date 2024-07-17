@@ -10,14 +10,30 @@ public class ShelterCat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * ID pets
+     */
     private Long id;
+
+    /**
+     * Name pets
+     */
     private String name;
-    private String welcomesUserShelter;
+
+    /**
+     * Tell about pets
+     */
     private String tellAboutShelter;
+
+    /**
+     * Schedule work shelter
+     */
     private String scheduleWorkShelter;
+
+    /**
+     * Address shelter
+     */
     private String addressShelter;
-    private String contactInformationSecurity;
-    private String safetyRecommendations;
 
     public ShelterCat() {
     }
@@ -36,14 +52,6 @@ public class ShelterCat {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getWelcomesUserShelter() {
-        return welcomesUserShelter;
-    }
-
-    public void setWelcomesUserShelter(String welcomesUserShelter) {
-        this.welcomesUserShelter = welcomesUserShelter;
     }
 
     public String getTellAboutShelter() {
@@ -68,21 +76,5 @@ public class ShelterCat {
 
     public void setAddressShelter(String addressShelter) {
         this.addressShelter = addressShelter;
-    }
-
-    public String getContactInformationSecurity() {
-        return contactInformationSecurity;
-    }
-
-    public void setContactInformationSecurity(String contactInformationSecurity) {
-        this.contactInformationSecurity = contactInformationSecurity;
-    }
-
-    public String getSafetyRecommendations() {
-        return safetyRecommendations;
-    }
-
-    public void setSafetyRecommendations(String safetyRecommendations) {
-        this.safetyRecommendations = safetyRecommendations;
     }
 }
