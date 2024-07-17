@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface TravelMapRepository extends JpaRepository<TravelMap, Long> {
 
-    Optional<TravelMap> findByShelterCatId(Long shelterId);
+    Optional<TravelMap> findByShelterId(Long shelterId);
 
     @Query(value = "SELECT s.file_path FROM travel_map s WHERE s.id = id", nativeQuery = true)
     String findFilePathById(@Param("id") Long id);

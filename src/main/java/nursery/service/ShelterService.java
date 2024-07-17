@@ -1,15 +1,15 @@
 package nursery.service;
 
-import nursery.entity.ShelterCat;
+import nursery.entity.Shelter;
 
 //Сервис для работы с приютом
-public interface ShelterCatService {
+public interface ShelterService {
     //Создание приюта
-    ShelterCat createShelterCat(ShelterCat shelterCat);
+    Shelter createShelterCat(Shelter shelter);
     //Поиск приюта
-    ShelterCat findShelterCat(Long id);
+    Shelter findShelterCat(Long id);
     //Обновить инф. о приюте
-    ShelterCat updateShelterCat(Long id, ShelterCat shelterCat);
+    Shelter updateShelterCat(Long id, Shelter shelter);
     //Удалить приют
     void deleteShelterCat(Long id);
     //Приветственное сообщение

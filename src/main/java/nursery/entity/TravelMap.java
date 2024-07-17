@@ -16,18 +16,18 @@ public class TravelMap {
     private String mediaType;
     private byte[] picture;
     @OneToOne
-    private ShelterCat shelterCat;
+    private Shelter shelter;
 
     public TravelMap() {
     }
 
-    public TravelMap(Long id, String filePath, Long fileSize, String mediaType, byte[] picture, ShelterCat shelterCat) {
+    public TravelMap(Long id, String filePath, Long fileSize, String mediaType, byte[] picture, Shelter shelter) {
         this.id = id;
         this.filePath = filePath;
         this.fileSize = fileSize;
         this.mediaType = mediaType;
         this.picture = picture;
-        this.shelterCat = shelterCat;
+        this.shelter = shelter;
     }
 
     public Long getId() {
@@ -38,12 +38,12 @@ public class TravelMap {
         this.id = id;
     }
 
-    public ShelterCat getShelterCat() {
-        return shelterCat;
+    public Shelter getShelterCat() {
+        return shelter;
     }
 
-    public void setShelterCat(ShelterCat shelterCat) {
-        this.shelterCat = shelterCat;
+    public void setShelterCat(Shelter shelter) {
+        this.shelter = shelter;
     }
 
     public byte[] getPicture() {
@@ -83,12 +83,12 @@ public class TravelMap {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TravelMap travelMap = (TravelMap) o;
-        return Objects.equals(id, travelMap.id) && Objects.equals(filePath, travelMap.filePath) && Objects.equals(fileSize, travelMap.fileSize) && Objects.equals(mediaType, travelMap.mediaType) && Arrays.equals(picture, travelMap.picture) && Objects.equals(shelterCat, travelMap.shelterCat);
+        return Objects.equals(id, travelMap.id) && Objects.equals(filePath, travelMap.filePath) && Objects.equals(fileSize, travelMap.fileSize) && Objects.equals(mediaType, travelMap.mediaType) && Arrays.equals(picture, travelMap.picture) && Objects.equals(shelter, travelMap.shelter);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, filePath, fileSize, mediaType, shelterCat);
+        int result = Objects.hash(id, filePath, fileSize, mediaType, shelter);
         result = 31 * result + Arrays.hashCode(picture);
         return result;
     }
@@ -101,7 +101,7 @@ public class TravelMap {
                 ", fileSize=" + fileSize +
                 ", mediaType='" + mediaType + '\'' +
                 ", date=" + Arrays.toString(picture) +
-                ", shelter=" + shelterCat +
+                ", shelter=" + shelter +
                 '}';
     }
 }

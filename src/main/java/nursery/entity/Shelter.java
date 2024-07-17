@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class ShelterCat {
+public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,10 +22,10 @@ public class ShelterCat {
 
 
 
-    public ShelterCat() {
+    public Shelter() {
     }
 
-    public ShelterCat(Long id, String name, String welcomesUserShelter, String tellAboutShelter, String scheduleWorkShelter, String addressShelter, String contactInformationSecurity, String safetyRecommendations) {
+    public Shelter(Long id, String name, String welcomesUserShelter, String tellAboutShelter, String scheduleWorkShelter, String addressShelter, String contactInformationSecurity, String safetyRecommendations) {
         this.id = id;
         this.name = name;
         this.welcomesUserShelter = welcomesUserShelter;
@@ -104,7 +104,7 @@ public class ShelterCat {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ShelterCat that = (ShelterCat) o;
+        Shelter that = (Shelter) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(welcomesUserShelter, that.welcomesUserShelter) && Objects.equals(tellAboutShelter, that.tellAboutShelter) && Objects.equals(scheduleWorkShelter, that.scheduleWorkShelter) && Objects.equals(addressShelter, that.addressShelter) && Objects.equals(contactInformationSecurity, that.contactInformationSecurity) && Objects.equals(safetyRecommendations, that.safetyRecommendations);
     }
 

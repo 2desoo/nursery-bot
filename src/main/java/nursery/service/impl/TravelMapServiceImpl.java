@@ -4,11 +4,11 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import nursery.entity.Shelter;
 import nursery.exception.EntityNotFoundException;
-import nursery.entity.ShelterCat;
 import nursery.entity.TravelMap;
 import nursery.repository.TravelMapRepository;
-import nursery.service.ShelterCatService;
+import nursery.service.ShelterService;
 import nursery.service.TravelMapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,20 +24,20 @@ public class TravelMapServiceImpl implements TravelMapService {
     private final Logger logger = LoggerFactory.getLogger(TravelMapServiceImpl.class);
 
     private TravelMapRepository travelMapRepository;
-    private ShelterCatService shelterCatService;
+    private ShelterService shelterService;
 
     @Value("${travelMap.dir.path}")
     private String travelMap;
 
-    public TravelMapServiceImpl(TravelMapRepository travelMapRepository, ShelterCatService shelterCatService) {
+    public TravelMapServiceImpl(TravelMapRepository travelMapRepository, ShelterService shelterService) {
         this.travelMapRepository = travelMapRepository;
-        this.shelterCatService = shelterCatService;
+        this.shelterService = shelterService;
     }
 
     @Override
     public TravelMap findTravelMap(Long shelterCatId) {
         logger.info("Method findTravelMap was invoked.");
-        return travelMapRepository.findByShelterCatId(shelterCatId).orElseThrow(EntityNotFoundException::new);
+        return travelMapRepository.findByShelterId(shelterCatId).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -48,16 +48,16 @@ public class TravelMapServiceImpl implements TravelMapService {
     @Override
     public TravelMap findOrCreateTravelMap(Long shelterCatId) {
         logger.info("Method findOrCreateTravelMap was invoked.");
-        return travelMapRepository.findByShelterCatId(shelterCatId).orElse(new TravelMap());
+        return travelMapRepository.findByShelterId(shelterCatId).orElse(new TravelMap());
     }
 
     @Override
     public void upload(Long shelterCatId, MultipartFile file) throws IOException {
         logger.info("Method upload was invoked.");
         if (file != null) {
-            ShelterCat shelterCat = shelterCatService.findShelterCat(shelterCatId);
+            Shelter shelter = shelterService.findShelterCat(shelterCatId);
 
-            Path filePath = buildFilePath(shelterCat, file.getOriginalFilename());
+            Path filePath = buildFilePath(shelter, file.getOriginalFilename());
             Files.createDirectories(filePath.getParent());
             Files.deleteIfExists(filePath);
 
@@ -71,7 +71,7 @@ public class TravelMapServiceImpl implements TravelMapService {
             }
 
             TravelMap travelMap = findOrCreateTravelMap(shelterCatId);
-            travelMap.setShelterCat(shelterCat);
+            travelMap.setShelterCat(shelter);
             travelMap.setFilePath(filePath.toString());
             travelMap.setFileSize(file.getSize());
             travelMap.setMediaType(file.getContentType());
@@ -89,8 +89,8 @@ public class TravelMapServiceImpl implements TravelMapService {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 
-    private Path buildFilePath(ShelterCat shelterCat, String fileName) {
-        return Path.of(travelMap, shelterCat.getId() + "-" + shelterCat.getName()
+    private Path buildFilePath(Shelter shelter, String fileName) {
+        return Path.of(travelMap, shelter.getId() + "-" + shelter.getName()
                 + "." + getExtensions(fileName));
     }
 }

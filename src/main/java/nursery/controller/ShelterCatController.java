@@ -2,8 +2,8 @@ package nursery.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import nursery.entity.ShelterCat;
-import nursery.service.impl.ShelterCatServiceImpl;
+import nursery.entity.Shelter;
+import nursery.service.impl.ShelterServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,31 +11,31 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/shelterCat")
 @Tag(name = "API по работе с приютом для кошек")
 public class ShelterCatController {
-    private ShelterCatServiceImpl shelterCatService;
+    private ShelterServiceImpl shelterCatService;
 
-    public ShelterCatController(ShelterCatServiceImpl shelterCatService) {
+    public ShelterCatController(ShelterServiceImpl shelterCatService) {
         this.shelterCatService = shelterCatService;
     }
 
     @PostMapping
     @Operation(summary = "Создать приют для кошек")
-    public ResponseEntity<ShelterCat> createShelterCat(@RequestBody ShelterCat shelterCat) {
-        ShelterCat createdShelterCat = shelterCatService.createShelterCat(shelterCat);
-        return ResponseEntity.ok(createdShelterCat);
+    public ResponseEntity<Shelter> createShelterCat(@RequestBody Shelter shelter) {
+        Shelter createdShelter = shelterCatService.createShelterCat(shelter);
+        return ResponseEntity.ok(createdShelter);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Найти приют для кошек по id")
-    public ResponseEntity<ShelterCat> findShelterCat(@PathVariable Long id) {
-        ShelterCat shelterCat = shelterCatService.findShelterCat(id);
-        return ResponseEntity.ok(shelterCat);
+    public ResponseEntity<Shelter> findShelterCat(@PathVariable Long id) {
+        Shelter shelter = shelterCatService.findShelterCat(id);
+        return ResponseEntity.ok(shelter);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Редактировать Приют для кошек")
-    public ResponseEntity<ShelterCat> updateShelterCat(@PathVariable Long id, @RequestBody ShelterCat shelterCat) {
-        ShelterCat updatedShelterCat = shelterCatService.updateShelterCat(id, shelterCat);
-        return ResponseEntity.ok(updatedShelterCat);
+    public ResponseEntity<Shelter> updateShelterCat(@PathVariable Long id, @RequestBody Shelter shelter) {
+        Shelter updatedShelter = shelterCatService.updateShelterCat(id, shelter);
+        return ResponseEntity.ok(updatedShelter);
     }
 
     @DeleteMapping("/{id}")
