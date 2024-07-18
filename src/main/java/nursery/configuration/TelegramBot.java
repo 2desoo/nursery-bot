@@ -28,14 +28,14 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final UserRepository userRepository;
     private ChooseShelterService chooseShelterService;
     private CatKeyboardService catKeyboardService;
-    private MenuButtonsService menuButtonsService;
+    private  MenuButtons menuButtons;
     private CatMenuService catMenuService;
     private DogMenuService dogMenuService;
 
     public TelegramBot(BotConfig config, ShelterService shelterService,
                        UserRepository userRepository, TravelMapService travelMapService,
                        ChooseShelterService chooseShelterService, CatKeyboardService catKeyboardService,
-                       CatMenuService catMenuService, DogMenuService dogMenuService, MenuButtonsService menuButtonsService) {
+                       CatMenuService catMenuService, DogMenuService dogMenuService, MenuButtons menuButtons) {
         this.config = config;
         this.shelterService = shelterService;
         this.userRepository = userRepository;
@@ -44,9 +44,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         this.catKeyboardService = catKeyboardService;
         this.catMenuService = catMenuService;
         this.dogMenuService = dogMenuService;
-        this.menuButtonsService = menuButtonsService;
+        this.menuButtons = menuButtons;
         try {
-            this.execute(new SetMyCommands(menuButtonsService.listOfCommands(), new BotCommandScopeDefault(), null));
+            this.execute(new SetMyCommands(menuButtons.listOfCommands(), new BotCommandScopeDefault(), null));
         } catch (TelegramApiException e) {
             logger.error("Error setting bot's command list: " + e.getMessage());
         }

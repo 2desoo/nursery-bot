@@ -19,6 +19,11 @@ public class ShelterServiceImpl implements ShelterService {
         this.shelterRepository = shelterRepository;
     }
 
+    /**
+     * Метод для создания приюта.
+     * @param shelter
+     * @return
+     */
     public Shelter createShelterCat(Shelter shelter) {
         return shelterRepository.save(shelter);
     }

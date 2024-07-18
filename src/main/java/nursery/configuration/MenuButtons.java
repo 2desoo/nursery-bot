@@ -1,14 +1,13 @@
-package nursery.service.impl;
+package nursery.configuration;
 
-import nursery.service.MenuButtonsService;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class MenuButtonsServiceImpl implements MenuButtonsService {
+@Component
+public class MenuButtons {
 
     public List<BotCommand> listOfCommands() {
         List<BotCommand> listOfCommands = new ArrayList<>();
