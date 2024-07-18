@@ -18,6 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
+/**
+ * Класс для взаимодействия с картинкой
+ */
 @Service
 public class TravelMapServiceImpl implements TravelMapService {
 
@@ -34,28 +37,39 @@ public class TravelMapServiceImpl implements TravelMapService {
         this.shelterService = shelterService;
     }
 
+    /**
+     * Метод для поиска картинки из {@link TravelMapRepository}
+     * @param shelterId по которому мы будем искать картинку в БД
+     * @return возвращает найденную картинку
+     */
     @Override
-    public TravelMap findTravelMap(Long shelterCatId) {
+    public TravelMap findTravelMap(Long shelterId) {
         logger.info("Method findTravelMap was invoked.");
-        return travelMapRepository.findByShelterId(shelterCatId).orElseThrow(EntityNotFoundException::new);
+        return travelMapRepository.findByShelterId(shelterId).orElseThrow(EntityNotFoundException::new);
     }
 
+    /**
+     * Метод для создания картинки {@link TravelMapRepository}
+     * @param shelterId с помощью это id мы привяжем картинку к приюту в{@link nursery.repository.ShelterRepository}
+     * @return возвращает найденную картинку
+     */
     @Override
-    public String findTravelMapTelegram(Long id) {
-        return travelMapRepository.findFilePathById(id);
-    }
-
-    @Override
-    public TravelMap findOrCreateTravelMap(Long shelterCatId) {
+    public TravelMap findOrCreateTravelMap(Long shelterId) {
         logger.info("Method findOrCreateTravelMap was invoked.");
-        return travelMapRepository.findByShelterId(shelterCatId).orElse(new TravelMap());
+        return travelMapRepository.findByShelterId(shelterId).orElse(new TravelMap());
     }
 
+    /**
+     * Метод для загрузки файла
+     * @param shelterId приюта к которому будет привязан файл
+     * @param file сам файл
+     * @throws IOException Файл для загрузки не предоставлен.
+     */
     @Override
-    public void upload(Long shelterCatId, MultipartFile file) throws IOException {
+    public void upload(Long shelterId, MultipartFile file) throws IOException {
         logger.info("Method upload was invoked.");
         if (file != null) {
-            Shelter shelter = shelterService.findShelterCat(shelterCatId);
+            Shelter shelter = shelterService.findShelterCat(shelterId);
 
             Path filePath = buildFilePath(shelter, file.getOriginalFilename());
             Files.createDirectories(filePath.getParent());
@@ -70,7 +84,7 @@ public class TravelMapServiceImpl implements TravelMapService {
                 bis.transferTo(bos);
             }
 
-            TravelMap travelMap = findOrCreateTravelMap(shelterCatId);
+            TravelMap travelMap = findOrCreateTravelMap(shelterId);
             travelMap.setShelterCat(shelter);
             travelMap.setFilePath(filePath.toString());
             travelMap.setFileSize(file.getSize());

@@ -12,6 +12,9 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс создания и взаимодействий с клавиатурой для приюта для кошек.
+ */
 @Service
 public class CatKeyboardServiceImpl implements CatKeyboardService {
 
