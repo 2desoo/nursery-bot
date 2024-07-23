@@ -174,4 +174,9 @@ public class DogMenuService extends TelegramLongPollingBot {
     public String getBotUsername() {
         return config.getBotName();
     }
+
+    @Override
+    public String getBotToken() {
+        return config.getToken();
+    }
 }

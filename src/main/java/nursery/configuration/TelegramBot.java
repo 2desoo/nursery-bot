@@ -28,6 +28,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final UserRepository userRepository;
     private ChooseShelterService chooseShelterService;
     private CatKeyboardService catKeyboardService;
+    private DogKeyboardService dogKeyboardService;
     private  MenuButtons menuButtons;
     private CatMenuService catMenuService;
     private DogMenuService dogMenuService;
@@ -35,13 +36,15 @@ public class TelegramBot extends TelegramLongPollingBot {
     public TelegramBot(BotConfig config, ShelterService shelterService,
                        UserRepository userRepository, TravelMapService travelMapService,
                        ChooseShelterService chooseShelterService, CatKeyboardService catKeyboardService,
-                       CatMenuService catMenuService, DogMenuService dogMenuService, MenuButtons menuButtons) {
+                       DogKeyboardService dogKeyboardService, CatMenuService catMenuService,
+                       DogMenuService dogMenuService, MenuButtons menuButtons) {
         this.config = config;
         this.shelterService = shelterService;
         this.userRepository = userRepository;
         this.travelMapService = travelMapService;
         this.chooseShelterService = chooseShelterService;
         this.catKeyboardService = catKeyboardService;
+        this.dogKeyboardService = dogKeyboardService;
         this.catMenuService = catMenuService;
         this.dogMenuService = dogMenuService;
         this.menuButtons = menuButtons;
@@ -95,6 +98,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                         break;
                     case "/dog_shelter":
                         dogMenuService.startShelterDog(chatId, update.getMessage().getChat().getFirstName(), 2L);
+                        break;
                     case "/animalistic":
                         animalisticCommandReceived(chatId, update.getMessage().getChat().getFirstName());
                         break;
@@ -117,7 +121,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             if (update.getCallbackQuery().getData().equals("/catShelter")) {
                 //Приветственное сообщения приюта кота
                 catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            }else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
+            } else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
                 //Приветственное сообщения приюта кота
                 dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/animalistic")) {

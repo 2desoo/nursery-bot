@@ -23,24 +23,16 @@ public class CatMenuService extends TelegramLongPollingBot {
     private final Logger logger = LoggerFactory.getLogger(CatMenuService.class);
 
     private final BotConfig config;
-    private ShelterService shelterCatService;
+    private ShelterService shelterService;
     private CatKeyboardService catKeyboardService;
 
     private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
 
-    public CatMenuService(BotConfig config, ShelterService shelterCatService,
+    public CatMenuService(BotConfig config, ShelterService shelterService,
                           CatKeyboardService catKeyboardService) {
         this.config = config;
-        this.shelterCatService = shelterCatService;
+        this.shelterService = shelterService;
         this.catKeyboardService = catKeyboardService;
-    }
-    @Override
-    public void onUpdateReceived(Update update) {
-    }
-
-    @Override
-    public String getBotUsername() {
-        return config.getBotName();
     }
 
     /**
@@ -52,7 +44,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void startShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button shelter cat");
-        String answer = shelterCatService.welcomesUser(id);
+        String answer = shelterService.welcomesUser(id);
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
     }
 
@@ -65,7 +57,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void infoShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button info for shelter cat");
-        String answer = shelterCatService.info(id);
+        String answer = shelterService.info(id);
         sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
@@ -78,7 +70,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void workShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
-        String answer = shelterCatService.workShelter(id);
+        String answer = shelterService.workShelter(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -91,7 +83,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void addressShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
-        String answer = shelterCatService.addressShelter(id);
+        String answer = shelterService.addressShelter(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -116,7 +108,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
-        String answer = shelterCatService.contactInfoSecurityShelter(id);
+        String answer = shelterService.contactInfoSecurityShelter(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -129,7 +121,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void safetyMeasuresCat(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
-        String answer = shelterCatService.safetyRecommendationsShelter(id);
+        String answer = shelterService.safetyRecommendationsShelter(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -141,7 +133,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      * @see nursery.service.impl.CatKeyboardServiceImpl
      */
-    public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+    private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage massage = new SendMessage();
         massage.setChatId(String.valueOf(chatId));
         massage.setText(textToSend);
@@ -171,6 +163,14 @@ public class CatMenuService extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             logger.error("Error sending photo", e);
         }
+    }
+
+    @Override
+    public void onUpdateReceived(Update update) {
+    }
+    @Override
+    public String getBotUsername() {
+        return config.getBotName();
     }
 
     @Override
