@@ -23,15 +23,15 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final Logger logger = LoggerFactory.getLogger(TelegramBot.class);
 
     private final BotConfig config;
-    private ShelterService shelterService;
-    private TravelMapService travelMapService;
+    private final ShelterService shelterService;
+    private final TravelMapService travelMapService;
     private final UserRepository userRepository;
-    private ChooseShelterService chooseShelterService;
-    private CatKeyboardService catKeyboardService;
-    private DogKeyboardService dogKeyboardService;
-    private  MenuButtons menuButtons;
-    private CatMenuService catMenuService;
-    private DogMenuService dogMenuService;
+    private final ChooseShelterService chooseShelterService;
+    private final CatKeyboardService catKeyboardService;
+    private final DogKeyboardService dogKeyboardService;
+    private final MenuButtons menuButtons;
+    private final CatMenuService catMenuService;
+    private final DogMenuService dogMenuService;
 
     public TelegramBot(BotConfig config, ShelterService shelterService,
                        UserRepository userRepository, TravelMapService travelMapService,
@@ -55,6 +55,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * Processing response to button clicks
+     * It also checks for an empty message.
+     * @param update
+     */
     @Override
     public void onUpdateReceived(Update update) {
         logger.info("Processing update: {}", update);
@@ -68,6 +73,16 @@ public class TelegramBot extends TelegramLongPollingBot {
                 return;
             }
 
+            /*
+            Methods:
+            - /start - start menu
+            - /cat_shelter - menu for cats
+            - /info_cat_shelter - menu for info cats
+            - /schedule_work_shelter - menu for schedule work cats
+            - /address_shelter - menu for address cats
+            - /travel_map_cat - menu for travel map cat
+            - /travel_map_dog - menu for travel map dog
+             */
             if (update.hasMessage() && update.getMessage().hasText()) {
                 logger.info("Select the button {}", updatesMessageText);
                 switch (updatesMessageText) {
@@ -114,15 +129,22 @@ public class TelegramBot extends TelegramLongPollingBot {
             }
         }
 
+        /*
+        Methods:
+        - /catShelter - menu for cats
+        - /dogShelter - menu for dogs
+        - /animalistic - menu for animalistic
+        - /report - menu for report
+        - /help - menu for help
+        - /back - just back
+         */
         if (update.hasCallbackQuery()) {
 
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
 
             if (update.getCallbackQuery().getData().equals("/catShelter")) {
-                //Приветственное сообщения приюта кота
                 catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
-                //Приветственное сообщения приюта кота
                 dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/animalistic")) {
                 animalisticCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
@@ -134,43 +156,63 @@ public class TelegramBot extends TelegramLongPollingBot {
                 startCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             }
 
-            //Информация о приюте для кошек
+            /*
+            Methods:
+            - /infoCat - menu for info cats
+            - /scheduleWorkShelter - menu for schedule work cats
+            - /addressShelter - menu for address cats
+            - /travelMap - menu for travel map cat
+            - /contactInformationSecurity - menu for contact information security cat
+            - /safetyMeasuresCat - menu for safety measures cat
+             */
             if (update.getCallbackQuery().getData().equals("/infoCat")) {
                 catMenuService.infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            } else if (update.getCallbackQuery().getData().equals("/scheduleWorkShelter")){ //Расписание работы приюта для кошек
+            } else if (update.getCallbackQuery().getData().equals("/scheduleWorkShelter")){
                 catMenuService.workShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            } else if (update.getCallbackQuery().getData().equals("/addressShelter")) { //Адрес приюта для кошек
+            } else if (update.getCallbackQuery().getData().equals("/addressShelter")) {
                 catMenuService.addressShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            } else if (update.getCallbackQuery().getData().equals("/travelMap")) { //Схему проезда
+            } else if (update.getCallbackQuery().getData().equals("/travelMap")) {
                 catMenuService.travelMapShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            } else if (update.getCallbackQuery().getData().equals("/contactInformationSecurity")) { //Контактные данные охраны приюта для кошек
+            } else if (update.getCallbackQuery().getData().equals("/contactInformationSecurity")) {
                 catMenuService.contactInfoSecurityShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
-            } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelter")) { //Тех. безопасности в приюте для кошек
+            } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelter")) {
                 catMenuService.safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            } else if (update.getCallbackQuery().getData().equals("/backStartCat")) { //Вернутся в меню (Приветственное сообщения приюта кота)
+            } else if (update.getCallbackQuery().getData().equals("/backStartCat")) {
                 catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             }
 
-            //Информация о приюте для собак
+            /*
+            Methods:
+            - /infoDog - menu for info dogs
+            - /scheduleWorkDog - menu for schedule work dogs
+            - /addressShelterDog - menu for address dogs
+            - /travelMapDog - menu for travel map dog
+            - /InfoSecurityDog - menu for contact information security dog
+            - /safetyMeasuresDog - menu for safety measures dog
+             */
             if (update.getCallbackQuery().getData().equals("/infoDog")) {
                 dogMenuService.infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
-            } else if (update.getCallbackQuery().getData().equals("/scheduleWorkDog")){ //Расписание работы приюта для собак
+            } else if (update.getCallbackQuery().getData().equals("/scheduleWorkDog")){
                 dogMenuService.workShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
-            } else if (update.getCallbackQuery().getData().equals("/addressShelterDog")) { //Адрес приюта для собак
+            } else if (update.getCallbackQuery().getData().equals("/addressShelterDog")) {
                 dogMenuService.addressShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
-            } else if (update.getCallbackQuery().getData().equals("/travelMapDog")) { //Схему проезда
+            } else if (update.getCallbackQuery().getData().equals("/travelMapDog")) {
                 dogMenuService.travelMapShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
-            } else if (update.getCallbackQuery().getData().equals("/InfoSecurityDog")) { //Контактные данные охраны приюта для собак
+            } else if (update.getCallbackQuery().getData().equals("/InfoSecurityDog")) {
                 dogMenuService.contactInfoSecurityShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);;
-            } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelterDog")) { //Тех. безопасности в приюте для собак
+            } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelterDog")) {
                 dogMenuService.safetyMeasuresDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
-            } else if (update.getCallbackQuery().getData().equals("/backStartDog")) { //Вернутся в меню (Приветственное сообщения приюта собак)
+            } else if (update.getCallbackQuery().getData().equals("/backStartDog")) {
                 dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             }
         }
     }
 
-    //Приветствие с выбором кот или собака
+    /**
+     * Start message for processing the /start button
+     * @param chatId - chat ID user
+     * @param name - Name user
+     */
     private void startCommandReceived(Long chatId, String name) {
         logger.info("Started bot");
         String answer = "Добро пожаловать " + name + ". " + config.getStartText();
@@ -195,6 +237,12 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
     }
 
+    /**
+     * Methods for sending messages
+     * @param chatId chat ID user
+     * @param textToSend text for sending
+     * @param createKeyboard1
+     */
     private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage massage = new SendMessage();
         massage.setChatId(String.valueOf(chatId));
@@ -208,6 +256,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * Methods for saving new users in the database
+     * @param name Name user
+     * @param chatId chat ID user
+     */
     private void saveNewUser(String name, Long chatId) {
         if (userRepository.findByChatId(chatId) == null) {
             logger.info("User is saved");

@@ -9,6 +9,9 @@ import java.util.List;
 @Component
 public class MenuButtons {
 
+    /*
+    List of commands
+     */
     public List<BotCommand> listOfCommands() {
         List<BotCommand> listOfCommands = new ArrayList<>();
         listOfCommands.add(new BotCommand("/start", "Приветствие."));

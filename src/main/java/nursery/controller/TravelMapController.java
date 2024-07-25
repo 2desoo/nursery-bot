@@ -23,19 +23,20 @@ import java.nio.file.Path;
 @Tag(name = "API для работы с картой")
 public class TravelMapController {
 
-    private TravelMapService travelMapService;
+    private final TravelMapService travelMapService;
+
     public TravelMapController(TravelMapService travelMapService) {
         this.travelMapService = travelMapService;
     }
     @PostMapping(value = "{shelterCatId}/travelMap", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @Operation(summary = "Загрузить карту")
+    @Operation(summary = "Download travelMap")
     public ResponseEntity<String> uploadTravelMap(@PathVariable Long shelterCatId,
                                                   @RequestParam MultipartFile travelMap) throws IOException {
         travelMapService.upload(shelterCatId, travelMap);
         return ResponseEntity.ok().build();
     }
     @GetMapping(value = "/{id}/travelMap-from-db")
-    @Operation(summary = "Выгрузить карты с БД")
+    @Operation(summary = "Unload map from database")
     public ResponseEntity<byte[]> downloadTravelMap(@PathVariable Long id) {
         TravelMap travelMap = travelMapService.findTravelMap(id);
         HttpHeaders headers = new HttpHeaders();
@@ -46,7 +47,7 @@ public class TravelMapController {
                 .body(travelMap.getPicture());
     }
     @GetMapping(value = "/{id}/travelMap-from-file")
-    @Operation(summary = "Выгрузить карты с диска")
+    @Operation(summary = "Unload map from disk")
     public void downloadTravelMap(@PathVariable Long id, HttpServletResponse response) throws IOException {
         TravelMap travelMap = travelMapService.findTravelMap(id);
         Path path = Path.of(travelMap.getFilePath());

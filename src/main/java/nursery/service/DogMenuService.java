@@ -23,10 +23,8 @@ public class DogMenuService extends TelegramLongPollingBot {
     private final Logger logger = LoggerFactory.getLogger(CatMenuService.class);
 
     private final BotConfig config;
-
-    private ShelterService shelterService;
-    private DogKeyboardService dogKeyboardService;
-
+    private final ShelterService shelterService;
+    private final DogKeyboardService dogKeyboardService;
     private final String filePathCatShelterDog = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\dog_shelter.png";
 
     public DogMenuService(BotConfig config, ShelterService shelterService,
@@ -135,13 +133,13 @@ public class DogMenuService extends TelegramLongPollingBot {
      * @see nursery.service.impl.DogKeyboardServiceImpl
      */
     private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
-        SendMessage massage = new SendMessage();
-        massage.setChatId(String.valueOf(chatId));
-        massage.setText(textToSend);
+        SendMessage message = new SendMessage();
+        message.setChatId(String.valueOf(chatId));
+        message.setText(textToSend);
 
-        massage.setReplyMarkup(createKeyboard1);
+        message.setReplyMarkup(createKeyboard1);
         try {
-            execute(massage);
+            execute(message);
         } catch (TelegramApiException e) {
             logger.error("Error: " + e.getMessage());
         }
@@ -154,6 +152,7 @@ public class DogMenuService extends TelegramLongPollingBot {
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      */
     public void sendPhotoDog(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
+        logger.info("Select the button to send a photo of the dog");
         try {
             String filePath = filePathCatShelterDog;
             SendPhoto sendPhotoRequest = new SendPhoto();

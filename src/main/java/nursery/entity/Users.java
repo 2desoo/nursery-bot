@@ -12,8 +12,11 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //ID of user
     private Long id;
+    //Name of user
     private String name;
+    //Chat id of user
     private Long chatId;
 
     public Users() {

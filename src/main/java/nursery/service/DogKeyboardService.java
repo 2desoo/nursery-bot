@@ -4,8 +4,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 
 public interface DogKeyboardService {
 
-    //Стартовая Клавиатура для приюта собак
+    //Start keyboard for dog
     InlineKeyboardMarkup startDogKeyboard();
-    //Информационная клавиатура для приюта собак
+    //Information keyboard for dog
     InlineKeyboardMarkup infoDogKeyboard();
 }

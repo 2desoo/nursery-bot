@@ -11,13 +11,21 @@ import java.util.Objects;
 public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //Ordinary id
     private Long id;
+    //Name of the shelter
     private String name;
+    //Welcomes user text
     private String welcomesUserShelter;
+    //Information about the shelter
     private String tellAboutShelter;
+    //Schedule of work
     private String scheduleWorkShelter;
+    //Address
     private String addressShelter;
+    //Contact information security
     private String contactInformationSecurity;
+    //Safety recommendations
     private String safetyRecommendations;
 
 

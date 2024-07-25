@@ -12,16 +12,22 @@ import java.util.Objects;
 public class BotConfig {
 
     @Value("${telegram.bot.name}")
+    //Telegram bot name
     private String botName;
     @Value("${telegram.bot.token}")
+    //Telegram bot token
     private String token;
     @Value("${telegram.text.startText}")
+    //Telegram bot start text
     private String startText;
     @Value("${telegram.text.animalisticText}")
+    //Telegram bot animalistic text
     private String animalisticText;
     @Value("${telegram.text.reportText}")
+    //Telegram bot report text
     private String reportText;
     @Value("${telegram.text.helpText}")
+    //Telegram bot help text
     private String helpText;
 
     public String getBotName() {

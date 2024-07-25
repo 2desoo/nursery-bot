@@ -5,8 +5,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 
 public interface CatKeyboardService {
 
-    //Стартовая Клавиатура для приюта кошек
+    //Start Cat Keyboard
     InlineKeyboardMarkup startCatKeyboard();
-    //Информационная клавиатура для приюта кошек
+    //Info Cat Keyboard
     InlineKeyboardMarkup infoCatKeyboard();
 }

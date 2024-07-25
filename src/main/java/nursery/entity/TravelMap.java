@@ -10,11 +10,17 @@ public class TravelMap {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //Ordinary id
     private Long id;
+    //File path
     private String filePath;
+    //File size
     private Long fileSize;
+    //File type
     private String mediaType;
+    //File
     private byte[] picture;
+    //Communication with shelter
     @OneToOne
     private Shelter shelter;
 

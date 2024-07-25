@@ -4,24 +4,24 @@ import nursery.entity.Shelter;
 
 //Сервис для работы с приютом
 public interface ShelterService {
-    //Создание приюта
+    //Create shelter cat
     Shelter createShelterCat(Shelter shelter);
-    //Поиск приюта
+    //Find shelter cat
     Shelter findShelterCat(Long id);
-    //Обновить инф. о приюте
+    //Update info for shelter cat
     Shelter updateShelterCat(Long id, Shelter shelter);
-    //Удалить приют
+    //Delete shelter cat
     void deleteShelterCat(Long id);
-    //Приветственное сообщение
+    //Start welcoming text for user
     String welcomesUser(Long id);
-    //Информация о приюте
+    //Information about shelter
     String info(Long id);
-    //Расписание работы приюта
+    //Work in shelter
     String workShelter(Long id);
-    //Адрес приюта
+    //Address in shelter
     String addressShelter(Long id);
-    //Контушные данные охраны приюта
+    //Contact info in shelter
     String contactInfoSecurityShelter(Long id);
-    //Рекомендации в приюте
+    //Safety measures in shelter
     String safetyRecommendationsShelter(Long id);
 }
