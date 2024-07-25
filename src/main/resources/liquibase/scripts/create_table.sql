@@ -1,8 +1,9 @@
 -- formated sql
 
 -- changeset dubrovsky:1
-/**
-  Create table for users in database
+
+/*
+Create table for users in database
  */
 CREATE TABLE users
 (
@@ -11,9 +12,20 @@ CREATE TABLE users
   chat_Id BIGSERIAL PRIMARY KEY
 );
 /*
-  Create table for cats in database
+Create table for cats in database
  */
 CREATE TABLE shelter_cat
+(
+    id BIGSERIAL,
+    name VARCHAR,
+    tell_about_shelter VARCHAR,
+    schedule_work_shelter VARCHAR,
+    address_shelter VARCHAR
+);
+/*
+ Create table for dogs in database
+ */
+CREATE TABLE shelter_dog
 (
     id BIGSERIAL,
     name VARCHAR,

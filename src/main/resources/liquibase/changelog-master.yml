@@ -1,3 +1,7 @@
 databaseChangeLog:
   - include:
-      file: liquibase/create_table.sql
+      file: liquibase/scripts/create_table.sql
+  - include:
+      file: liquibase/scripts/create_table_shelter.sql
+  - include:
+      file: liquibase/scripts/create_table_travel_map.sql

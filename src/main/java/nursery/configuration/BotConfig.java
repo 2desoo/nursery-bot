@@ -1,11 +1,8 @@
 package nursery.configuration;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-
-import java.util.Objects;
 
 @Configuration
 @PropertySource("application.properties")
