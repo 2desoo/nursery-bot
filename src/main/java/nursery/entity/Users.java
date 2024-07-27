@@ -18,6 +18,7 @@ public class Users {
     private String name;
     //Chat id of user
     private Long chatId;
+    private String phone;
 
     public Users() {
     }
@@ -44,6 +45,14 @@ public class Users {
 
     public void setChatId(Long chatId) {
         this.chatId = chatId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override

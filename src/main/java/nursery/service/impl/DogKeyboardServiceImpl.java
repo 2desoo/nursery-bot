@@ -34,13 +34,13 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> rowFirst = new ArrayList<>();
-        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/infoDog"));
-        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalisticDog"));
+        rowFirst.add(createButtonWithCallbackData("Информацию о приюте", "/infoDog"));
+        rowFirst.add(createButtonWithCallbackData("Как взять животное", "/animalisticDog"));
         StartKeyboard.add(rowFirst);
 
         List<InlineKeyboardButton> rowSecond  = new ArrayList<>();
-        rowSecond.add(createButtonWithCallbackData("Отчет.", "/reportDog"));
-        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/helpDog"));
+        rowSecond.add(createButtonWithCallbackData("Отчет", "/reportDog"));
+        rowSecond.add(createButtonWithCallbackData("Волонтер", "/helpStartDog"));
         StartKeyboard.add(rowSecond);
 
         List<InlineKeyboardButton> rowThird  = new ArrayList<>();
@@ -83,7 +83,7 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
         List<InlineKeyboardButton> row4  = new ArrayList<>();
         //Вернутся в меню (Приветственное сообщения приюта собак)
         row4.add(createButtonWithCallbackData("Назад", "/backStartDog"));
-        row4.add(createButtonWithCallbackData("Волонтер", "/help"));
+        row4.add(createButtonWithCallbackData("Волонтер", "/helpDogInfo"));
         StartKeyboard.add(row4);
 
         keyboardMarkup.setKeyboard(StartKeyboard);
