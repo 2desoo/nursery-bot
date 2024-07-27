@@ -1,5 +1,6 @@
 package nursery.configuration;
 
+import nursery.bot.BotConfig;
 import nursery.entity.Users;
 import nursery.repository.UserRepository;
 import nursery.service.*;
@@ -166,19 +167,19 @@ public class TelegramBot extends TelegramLongPollingBot {
             - /safetyMeasuresCat - menu for safety measures cat
              */
             if (update.getCallbackQuery().getData().equals("/infoCat")) {
-                catMenuService.infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuService.infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/scheduleWorkShelter")){
-                catMenuService.workShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuService.workShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/addressShelter")) {
-                catMenuService.addressShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuService.addressShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/travelMap")) {
-                catMenuService.travelMapShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuService.travelMapShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/contactInformationSecurity")) {
-                catMenuService.contactInfoSecurityShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
+                catMenuService.contactInfoSecurityShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);;
             } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelter")) {
-                catMenuService.safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuService.safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/backStartCat")) {
-                catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             }
 
             /*
@@ -191,19 +192,19 @@ public class TelegramBot extends TelegramLongPollingBot {
             - /safetyMeasuresDog - menu for safety measures dog
              */
             if (update.getCallbackQuery().getData().equals("/infoDog")) {
-                dogMenuService.infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+                dogMenuService.infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/scheduleWorkDog")){
-                dogMenuService.workShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+                dogMenuService.workShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/addressShelterDog")) {
-                dogMenuService.addressShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+                dogMenuService.addressShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/travelMapDog")) {
-                dogMenuService.travelMapShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+                dogMenuService.travelMapShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/InfoSecurityDog")) {
-                dogMenuService.contactInfoSecurityShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);;
+                dogMenuService.contactInfoSecurityShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
             } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelterDog")) {
-                dogMenuService.safetyMeasuresDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+                dogMenuService.safetyMeasuresDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/backStartDog")) {
-                dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+                dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             }
         }
     }
@@ -213,25 +214,25 @@ public class TelegramBot extends TelegramLongPollingBot {
      * @param chatId - chat ID user
      * @param name - Name user
      */
-    private void startCommandReceived(Long chatId, String name) {
+    public void startCommandReceived(Long chatId, String name) {
         logger.info("Started bot");
         String answer = "Добро пожаловать " + name + ". " + config.getStartText();
         sendMessage(chatId, answer, chooseShelterService.chooseShelter());
     }
 
-    private void animalisticCommandReceived(Long chatId, String name) {
+    public void animalisticCommandReceived(Long chatId, String name) {
         logger.info("Select the button how to adopt an animal from a shelter");
         String answer = config.getAnimalisticText();
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
     }
 
-    private void reportCommandReceived(Long chatId, String name) {
+    public void reportCommandReceived(Long chatId, String name) {
         logger.info("Select the button to send a pet report");
         String answer = config.getReportText();
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
     }
 
-    private void helpCommandReceived(Long chatId, String name) {
+    public void helpCommandReceived(Long chatId, String name) {
         logger.info("Select the button call a volunteer");
         String answer = config.getHelpText();
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
@@ -243,7 +244,7 @@ public class TelegramBot extends TelegramLongPollingBot {
      * @param textToSend text for sending
      * @param createKeyboard1
      */
-    private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+    public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage massage = new SendMessage();
         massage.setChatId(String.valueOf(chatId));
         massage.setText(textToSend);
@@ -261,7 +262,7 @@ public class TelegramBot extends TelegramLongPollingBot {
      * @param name Name user
      * @param chatId chat ID user
      */
-    private void saveNewUser(String name, Long chatId) {
+    public void saveNewUser(String name, Long chatId) {
         if (userRepository.findByChatId(chatId) == null) {
             logger.info("User is saved");
             Users user1 = new Users();

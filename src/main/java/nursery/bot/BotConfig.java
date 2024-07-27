@@ -1,4 +1,4 @@
-package nursery.configuration;
+package nursery.bot;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
