@@ -15,6 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 
 @Component
@@ -32,12 +33,15 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final MenuButtons menuButtons;
     private final CatMenuService catMenuService;
     private final DogMenuService dogMenuService;
+    private final UserService userService;
+    private final VolunteerService volunteerService;
 
     public TelegramBot(BotConfig config, ShelterService shelterService,
                        UserRepository userRepository, TravelMapService travelMapService,
                        ChooseShelterService chooseShelterService, CatKeyboardService catKeyboardService,
                        DogKeyboardService dogKeyboardService, CatMenuService catMenuService,
-                       DogMenuService dogMenuService, MenuButtons menuButtons) {
+                       DogMenuService dogMenuService, MenuButtons menuButtons, UserService userService,
+                       VolunteerService volunteerService) {
         this.config = config;
         this.shelterService = shelterService;
         this.userRepository = userRepository;
@@ -48,6 +52,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         this.catMenuService = catMenuService;
         this.dogMenuService = dogMenuService;
         this.menuButtons = menuButtons;
+        this.userService = userService;
+        this.volunteerService = volunteerService;
         try {
             this.execute(new SetMyCommands(menuButtons.listOfCommands(), new BotCommandScopeDefault(), null));
         } catch (TelegramApiException e) {
@@ -150,8 +156,10 @@ public class TelegramBot extends TelegramLongPollingBot {
                 animalisticCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             } else if (update.getCallbackQuery().getData().equals("/report")) {
                 reportCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
-            } else if (update.getCallbackQuery().getData().equals("/help")) {
-                helpCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            } else if (update.getCallbackQuery().getData().equals("/helpStartCat")) {
+                volunteerService.volunteerStart(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            } else if (update.getCallbackQuery().getData().equals("/helpStartDog")) {
+                volunteerService.volunteerStart(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/back")) {
                 startCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             }
@@ -177,6 +185,13 @@ public class TelegramBot extends TelegramLongPollingBot {
                 catMenuService.contactInfoSecurityShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
             } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelter")) {
                 catMenuService.safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            } else if (update.getCallbackQuery().getData().equals("/record")) {
+                userService.phoneRecording(chatId, update.getCallbackQuery().getFrom().getFirstName());
+                userService.phoneRecordingTest(update);
+            } else if (update.getCallbackQuery().getData().equals("/helpCatInfo")) {
+                volunteerService.volunteerInfo(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            } else if (update.getCallbackQuery().getData().equals("/backInfoCat")) {
+                catMenuService.infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/backStartCat")) {
                 catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             }
@@ -202,6 +217,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                 dogMenuService.contactInfoSecurityShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);;
             } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelterDog")) {
                 dogMenuService.safetyMeasuresDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            } else if (update.getCallbackQuery().getData().equals("/helpDogInfo")) {
+                volunteerService.volunteerInfo(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/backStartDog")) {
                 dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             }

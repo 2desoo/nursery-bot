@@ -34,13 +34,13 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> rowFirst = new ArrayList<>();
-        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/infoCat"));
-        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalisticCat"));
+        rowFirst.add(createButtonWithCallbackData("Информацию о приюте", "/infoCat"));
+        rowFirst.add(createButtonWithCallbackData("Как взять животное", "/animalisticCat"));
         StartKeyboard.add(rowFirst);
 
         List<InlineKeyboardButton> rowSecond  = new ArrayList<>();
-        rowSecond.add(createButtonWithCallbackData("Отчет.", "/reportCat"));
-        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/helpCat"));
+        rowSecond.add(createButtonWithCallbackData("Отчет", "/reportCat"));
+        rowSecond.add(createButtonWithCallbackData("Волонтер", "/helpStartCat"));
         StartKeyboard.add(rowSecond);
 
         List<InlineKeyboardButton> rowThird  = new ArrayList<>();
@@ -83,7 +83,7 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
         List<InlineKeyboardButton> row4  = new ArrayList<>();
         //Вернутся в меню (Приветственное сообщения приюта кота)
         row4.add(createButtonWithCallbackData("Назад", "/backStartCat"));
-        row4.add(createButtonWithCallbackData("Волонтер", "/help"));
+        row4.add(createButtonWithCallbackData("Волонтер", "/helpCatInfo"));
         StartKeyboard.add(row4);
 
         keyboardMarkup.setKeyboard(StartKeyboard);
