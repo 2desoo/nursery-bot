@@ -1,20 +1,19 @@
 package nursery.service;
 
 import nursery.configuration.BotConfig;
-import nursery.entity.Volunteer;
+import nursery.entity.Users;
 import nursery.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class UserService extends TelegramLongPollingBot {
@@ -31,19 +30,15 @@ public class UserService extends TelegramLongPollingBot {
         this.userRepository = userRepository;
     }
 
-    public void phoneRecording(Long chatId, String name) {
-        String answer = name + " введите свой номер телефона";
-        sendMessage(chatId, answer, null);
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        userRepository.findByChatId(chatId).setPhone(s);
-    }
-
-    public void phoneRecordingTest(Update update) {
-        Message originalMessage = update.getMessage();
-        Long chatId = update.getMessage().getChatId();
-        userRepository.findByChatId(chatId).setPhone(originalMessage.getText());
-        System.out.println(originalMessage.getText());
+    public void savePhone(Long chatId, String phoneNumber, Long shelterId) {
+        Users user = userRepository.findByChatId(chatId);
+        user.setPhone(phoneNumber);
+        userRepository.save(user);
+        if (shelterId == 1) {
+            sendMessage(chatId, "Ваш номер сохранен", userKeyboardService.userPhoneCat());
+        } else if (shelterId == 2) {
+            sendMessage(chatId, "Ваш номер сохранен", userKeyboardService.userPhoneDog());
+        }
     }
 
     private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {

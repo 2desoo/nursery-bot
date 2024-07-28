@@ -4,4 +4,5 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 
 public interface UserKeyboardService {
     InlineKeyboardMarkup userPhoneCat();
+    InlineKeyboardMarkup userPhoneDog();
 }

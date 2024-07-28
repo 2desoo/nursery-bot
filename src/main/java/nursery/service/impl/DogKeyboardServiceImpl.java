@@ -77,7 +77,7 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
 
         List<InlineKeyboardButton> row3  = new ArrayList<>();
         row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/safetyMeasuresShelterDog"));
-        row3.add(createButtonWithCallbackData("Запись", "/record"));
+        row3.add(createButtonWithCallbackData("Запись", "/recordDog"));
         StartKeyboard.add(row3);
 
         List<InlineKeyboardButton> row4  = new ArrayList<>();
