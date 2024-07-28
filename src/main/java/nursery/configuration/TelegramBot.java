@@ -28,7 +28,6 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private final BotConfig config;
     private final ShelterService shelterService;
-    private final TravelMapService travelMapService;
     private final UserRepository userRepository;
     private final ChooseShelterService chooseShelterService;
     private final CatKeyboardService catKeyboardService;
@@ -43,15 +42,14 @@ public class TelegramBot extends TelegramLongPollingBot {
     private Map<Long, String> userState = new HashMap<>();
 
     public TelegramBot(BotConfig config, ShelterService shelterService,
-                       UserRepository userRepository, TravelMapService travelMapService,
-                       ChooseShelterService chooseShelterService, CatKeyboardService catKeyboardService,
-                       DogKeyboardService dogKeyboardService, CatMenuService catMenuService,
-                       DogMenuService dogMenuService, MenuButtons menuButtons, UserService userService,
-                       VolunteerService volunteerService, UserKeyboardService userKeyboardService) {
+                       UserRepository userRepository, ChooseShelterService chooseShelterService,
+                       CatKeyboardService catKeyboardService, DogKeyboardService dogKeyboardService,
+                       CatMenuService catMenuService, DogMenuService dogMenuService,
+                       MenuButtons menuButtons, UserService userService, VolunteerService volunteerService,
+                       UserKeyboardService userKeyboardService) {
         this.config = config;
         this.shelterService = shelterService;
         this.userRepository = userRepository;
-        this.travelMapService = travelMapService;
         this.chooseShelterService = chooseShelterService;
         this.catKeyboardService = catKeyboardService;
         this.dogKeyboardService = dogKeyboardService;
