@@ -108,58 +108,9 @@ public class TelegramBot extends TelegramLongPollingBot {
                 return;
             }
 
-            /*
-            Methods:
-            - /start - start menu
-            - /cat_shelter - menu for cats
-            - /info_cat_shelter - menu for info cats
-            - /schedule_work_shelter - menu for schedule work cats
-            - /address_shelter - menu for address cats
-            - /travel_map_cat - menu for travel map cat
-            - /travel_map_dog - menu for travel map dog
-             */
             if (update.hasMessage() && update.getMessage().hasText()) {
                 logger.info("Select the button {}", updatesMessageText);
-                switch (updatesMessageText) {
-                    case "/start":
-                        startCommandReceived(chatId, update.getMessage().getChat().getFirstName());
-                        saveNewUser(update.getMessage().getChat().getFirstName(),chatId);
-                        break;
-                    case "/cat_shelter":
-                        catMenuService.startShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/info_cat_shelter":
-                        catMenuService.infoShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/schedule_work_shelter":
-                        catMenuService.workShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/address_shelter":
-                        catMenuService.addressShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/travel_map_cat":
-                        catMenuService.travelMapShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/contact_security_cat":
-                        catMenuService.contactInfoSecurityShelterCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/safety_shelter_cat":
-                        catMenuService.safetyMeasuresCat(chatId, update.getMessage().getChat().getFirstName(), 1L);
-                        break;
-                    case "/dog_shelter":
-                        dogMenuService.startShelterDog(chatId, update.getMessage().getChat().getFirstName(), 2L);
-                        break;
-                    case "/animalistic":
-                        animalisticCommandReceived(chatId, update.getMessage().getChat().getFirstName());
-                        break;
-                    case "/report":
-                        break;
-                    case "/help":
-                        helpCommandReceived(chatId, update.getMessage().getChat().getFirstName());
-                        break;
-                    default:
-                        sendMessage(chatId,"Выберите нужное меню из предложенного:",null);
-                }
+                menuButtons.Menu(update);
             }
         }
 
