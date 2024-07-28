@@ -77,7 +77,7 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
 
         List<InlineKeyboardButton> row3  = new ArrayList<>();
         row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/safetyMeasuresShelter"));
-        row3.add(createButtonWithCallbackData("Запись", "/record"));
+        row3.add(createButtonWithCallbackData("Запись", "/recordCat"));
         StartKeyboard.add(row3);
 
         List<InlineKeyboardButton> row4  = new ArrayList<>();

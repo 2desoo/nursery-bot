@@ -18,8 +18,20 @@ public class UserKeyboardServiceImpl implements UserKeyboardService {
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> row1 = new ArrayList<>();
-        row1.add(createButtonWithCallbackData("Вести номер телефона", "/phoneRecording"));
         row1.add(createButtonWithCallbackData("Назад", "/backInfoCat"));
+        StartKeyboard.add(row1);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup userPhoneDog() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад", "/backInfoDog"));
         StartKeyboard.add(row1);
 
         keyboardMarkup.setKeyboard(StartKeyboard);
