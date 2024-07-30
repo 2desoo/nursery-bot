@@ -20,6 +20,12 @@ public class Volunteer {
     public Volunteer() {
     }
 
+    public Volunteer(Long id, String nameVolunteer, String phoneVolunteer) {
+        this.id = id;
+        this.nameVolunteer = nameVolunteer;
+        this.phoneVolunteer = phoneVolunteer;
+    }
+
     public Long getId() {
         return id;
     }

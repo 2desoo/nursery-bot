@@ -132,7 +132,7 @@ public class DogMenuService extends TelegramLongPollingBot {
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      * @see nursery.service.impl.DogKeyboardServiceImpl
      */
-    private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+    public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
         message.setText(textToSend);
@@ -148,7 +148,6 @@ public class DogMenuService extends TelegramLongPollingBot {
     /**
      * Метод для вывода картинки при запросе пользователя о схеме проезда в методе {@link DogMenuService#travelMapShelterDog(Long, String, Long)}
      * @param chatId ользователя с которым взаимодействует бот.
-     * @param id в {@link nursery.repository.TravelMapRepository} мы можем искать картинку по id
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      */
     public void sendPhotoDog(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
