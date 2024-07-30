@@ -23,8 +23,8 @@ public class CatMenuService extends TelegramLongPollingBot {
     private final Logger logger = LoggerFactory.getLogger(CatMenuService.class);
 
     private final BotConfig config;
-    private ShelterService shelterService;
-    private CatKeyboardService catKeyboardService;
+    private final ShelterService shelterService;
+    private final CatKeyboardService catKeyboardService;
 
     private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
 
@@ -133,7 +133,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      * @see nursery.service.impl.CatKeyboardServiceImpl
      */
-    private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+    public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage massage = new SendMessage();
         massage.setChatId(String.valueOf(chatId));
         massage.setText(textToSend);
@@ -149,7 +149,6 @@ public class CatMenuService extends TelegramLongPollingBot {
     /**
      * Метод для вывода картинки при запросе пользователя о схеме проезда в методе {@link CatMenuService#travelMapShelterCat(Long, String, Long)}
      * @param chatId ользователя с которым взаимодействует бот.
-     * @param id в {@link nursery.repository.TravelMapRepository} мы можем искать картинку по id
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      */
     public void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
