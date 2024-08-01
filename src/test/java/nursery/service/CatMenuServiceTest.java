@@ -3,6 +3,7 @@ package nursery.service;
 import static org.mockito.Mockito.*;
 
 import nursery.configuration.BotConfig;
+import nursery.repository.CatRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +23,7 @@ class CatMenuServiceTest {
 
     @Mock
     private CatKeyboardService catKeyboardService;
+    private CatRepository catRepository;
 
     @InjectMocks
     private CatMenuService catMenuService;
@@ -32,7 +34,7 @@ class CatMenuServiceTest {
 
     @BeforeEach
     public void setUp() {
-        catMenuService = new CatMenuService(config, shelterService, catKeyboardService);
+        catMenuService = new CatMenuService(config, shelterService, catKeyboardService, catRepository);
     }
 
     @Test
