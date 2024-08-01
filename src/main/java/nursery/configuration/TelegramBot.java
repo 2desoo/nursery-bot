@@ -129,8 +129,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                 catMenuService.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
                 dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
-            } else if (update.getCallbackQuery().getData().equals("/animalistic")) {
-                animalisticCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+            } else if (update.getCallbackQuery().getData().equals("/animalisticCat")) {
+                catMenuService.welcomeTakeAnimal(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
             } else if (update.getCallbackQuery().getData().equals("/report")) {
                 reportCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
             } else if (update.getCallbackQuery().getData().equals("/helpStartCat")) {
@@ -203,6 +203,12 @@ public class TelegramBot extends TelegramLongPollingBot {
                 dogMenuService.infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
             } else if (update.getCallbackQuery().getData().equals("/backStartDog")) {
                 dogMenuService.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 2L);
+            }
+
+            if (update.getCallbackQuery().getData().equals("/animalsAdoptionCat")) {
+                catMenuService.animalAdoptionCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+            } else if (update.getCallbackQuery().getData().equals("/animalsAdoptionCat")) {
+
             }
         }
     }

@@ -1,6 +1,8 @@
 package nursery.service;
 
 import nursery.configuration.BotConfig;
+import nursery.entity.Cat;
+import nursery.repository.CatRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -25,14 +27,16 @@ public class CatMenuService extends TelegramLongPollingBot {
     private final BotConfig config;
     private final ShelterService shelterService;
     private final CatKeyboardService catKeyboardService;
+    private final CatRepository catRepository;
 
     private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
 
     public CatMenuService(BotConfig config, ShelterService shelterService,
-                          CatKeyboardService catKeyboardService) {
+                          CatKeyboardService catKeyboardService, CatRepository catRepository) {
         this.config = config;
         this.shelterService = shelterService;
         this.catKeyboardService = catKeyboardService;
+        this.catRepository = catRepository;
     }
 
     /**
@@ -96,7 +100,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      */
     public void travelMapShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button Travel Map for shelter cat");
-        sendPhoto(chatId, id,  catKeyboardService.infoCatKeyboard());
+        sendPhoto(chatId, catKeyboardService.infoCatKeyboard());
     }
 
     /**
@@ -125,6 +129,32 @@ public class CatMenuService extends TelegramLongPollingBot {
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
+    public void welcomeTakeAnimal(Long chatId, String name, Long id) {
+        logger.info("Select the button welcomeTakeAnimal for shelter cat");
+        String answer = config.getAnimalisticText();
+        sendMessage(chatId, answer, catKeyboardService.takeAnimalCatKeyboard());
+    }
+
+
+    public void animalAdoptionCat(Long chatId, String name, Long id) {
+        logger.info("Select the button animalAdoptionCat for shelter cat");
+        String answer = "Котов для усыновления приюте находится: " + catRepository.findQuantityCat();
+        sendMessage(chatId, answer, catKeyboardService.takeAnimalCatKeyboard());
+    }
+
+    public Cat findCat(Long id) {
+        logger.info("findCat");
+        return catRepository.findById(id).orElseThrow();
+    }
+
+    public void getCat(Long chatId, String name, Long id) {
+        logger.info("Select the button safetyMeasuresCat for shelter cat");
+        Long catId = id;
+        Cat cat = findCat(catId);
+        String answer = "Кот по имени " + cat.getNameCat() + ". " + cat.getInfoCat();
+        sendPhotoCat(chatId, cat.getId(), answer, null);
+    }
+
     /**
      * Метод для сообщения которое получит пользователь
      * @param chatId пользователя с которым взаимодействует бот.
@@ -151,7 +181,7 @@ public class CatMenuService extends TelegramLongPollingBot {
      * @param chatId ользователя с которым взаимодействует бот.
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      */
-    public void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
+    public void sendPhoto(Long chatId, InlineKeyboardMarkup createKeyboard1) {
         try {
             String filePath = filePathCatShelterCat;
             SendPhoto sendPhotoRequest = new SendPhoto();
@@ -159,6 +189,26 @@ public class CatMenuService extends TelegramLongPollingBot {
             sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
             sendPhotoRequest.setReplyMarkup(createKeyboard1);
             execute(sendPhotoRequest);
+        } catch (TelegramApiException e) {
+            logger.error("Error sending photo", e);
+        }
+    }
+
+    public void sendPhotoCat(Long chatId, Long id, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+        try {
+            Cat cat = findCat(id);
+            String filePath = cat.getPhotoCat();
+            SendPhoto sendPhotoRequest = new SendPhoto();
+            sendPhotoRequest.setChatId(chatId);
+            sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
+
+            SendMessage massage = new SendMessage();
+            massage.setChatId(String.valueOf(chatId));
+            massage.setText(textToSend);
+            massage.setReplyMarkup(createKeyboard1);
+
+            execute(sendPhotoRequest);
+            execute(massage);
         } catch (TelegramApiException e) {
             logger.error("Error sending photo", e);
         }

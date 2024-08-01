@@ -9,4 +9,6 @@ public interface CatKeyboardService {
     InlineKeyboardMarkup startCatKeyboard();
     //Info Cat Keyboard
     InlineKeyboardMarkup infoCatKeyboard();
+
+    InlineKeyboardMarkup takeAnimalCatKeyboard();
 }

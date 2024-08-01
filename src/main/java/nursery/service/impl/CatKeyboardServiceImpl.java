@@ -91,6 +91,19 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
         return keyboardMarkup;
     }
 
+    public InlineKeyboardMarkup takeAnimalCatKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> rowFirst = new ArrayList<>();
+        rowFirst.add(createButtonWithCallbackData("Животные для усыновления", "/animalsAdoptionCat"));
+        StartKeyboard.add(rowFirst);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
     /**
      *Метод для создания кнопки в клавиатуре
      * @param text параметр, который будет видеть пользователь. Название кнопки
