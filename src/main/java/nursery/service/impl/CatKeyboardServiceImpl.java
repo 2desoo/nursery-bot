@@ -95,9 +95,79 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Животные для усыновления", "/animalsAdoptionCat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Назад", "/backStartCat"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup showingCatsKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
         List<InlineKeyboardButton> rowFirst = new ArrayList<>();
-        rowFirst.add(createButtonWithCallbackData("Животные для усыновления", "/animalsAdoptionCat"));
+        rowFirst.add(createButtonWithCallbackData("Назад","/animalisticCat"));
+        rowFirst.add(createButtonWithCallbackData("Посмотреть котов","/SeeСat"));
         StartKeyboard.add(rowFirst);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup catsStart() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Дальше","/nextСat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticCat"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup cats() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backСat"));
+        row1.add(createButtonWithCallbackData("Дальше","/nextСat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticCat"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup catsEnd() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backСat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticCat"));
+        StartKeyboard.add(row2);
 
         keyboardMarkup.setKeyboard(StartKeyboard);
 

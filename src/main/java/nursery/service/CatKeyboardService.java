@@ -11,4 +11,12 @@ public interface CatKeyboardService {
     InlineKeyboardMarkup infoCatKeyboard();
 
     InlineKeyboardMarkup takeAnimalCatKeyboard();
+
+    InlineKeyboardMarkup showingCatsKeyboard();
+
+    InlineKeyboardMarkup catsStart();
+
+    InlineKeyboardMarkup cats();
+
+    InlineKeyboardMarkup catsEnd();
 }
