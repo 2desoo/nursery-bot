@@ -135,11 +135,10 @@ public class CatMenuService extends TelegramLongPollingBot {
         sendMessage(chatId, answer, catKeyboardService.takeAnimalCatKeyboard());
     }
 
-
     public void animalAdoptionCat(Long chatId, String name, Long id) {
         logger.info("Select the button animalAdoptionCat for shelter cat");
-        String answer = "Котов для усыновления приюте находится: " + catRepository.findQuantityCat();
-        sendMessage(chatId, answer, catKeyboardService.takeAnimalCatKeyboard());
+        String answer = "Котов для усыновления в приюте находится: " + catRepository.findQuantityCat();
+        sendMessage(chatId, answer, catKeyboardService.showingCatsKeyboard());
     }
 
     public Cat findCat(Long id) {
@@ -147,12 +146,46 @@ public class CatMenuService extends TelegramLongPollingBot {
         return catRepository.findById(id).orElseThrow();
     }
 
-    public void getCat(Long chatId, String name, Long id) {
+    public void getStartCat(Long chatId) {
+        logger.info("Select the button safetyMeasuresCat for shelter cat");
+        Long catId = catRepository.findFirstIdCat();
+        Cat cat = findCat(catId);
+        String answer = "Кот по имени " + cat.getNameCat() + ". " + cat.getInfoCat();
+        sendPhotoCat(chatId, cat.getId(), answer, catKeyboardService.catsStart());
+    }
+
+    public void getCat(Long chatId, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
         Long catId = id;
         Cat cat = findCat(catId);
         String answer = "Кот по имени " + cat.getNameCat() + ". " + cat.getInfoCat();
-        sendPhotoCat(chatId, cat.getId(), answer, null);
+        sendPhotoCat(chatId, cat.getId(), answer, catKeyboardService.cats());
+    }
+
+    public void getLastCat(Long chatId) {
+        logger.info("Select the button safetyMeasuresCat for shelter cat");
+        Long catId = catRepository.findLastIdCat();
+        Cat cat = findCat(catId);
+        String answer = "Кот по имени " + cat.getNameCat() + ". " + cat.getInfoCat();
+        sendPhotoCat(chatId, cat.getId(), answer, catKeyboardService.catsEnd());
+    }
+
+    public void startCats(Long chatId) {
+        getStartCat(chatId);
+    }
+
+    public void Cats(Long chatId, Long catId) {
+
+        Long catIdFirst = catRepository.findFirstIdCat();
+        Long catIdLast = catRepository.findLastIdCat();
+
+        if (catIdFirst >= catId) {
+            getStartCat(chatId);
+        } else if (catIdLast <= catId) {
+            getLastCat(chatId);
+        } else {
+            getCat(chatId, catId);
+        }
     }
 
     /**

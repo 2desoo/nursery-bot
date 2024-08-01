@@ -1,6 +1,7 @@
 package nursery.configuration;
 
 import nursery.entity.Users;
+import nursery.repository.CatRepository;
 import nursery.repository.UserRepository;
 import nursery.service.*;
 import org.slf4j.Logger;
@@ -38,15 +39,17 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final UserService userService;
     private final VolunteerService volunteerService;
     private final UserKeyboardService userKeyboardService;
+    private final CatRepository catRepository;
 
     private Map<Long, String> userState = new HashMap<>();
+    private Long catCount = 1L;
 
     public TelegramBot(BotConfig config, ShelterService shelterService,
                        UserRepository userRepository, ChooseShelterService chooseShelterService,
                        CatKeyboardService catKeyboardService, DogKeyboardService dogKeyboardService,
                        CatMenuService catMenuService, DogMenuService dogMenuService,
                        MenuButtons menuButtons, UserService userService, VolunteerService volunteerService,
-                       UserKeyboardService userKeyboardService) {
+                       UserKeyboardService userKeyboardService, CatRepository catRepository) {
         this.config = config;
         this.shelterService = shelterService;
         this.userRepository = userRepository;
@@ -59,6 +62,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         this.userService = userService;
         this.volunteerService = volunteerService;
         this.userKeyboardService = userKeyboardService;
+        this.catRepository = catRepository;
         try {
             this.execute(new SetMyCommands(menuButtons.listOfCommands(), new BotCommandScopeDefault(), null));
         } catch (TelegramApiException e) {
@@ -207,8 +211,14 @@ public class TelegramBot extends TelegramLongPollingBot {
 
             if (update.getCallbackQuery().getData().equals("/animalsAdoptionCat")) {
                 catMenuService.animalAdoptionCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
-            } else if (update.getCallbackQuery().getData().equals("/animalsAdoptionCat")) {
-
+            } else if (update.getCallbackQuery().getData().equals("/SeeСat")) {
+                catMenuService.startCats(chatId);
+            } else if (update.getCallbackQuery().getData().equals("/nextСat")) {
+                catCount++;
+                catMenuService.Cats(chatId, catCount);
+            } else if (update.getCallbackQuery().getData().equals("/backСat")) {
+                catCount--;
+                catMenuService.Cats(chatId, catCount);
             }
         }
     }
