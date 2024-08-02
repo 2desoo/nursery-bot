@@ -1,8 +1,9 @@
 package nursery.service;
 
-import nursery.configuration.BotConfig;
+import nursery.bot.BotConfig;
 import nursery.entity.Volunteer;
 import nursery.repository.VolunteerRepository;
+import nursery.service.impl.VolunteerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,12 +13,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class VolunteerServiceTest {
+class VolunteerServiceImplTest {
 
     @Mock
     private BotConfig botConfig;
@@ -31,7 +31,7 @@ class VolunteerServiceTest {
     private DogKeyboardService dogKeyboardService;
 
     @InjectMocks
-    private VolunteerService volunteerService;
+    private VolunteerServiceImpl volunteerServiceImpl;
 
     private String name = "Name";
     private Long chatId = 1234567891L;
@@ -40,7 +40,7 @@ class VolunteerServiceTest {
 
     @BeforeEach
     public void setUp() {
-        volunteerService = new VolunteerService(botConfig, catKeyboardService, dogKeyboardService, volunteerRepository);
+        volunteerServiceImpl = new VolunteerServiceImpl(botConfig, catKeyboardService, dogKeyboardService, volunteerRepository);
     }
 
     @Test
@@ -50,7 +50,7 @@ class VolunteerServiceTest {
 
         when((volunteerRepository.findById(volunteer.getId()))).thenReturn(Optional.of(volunteer));
 
-        volunteerService.volunteerStart(chatId, name, shelterId);
+        volunteerServiceImpl.volunteerStart(chatId, name, shelterId);
 
         verify(volunteerRepository).findById(1L);
         verify(catKeyboardService).startCatKeyboard();
@@ -63,7 +63,7 @@ class VolunteerServiceTest {
 
         when((volunteerRepository.findById(volunteer.getId()))).thenReturn(Optional.of(volunteer));
 
-        volunteerService.volunteerStart(chatId, name, shelterId);
+        volunteerServiceImpl.volunteerStart(chatId, name, shelterId);
 
         verify(volunteerRepository).findById(1L);
         verify(dogKeyboardService).startDogKeyboard();
@@ -75,7 +75,7 @@ class VolunteerServiceTest {
 
         when((volunteerRepository.findById(volunteer.getId()))).thenReturn(Optional.of(volunteer));
 
-        volunteerService.volunteerInfo(chatId, name, shelterId);
+        volunteerServiceImpl.volunteerInfo(chatId, name, shelterId);
 
         verify(volunteerRepository).findById(1L);
         verify(catKeyboardService).infoCatKeyboard();
@@ -88,7 +88,7 @@ class VolunteerServiceTest {
 
         when((volunteerRepository.findById(volunteer.getId()))).thenReturn(Optional.of(volunteer));
 
-        volunteerService.volunteerInfo(chatId, name, shelterId);
+        volunteerServiceImpl.volunteerInfo(chatId, name, shelterId);
 
         verify(volunteerRepository).findById(1L);
         verify(dogKeyboardService).infoDogKeyboard();

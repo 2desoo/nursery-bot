@@ -11,7 +11,6 @@ import java.util.Objects;
 public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //Ordinary id
     private Long id;
     private String nameCat;
     private String infoCat;

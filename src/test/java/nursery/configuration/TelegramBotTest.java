@@ -4,6 +4,8 @@ import nursery.bot.BotConfig;
 import nursery.entity.Users;
 import nursery.repository.UserRepository;
 import nursery.service.*;
+import nursery.service.impl.CatMenuServiceImpl;
+import nursery.service.impl.DogMenuServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -36,9 +38,9 @@ class TelegramBotTest {
     @Mock
     private MenuButtons menuButtons;
     @Mock
-    private CatMenuService catMenuService;
+    private CatMenuServiceImpl catMenuServiceImpl;
     @Mock
-    private DogMenuService dogMenuService;
+    private DogMenuServiceImpl dogMenuServiceImpl;
     @Mock
     private Logger logger;
 
@@ -55,9 +57,10 @@ class TelegramBotTest {
     public void testStartCommandReceived() {
         Long chatId = 123456L;
         String name = "TestUser";
-        when(config.getStartText()).thenReturn("Welcome to the bot!");
+        String startText = "Welcome to the bot!";
+        when(startText).thenReturn("Welcome to the bot!");
 
-        telegramBot.startCommandReceived(chatId, name);
+        telegramBot.chatId, name);
 
         ArgumentCaptor<Long> chatIdCaptor = ArgumentCaptor.forClass(Long.class);
         ArgumentCaptor<String> textCaptor = ArgumentCaptor.forClass(String.class);

@@ -27,7 +27,7 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
      * @return Возвращает клавиатуру состоящею из 5 кнопок
      * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
      * от выбранной кнопке реализуется метод из
-     * @see nursery.service.DogMenuService
+     * @see DogMenuServiceImpl
      */
     public InlineKeyboardMarkup startDogKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
@@ -59,7 +59,7 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
      * @return Возвращает клавиатуру состоящею из 8 кнопок
      * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
      * от выбранной кнопке реализуется метод из
-     * @see nursery.service.DogMenuService
+     * @see DogMenuServiceImpl
      */
     public InlineKeyboardMarkup infoDogKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();

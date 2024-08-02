@@ -27,7 +27,7 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
      * @return Возвращает клавиатуру состоящею из 5 кнопок
      * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
      * от выбранной кнопке реализуется метод из
-     * @see nursery.service.CatMenuService
+     * @see CatMenuServiceImpl
      */
     public InlineKeyboardMarkup startCatKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
@@ -59,7 +59,7 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
      * @return Возвращает клавиатуру состоящею из 8 кнопок
      * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
      * от выбранной кнопке реализуется метод из
-     * @see nursery.service.CatMenuService
+     * @see CatMenuServiceImpl
      */
     public InlineKeyboardMarkup infoCatKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();

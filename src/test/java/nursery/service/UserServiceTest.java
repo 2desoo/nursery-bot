@@ -1,17 +1,17 @@
 package nursery.service;
 
+import nursery.bot.BotConfig;
 import nursery.configuration.BotConfig;
 import nursery.entity.Users;
 import nursery.repository.UserRepository;
+import nursery.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -28,11 +28,11 @@ class UserServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @BeforeEach
     public void setUp() {
-        userService = new UserService(botConfig, userKeyboardService, userRepository);
+        userService = new UserServiceImpl(botConfig, userKeyboardService, userRepository);
     }
 
 

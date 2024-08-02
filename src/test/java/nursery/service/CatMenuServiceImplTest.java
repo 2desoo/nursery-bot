@@ -1,21 +1,19 @@
 package nursery.service;
 
+import static org.mockito.Mockito.*;
+
 import nursery.configuration.BotConfig;
+import nursery.repository.CatRepository;
+import nursery.service.impl.CatMenuServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 @ExtendWith(MockitoExtension.class)
-class DogMenuServiceTest {
-
+class CatMenuServiceImplTest {
     @Mock
     private BotConfig config;
 
@@ -23,83 +21,84 @@ class DogMenuServiceTest {
     private ShelterService shelterService;
 
     @Mock
-    private DogKeyboardService dogKeyboardService;
+    private CatKeyboardService catKeyboardService;
+    private CatRepository catRepository;
 
     @InjectMocks
-    private DogMenuService dogMenuService;
+    private CatMenuServiceImpl catMenuServiceImpl;
 
     private final Long chatId = 1234567891L;
-    private final String name = "Dog";
-    private final Long shelterId = 2L;
+    private final String name = "Cat";
+    private final Long shelterId = 1L;
 
     @BeforeEach
     public void setUp() {
-        dogMenuService = new DogMenuService(config, shelterService, dogKeyboardService);
+        catMenuServiceImpl = new CatMenuServiceImpl(config, shelterService, catKeyboardService, catRepository);
     }
 
     @Test
-    public void testStartShelterDog() {
-        String expectedAnswer = "Welcome to the dog shelter!";
+    public void testStartShelterCat() {
+        String expectedAnswer = "Welcome to the cat shelter!";
         when(shelterService.welcomesUser(shelterId)).thenReturn(expectedAnswer);
 
-        dogMenuService.startShelterDog(chatId, name, shelterId);
+        catMenuServiceImpl.startShelterCat(chatId, name, shelterId);
 
         verify(shelterService).welcomesUser(shelterId);
-        verify(dogKeyboardService).startDogKeyboard();
+        verify(catKeyboardService).startCatKeyboard();
     }
 
     @Test
-    public void testInfoShelterDog() {
-        String expectedAnswer = "Info about the dog shelter.";
+    public void testInfoShelterCat() {
+        String expectedAnswer = "Info about the cat shelter.";
         when(shelterService.info(shelterId)).thenReturn(expectedAnswer);
 
-        dogMenuService.infoShelterDog(chatId, name, shelterId);
+        catMenuServiceImpl.infoShelterCat(chatId, name, shelterId);
 
         verify(shelterService).info(shelterId);
-        verify(dogKeyboardService).infoDogKeyboard();
+        verify(catKeyboardService).infoCatKeyboard();
     }
 
     @Test
-    public void testWorkShelterDog() {
-        String expectedAnswer = "Dogs need help!";
+    public void testWorkShelterCat() {
+        String expectedAnswer = "Cats need help!";
         when(shelterService.workShelter(shelterId)).thenReturn(expectedAnswer);
 
-        dogMenuService.workShelterDog(chatId, name, shelterId);
+        catMenuServiceImpl.workShelterCat(chatId, name, shelterId);
 
         verify(shelterService).workShelter(shelterId);
-        verify(dogKeyboardService).infoDogKeyboard();
+        verify(catKeyboardService).infoCatKeyboard();
     }
 
     @Test
-    public void testAddressShelterDog() {
+    public void testAddressShelterCat() {
         String expectedAnswer = "Address of the shelter.";
         when(shelterService.addressShelter(shelterId)).thenReturn(expectedAnswer);
 
-        dogMenuService.addressShelterDog(chatId, name, shelterId);
+        catMenuServiceImpl.addressShelterCat(chatId, name, shelterId);
 
         verify(shelterService).addressShelter(shelterId);
-        verify(dogKeyboardService).infoDogKeyboard();
+        verify(catKeyboardService).infoCatKeyboard();
     }
 
     @Test
-    public void testContactInfoSecurityShelterDog() {
+    public void testContactInfoSecurityShelterCat() {
         String expectedAnswer = "Contact info.";
         when(shelterService.contactInfoSecurityShelter(shelterId)).thenReturn(expectedAnswer);
 
-        dogMenuService.contactInfoSecurityShelterDog(chatId, name, shelterId);
+        catMenuServiceImpl.contactInfoSecurityShelterCat(chatId, name, shelterId);
 
         verify(shelterService).contactInfoSecurityShelter(shelterId);
-        verify(dogKeyboardService).infoDogKeyboard();
+        verify(catKeyboardService).infoCatKeyboard();
     }
 
     @Test
-    public void testSafetyMeasuresDog() {
+    public void testSafetyMeasuresCat() {
         String expectedAnswer = "Safety measures.";
         when(shelterService.safetyRecommendationsShelter(shelterId)).thenReturn(expectedAnswer);
 
-        dogMenuService.safetyMeasuresDog(chatId, name, shelterId);
+        catMenuServiceImpl.safetyMeasuresCat(chatId, name, shelterId);
 
         verify(shelterService).safetyRecommendationsShelter(shelterId);
-        verify(dogKeyboardService).infoDogKeyboard();
+        verify(catKeyboardService).infoCatKeyboard();
     }
 }
