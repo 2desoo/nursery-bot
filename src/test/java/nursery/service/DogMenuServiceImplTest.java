@@ -1,6 +1,7 @@
 package nursery.service;
 
-import nursery.configuration.BotConfig;
+
+import nursery.bot.BotConfig;
 import nursery.service.impl.DogMenuServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ class DogMenuServiceImplTest {
     private BotConfig config;
 
     @Mock
-    private ShelterService shelterService;
+    private ShelterDogService shelterDogService;
 
     @Mock
     private DogKeyboardService dogKeyboardService;
@@ -29,76 +30,76 @@ class DogMenuServiceImplTest {
 
     private final Long chatId = 1234567891L;
     private final String name = "Dog";
-    private final Long shelterId = 2L;
+    private final Long shelterDogId = 2L;
 
     @BeforeEach
     public void setUp() {
-        dogMenuServiceImpl = new DogMenuServiceImpl(config, shelterService, dogKeyboardService);
+        dogMenuServiceImpl = new DogMenuServiceImpl(config, shelterDogService, dogKeyboardService);
     }
 
     @Test
     public void testStartShelterDog() {
         String expectedAnswer = "Welcome to the dog shelter!";
-        when(shelterService.welcomesUser(shelterId)).thenReturn(expectedAnswer);
+        when(shelterDogService.welcomesUser(shelterDogId)).thenReturn(expectedAnswer);
 
-        dogMenuServiceImpl.startShelterDog(chatId, name, shelterId);
+        dogMenuServiceImpl.startShelterDog(chatId, name, shelterDogId);
 
-        verify(shelterService).welcomesUser(shelterId);
+        verify(shelterDogService).welcomesUser(shelterDogId);
         verify(dogKeyboardService).startDogKeyboard();
     }
 
     @Test
     public void testInfoShelterDog() {
         String expectedAnswer = "Info about the dog shelter.";
-        when(shelterService.info(shelterId)).thenReturn(expectedAnswer);
+        when(shelterDogService.info(shelterDogId)).thenReturn(expectedAnswer);
 
-        dogMenuServiceImpl.infoShelterDog(chatId, name, shelterId);
+        dogMenuServiceImpl.infoShelterDog(chatId, name, shelterDogId);
 
-        verify(shelterService).info(shelterId);
+        verify(shelterDogService).info(shelterDogId);
         verify(dogKeyboardService).infoDogKeyboard();
     }
 
     @Test
     public void testWorkShelterDog() {
         String expectedAnswer = "Dogs need help!";
-        when(shelterService.workShelter(shelterId)).thenReturn(expectedAnswer);
+        when(shelterDogService.workShelterDog(shelterDogId)).thenReturn(expectedAnswer);
 
-        dogMenuServiceImpl.workShelterDog(chatId, name, shelterId);
+        dogMenuServiceImpl.workShelterDog(chatId, name, shelterDogId);
 
-        verify(shelterService).workShelter(shelterId);
+        verify(shelterDogService).workShelterDog(shelterDogId);
         verify(dogKeyboardService).infoDogKeyboard();
     }
 
     @Test
     public void testAddressShelterDog() {
         String expectedAnswer = "Address of the shelter.";
-        when(shelterService.addressShelter(shelterId)).thenReturn(expectedAnswer);
+        when(shelterDogService.addressShelterDog(shelterDogId)).thenReturn(expectedAnswer);
 
-        dogMenuServiceImpl.addressShelterDog(chatId, name, shelterId);
+        dogMenuServiceImpl.addressShelterDog(chatId, name, shelterDogId);
 
-        verify(shelterService).addressShelter(shelterId);
+        verify(shelterDogService).addressShelterDog(shelterDogId);
         verify(dogKeyboardService).infoDogKeyboard();
     }
 
     @Test
     public void testContactInfoSecurityShelterDog() {
         String expectedAnswer = "Contact info.";
-        when(shelterService.contactInfoSecurityShelter(shelterId)).thenReturn(expectedAnswer);
+        when(shelterDogService.contactInfoSecurityShelterDog(shelterDogId)).thenReturn(expectedAnswer);
 
-        dogMenuServiceImpl.contactInfoSecurityShelterDog(chatId, name, shelterId);
+        dogMenuServiceImpl.contactInfoSecurityShelterDog(chatId, name, shelterDogId);
 
-        verify(shelterService).contactInfoSecurityShelter(shelterId);
+        verify(shelterDogService).contactInfoSecurityShelterDog(shelterDogId);
         verify(dogKeyboardService).infoDogKeyboard();
     }
 
     @Test
     public void testSafetyMeasuresDog() {
         String expectedAnswer = "Safety measures.";
-        when(shelterService.safetyRecommendationsShelter(shelterId)).thenReturn(expectedAnswer);
+        when(shelterDogService.safetyRecommendationsShelterDog(shelterDogId)).thenReturn(expectedAnswer);
 
-        dogMenuServiceImpl.safetyMeasuresDog(chatId, name, shelterId);
+        dogMenuServiceImpl.safetyMeasuresDog(chatId, name, shelterDogId);
 
-        verify(shelterService).safetyRecommendationsShelter(shelterId);
+        verify(shelterDogService).safetyRecommendationsShelterDog(shelterDogId);
         verify(dogKeyboardService).infoDogKeyboard();
     }
 }

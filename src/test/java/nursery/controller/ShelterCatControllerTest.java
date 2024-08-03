@@ -1,7 +1,7 @@
 package nursery.controller;
 
-import nursery.entity.Shelter;
-import nursery.service.impl.ShelterServiceImpl;
+import nursery.entity.ShelterCat;
+import nursery.service.impl.ShelterCatServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 class ShelterCatControllerTest {
 
     @Mock
-    private ShelterServiceImpl shelterCatService;
+    private ShelterCatServiceImpl shelterCatService;
 
     @InjectMocks
     private ShelterCatController shelterCatController;
@@ -30,38 +30,38 @@ class ShelterCatControllerTest {
 
     @Test
     void testCreateShelterCat() {
-        Shelter shelter = new Shelter();
-        when(shelterCatService.createShelterCat(any(Shelter.class))).thenReturn(shelter);
+        ShelterCat shelterCat = new ShelterCat();
+        when(shelterCatService.createShelterCat(any(ShelterCat.class))).thenReturn(shelterCat);
 
-        ResponseEntity<Shelter> response = shelterCatController.createShelterCat(shelter);
+        ResponseEntity<ShelterCat> response = shelterCatController.createShelterCat(shelterCat);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(shelter, response.getBody());
-        verify(shelterCatService, times(1)).createShelterCat(any(Shelter.class));
+        assertEquals(shelterCat, response.getBody());
+        verify(shelterCatService, times(1)).createShelterCat(any(ShelterCat.class));
     }
 
     @Test
     void testFindShelterCat() {
-        Shelter shelter = new Shelter();
-        when(shelterCatService.findShelterCat(anyLong())).thenReturn(shelter);
+        ShelterCat shelterCat = new ShelterCat();
+        when(shelterCatService.findShelterCat(anyLong())).thenReturn(shelterCat);
 
-        ResponseEntity<Shelter> response = shelterCatController.findShelterCat(1L);
+        ResponseEntity<ShelterCat> response = shelterCatController.findShelterCat(1L);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(shelter, response.getBody());
+        assertEquals(shelterCat, response.getBody());
         verify(shelterCatService, times(1)).findShelterCat(anyLong());
     }
 
     @Test
     void testUpdateShelterCat() {
-        Shelter shelter = new Shelter();
-        when(shelterCatService.updateShelterCat(anyLong(), any(Shelter.class))).thenReturn(shelter);
+        ShelterCat shelterCat = new ShelterCat();
+        when(shelterCatService.updateShelterCat(anyLong(), any(ShelterCat.class))).thenReturn(shelterCat);
 
-        ResponseEntity<Shelter> response = shelterCatController.updateShelterCat(1L, shelter);
+        ResponseEntity<ShelterCat> response = shelterCatController.updateShelterCat(1L, shelterCat);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(shelter, response.getBody());
-        verify(shelterCatService, times(1)).updateShelterCat(anyLong(), any(Shelter.class));
+        assertEquals(shelterCat, response.getBody());
+        verify(shelterCatService, times(1)).updateShelterCat(anyLong(), any(ShelterCat.class));
     }
 
     @Test

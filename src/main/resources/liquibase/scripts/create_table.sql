@@ -10,29 +10,32 @@ CREATE TABLE users
 );
 CREATE TABLE cat
 (
-  id BIGSERIAL,
+  id BIGSERIAL PRIMARY KEY,
   name_cat VARCHAR,
   info_cat VARCHAR,
   photo_cat VARCHAR
 );
-CREATE TABLE shelter
+CREATE TABLE shelter_cat
 (
   id BIGSERIAL PRIMARY KEY,
   name varchar,
-  welcomes_user_shelter varchar,
-  tell_about_shelter varchar,
-  schedule_work_shelter varchar,
-  address_shelter varchar,
-  contact_information_security varchar,
-  safety_recommendations varchar
+  welcomes_user_shelter_cat varchar,
+  tell_about_shelter_cat varchar,
+  schedule_work_shelter_cat varchar,
+  address_shelter_cat varchar,
+  contact_information_security_cat varchar,
+  safety_recommendations_cat varchar
 );
-CREATE TABLE travel_map
+CREATE TABLE shelter_dog
 (
   id BIGSERIAL PRIMARY KEY,
-  file_path VARCHAR,
-  file_size BIGSERIAL,
-  media_type VARCHAR,
-  picture bytea
+  name varchar,
+  welcomes_user_shelter_dog varchar,
+  tell_about_shelter_dog varchar,
+  schedule_work_shelter_dog varchar,
+  address_shelter_dog varchar,
+  contact_information_security_dog varchar,
+  safety_recommendations_dog varchar
 );
 CREATE TABLE volunteer
 (

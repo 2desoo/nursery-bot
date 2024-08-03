@@ -3,7 +3,7 @@ package nursery.service.impl;
 import nursery.bot.BotConfig;
 import nursery.service.DogKeyboardService;
 import nursery.service.DogMenuService;
-import nursery.service.ShelterService;
+import nursery.service.ShelterDogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -26,14 +26,14 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
     private final Logger logger = LoggerFactory.getLogger(CatMenuServiceImpl.class);
 
     private final BotConfig config;
-    private final ShelterService shelterService;
+    private final ShelterDogService shelterDogService;
     private final DogKeyboardService dogKeyboardService;
     private final String filePathCatShelterDog = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\dog_shelter.png";
 
-    public DogMenuServiceImpl(BotConfig config, ShelterService shelterService,
+    public DogMenuServiceImpl(BotConfig config, ShelterDogService shelterDogService,
                               DogKeyboardService dogKeyboardService) {
         this.config = config;
-        this.shelterService = shelterService;
+        this.shelterDogService = shelterDogService;
         this.dogKeyboardService = dogKeyboardService;
     }
 
@@ -46,7 +46,7 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
      */
     public void startShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button shelter dog");
-        String answer = shelterService.welcomesUser(id);
+        String answer = shelterDogService.welcomesUser(id);
         sendMessage(chatId, answer, dogKeyboardService.startDogKeyboard());
     }
 
@@ -59,7 +59,7 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
      */
     public void infoShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button info for shelter cat");
-        String answer = shelterService.info(id);
+        String answer = shelterDogService.info(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
@@ -72,7 +72,7 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
      */
     public void workShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
-        String answer = shelterService.workShelter(id);
+        String answer = shelterDogService.workShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
@@ -85,7 +85,7 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
      */
     public void addressShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
-        String answer = shelterService.addressShelter(id);
+        String answer = shelterDogService.addressShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
@@ -110,7 +110,7 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
      */
     public void contactInfoSecurityShelterDog(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
-        String answer = shelterService.contactInfoSecurityShelter(id);
+        String answer = shelterDogService.contactInfoSecurityShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
@@ -123,7 +123,7 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
      */
     public void safetyMeasuresDog(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
-        String answer = shelterService.safetyRecommendationsShelter(id);
+        String answer = shelterDogService.safetyRecommendationsShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 

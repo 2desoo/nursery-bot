@@ -5,7 +5,7 @@ import nursery.entity.Cat;
 import nursery.repository.CatRepository;
 import nursery.service.CatKeyboardService;
 import nursery.service.CatMenuService;
-import nursery.service.ShelterService;
+import nursery.service.ShelterCatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -28,16 +28,16 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
     private final Logger logger = LoggerFactory.getLogger(CatMenuServiceImpl.class);
 
     private final BotConfig config;
-    private final ShelterService shelterService;
+    private final ShelterCatService shelterCatService;
     private final CatKeyboardService catKeyboardService;
     private final CatRepository catRepository;
 
     private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
 
-    public CatMenuServiceImpl(BotConfig config, ShelterService shelterService,
+    public CatMenuServiceImpl(BotConfig config, ShelterCatService shelterCatService,
                               CatKeyboardService catKeyboardService, CatRepository catRepository) {
         this.config = config;
-        this.shelterService = shelterService;
+        this.shelterCatService = shelterCatService;
         this.catKeyboardService = catKeyboardService;
         this.catRepository = catRepository;
     }
@@ -51,7 +51,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      */
     public void startShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button shelter cat");
-        String answer = shelterService.welcomesUser(id);
+        String answer = shelterCatService.welcomesUser(id);
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
     }
 
@@ -64,7 +64,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      */
     public void infoShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button info for shelter cat");
-        String answer = shelterService.info(id);
+        String answer = shelterCatService.info(id);
         sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
@@ -77,7 +77,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      */
     public void workShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
-        String answer = shelterService.workShelter(id);
+        String answer = shelterCatService.workShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -90,7 +90,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      */
     public void addressShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
-        String answer = shelterService.addressShelter(id);
+        String answer = shelterCatService.addressShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -115,7 +115,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      */
     public void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
-        String answer = shelterService.contactInfoSecurityShelter(id);
+        String answer = shelterCatService.contactInfoSecurityShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
@@ -128,13 +128,13 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      */
     public void safetyMeasuresCat(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
-        String answer = shelterService.safetyRecommendationsShelter(id);
+        String answer = shelterCatService.safetyRecommendationsShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
     public void welcomeTakeAnimal(Long chatId, String name, Long id) {
         logger.info("Select the button welcomeTakeAnimal for shelter cat");
-        String answer = "Welcome to the choose an animal menu";
+        String answer = "Добро пожаловать в меню";
         sendMessage(chatId, answer, catKeyboardService.takeAnimalCatKeyboard());
     }
 

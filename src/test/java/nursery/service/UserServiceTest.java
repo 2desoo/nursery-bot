@@ -1,7 +1,6 @@
 package nursery.service;
 
 import nursery.bot.BotConfig;
-import nursery.configuration.BotConfig;
 import nursery.entity.Users;
 import nursery.repository.UserRepository;
 import nursery.service.impl.UserServiceImpl;
