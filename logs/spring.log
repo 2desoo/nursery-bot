@@ -1,0 +1,38 @@
+2024-07-28T00:26:47.723+03:00  INFO 784 --- [main] nursery.NurseryBotApplication            : Starting NurseryBotApplication using Java 17.0.11 with PID 784 (C:\Users\Vova\IdeaProjects\nursery-bot\target\classes started by Vova in C:\Users\Vova\IdeaProjects\nursery-bot)
+2024-07-28T00:26:47.725+03:00  INFO 784 --- [main] nursery.NurseryBotApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-07-28T00:26:48.127+03:00  INFO 784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-28T00:26:48.162+03:00  INFO 784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 3 JPA repository interfaces.
+2024-07-28T00:26:48.438+03:00  INFO 784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-28T00:26:48.445+03:00  INFO 784 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-28T00:26:48.446+03:00  INFO 784 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-28T00:26:48.484+03:00  INFO 784 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-28T00:26:48.484+03:00  INFO 784 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 736 ms
+2024-07-28T00:26:48.560+03:00  INFO 784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-28T00:26:48.661+03:00  INFO 784 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3db65c0d
+2024-07-28T00:26:48.662+03:00  INFO 784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-28T00:26:48.747+03:00  INFO 784 --- [main] liquibase.database                       : Set default schema name to public
+2024-07-28T00:26:48.946+03:00  INFO 784 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-28T00:26:48.962+03:00  INFO 784 --- [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-28T00:26:48.963+03:00  INFO 784 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-28T00:26:48.968+03:00  INFO 784 --- [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-28T00:26:48.968+03:00  INFO 784 --- [main] liquibase.util                           : Run:                          0
+2024-07-28T00:26:48.968+03:00  INFO 784 --- [main] liquibase.util                           : Previously run:               3
+2024-07-28T00:26:48.968+03:00  INFO 784 --- [main] liquibase.util                           : Filtered out:                 0
+2024-07-28T00:26:48.968+03:00  INFO 784 --- [main] liquibase.util                           : -------------------------------
+2024-07-28T00:26:48.968+03:00  INFO 784 --- [main] liquibase.util                           : Total change sets:            3
+2024-07-28T00:26:48.969+03:00  INFO 784 --- [main] liquibase.util                           : Update summary generated
+2024-07-28T00:26:48.982+03:00  INFO 784 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-28T00:26:48.983+03:00  INFO 784 --- [main] liquibase.command                        : Command execution complete
+2024-07-28T00:26:49.025+03:00  INFO 784 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-28T00:26:49.058+03:00  INFO 784 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-28T00:26:49.078+03:00  INFO 784 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-28T00:26:49.267+03:00  INFO 784 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-28T00:26:49.847+03:00  INFO 784 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-28T00:26:49.883+03:00  INFO 784 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-28T00:26:50.028+03:00  INFO 784 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-28T00:26:50.794+03:00  WARN 784 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-28T00:26:51.263+03:00  INFO 784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-28T00:26:51.269+03:00  INFO 784 --- [main] nursery.NurseryBotApplication            : Started NurseryBotApplication in 3.787 seconds (process running for 4.11)
+2024-07-28T00:31:09.102+03:00  INFO 784 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-28T00:31:09.104+03:00  INFO 784 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-28T00:31:09.105+03:00  INFO 784 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
