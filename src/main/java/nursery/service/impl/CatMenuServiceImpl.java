@@ -5,6 +5,7 @@ import nursery.entity.Cat;
 import nursery.repository.CatRepository;
 import nursery.service.CatKeyboardService;
 import nursery.service.CatMenuService;
+import nursery.service.RecomCatKeyboardService;
 import nursery.service.ShelterCatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,15 +32,18 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
     private final ShelterCatService shelterCatService;
     private final CatKeyboardService catKeyboardService;
     private final CatRepository catRepository;
+    private final RecomCatKeyboardService recomCatKeyboardService;
 
     private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
 
     public CatMenuServiceImpl(BotConfig config, ShelterCatService shelterCatService,
-                              CatKeyboardService catKeyboardService, CatRepository catRepository) {
+                              CatKeyboardService catKeyboardService, CatRepository catRepository,
+                              RecomCatKeyboardService recomCatKeyboardService) {
         this.config = config;
         this.shelterCatService = shelterCatService;
         this.catKeyboardService = catKeyboardService;
         this.catRepository = catRepository;
+        this.recomCatKeyboardService = recomCatKeyboardService;
     }
 
     /**
@@ -47,7 +51,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void startShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button shelter cat");
@@ -60,7 +64,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void infoShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button info for shelter cat");
@@ -73,7 +77,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void workShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
@@ -86,7 +90,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void addressShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
@@ -99,7 +103,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void travelMapShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button Travel Map for shelter cat");
@@ -111,7 +115,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
@@ -124,7 +128,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
      * @param chatId пользователя с которым взаимодействует бот.
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
+     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
      */
     public void safetyMeasuresCat(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
@@ -135,7 +139,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
     public void welcomeTakeAnimal(Long chatId, String name, Long id) {
         logger.info("Select the button welcomeTakeAnimal for shelter cat");
         String answer = "Добро пожаловать в меню";
-        sendMessage(chatId, answer, catKeyboardService.takeAnimalCatKeyboard());
+        sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void animalAdoptionCat(Long chatId, String name, Long id) {

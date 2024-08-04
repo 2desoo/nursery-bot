@@ -43,6 +43,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final VolunteerServiceImpl volunteerServiceImpl;
     private final UserKeyboardService userKeyboardService;
     private final CatRepository catRepository;
+    private final RecomCatMenuService recomCatMenuService;
 
     private Map<Long, String> userState = new HashMap<>();
     private Long catCount = 1L;
@@ -52,7 +53,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                        CatKeyboardService catKeyboardService, DogKeyboardService dogKeyboardService,
                        CatMenuServiceImpl catMenuServiceImpl, DogMenuServiceImpl dogMenuServiceImpl,
                        MenuButtons menuButtons, UserServiceImpl userService, VolunteerServiceImpl volunteerServiceImpl,
-                       UserKeyboardService userKeyboardService, CatRepository catRepository) {
+                       UserKeyboardService userKeyboardService, CatRepository catRepository,
+                       RecomCatMenuService recomCatMenuService) {
         this.config = config;
         this.shelterCatService = shelterCatService;
         this.shelterDogService = shelterDogService;
@@ -67,6 +69,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         this.volunteerServiceImpl = volunteerServiceImpl;
         this.userKeyboardService = userKeyboardService;
         this.catRepository = catRepository;
+        this.recomCatMenuService = recomCatMenuService;
         try {
             this.execute(new SetMyCommands(menuButtons.listOfCommands(), new BotCommandScopeDefault(), null));
         } catch (TelegramApiException e) {
@@ -124,71 +127,72 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.hasCallbackQuery()) {
 
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
+            String name = update.getCallbackQuery().getFrom().getFirstName();
 
             if (update.getCallbackQuery().getData().equals("/catShelter")) {
-                catMenuServiceImpl.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.startShelterCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/dogShelter")) {
-                dogMenuServiceImpl.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.startShelterDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/animalisticCat")) {
-                catMenuServiceImpl.welcomeTakeAnimal(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.welcomeTakeAnimal(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/report")) {
-                reportCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+                reportCommandReceived(chatId, name);
             } else if (update.getCallbackQuery().getData().equals("/helpStartCat")) {
-                volunteerServiceImpl.volunteerStart(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                volunteerServiceImpl.volunteerStart(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/helpStartDog")) {
-                volunteerServiceImpl.volunteerStart(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                volunteerServiceImpl.volunteerStart(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/back")) {
-                startCommandReceived(chatId, update.getCallbackQuery().getFrom().getFirstName());
+                startCommandReceived(chatId, name);
             }
 
             if (update.getCallbackQuery().getData().equals("/infoCat")) {
-                catMenuServiceImpl.infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.infoShelterCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/scheduleWorkShelter")){
-                catMenuServiceImpl.workShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.workShelterCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/addressShelter")) {
-                catMenuServiceImpl.addressShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.addressShelterCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/travelMap")) {
-                catMenuServiceImpl.travelMapShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.travelMapShelterCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/contactInformationSecurity")) {
-                catMenuServiceImpl.contactInfoSecurityShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
+                catMenuServiceImpl.contactInfoSecurityShelterCat(chatId, name, 1L);;
             } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelter")) {
-                catMenuServiceImpl.safetyMeasuresCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.safetyMeasuresCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/recordCat")) {
                 sendMessage(chatId, "Пожалуйста, введите свой номер телефона:", null);
                 userState.put(chatId, "WAITING_FOR_PHONE_NUMBER_CAT");
             } else if (update.getCallbackQuery().getData().equals("/helpCatInfo")) {
-                volunteerServiceImpl.volunteerInfo(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                volunteerServiceImpl.volunteerInfo(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/backInfoCat")) {
-                catMenuServiceImpl.infoShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.infoShelterCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/backStartCat")) {
-                catMenuServiceImpl.startShelterCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.startShelterCat(chatId, name, 1L);
             }
 
             if (update.getCallbackQuery().getData().equals("/infoDog")) {
-                dogMenuServiceImpl.infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.infoShelterDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/scheduleWorkDog")){
-                dogMenuServiceImpl.workShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.workShelterDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/addressShelterDog")) {
-                dogMenuServiceImpl.addressShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.addressShelterDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/travelMapDog")) {
-                dogMenuServiceImpl.travelMapShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.travelMapShelterDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/InfoSecurityDog")) {
-                dogMenuServiceImpl.contactInfoSecurityShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);;
+                dogMenuServiceImpl.contactInfoSecurityShelterDog(chatId, name, 1L);;
             } else if (update.getCallbackQuery().getData().equals("/safetyMeasuresShelterDog")) {
-                dogMenuServiceImpl.safetyMeasuresDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.safetyMeasuresDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/recordDog")) {
                 sendMessage(chatId, "Пожалуйста, введите свой номер телефона:", null);
                 userState.put(chatId, "WAITING_FOR_PHONE_NUMBER_DOG");
             } else if (update.getCallbackQuery().getData().equals("/helpDogInfo")) {
-                volunteerServiceImpl.volunteerInfo(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                volunteerServiceImpl.volunteerInfo(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/backInfoDog")) {
-                dogMenuServiceImpl.infoShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.infoShelterDog(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/backStartDog")) {
-                dogMenuServiceImpl.startShelterDog(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                dogMenuServiceImpl.startShelterDog(chatId, name, 1L);
             }
 
             if (update.getCallbackQuery().getData().equals("/animalsAdoptionCat")) {
-                catMenuServiceImpl.animalAdoptionCat(chatId, update.getCallbackQuery().getFrom().getFirstName(), 1L);
+                catMenuServiceImpl.animalAdoptionCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/SeeСat")) {
                 catMenuServiceImpl.startCats(chatId);
             } else if (update.getCallbackQuery().getData().equals("/nextСat")) {
@@ -197,6 +201,22 @@ public class TelegramBot extends TelegramLongPollingBot {
             } else if (update.getCallbackQuery().getData().equals("/backСat")) {
                 catCount--;
                 catMenuServiceImpl.Cats(chatId, catCount);
+            }
+
+            if (update.getCallbackQuery().getData().equals("/rulesDating")) {
+                recomCatMenuService.recomRulesDating(chatId, name, 1L);
+            } else if (update.getCallbackQuery().getData().equals("/listDocuments")){
+                recomCatMenuService.recomListDocuments(chatId, name, 1L);
+            } else if (update.getCallbackQuery().getData().equals("/transportationAnimal")) {
+                recomCatMenuService.recomTransportAnimal(chatId, name, 1L);
+            } else if (update.getCallbackQuery().getData().equals("/homeImprovement")) {
+                recomCatMenuService.recomHomeImprovement(chatId, name, 1L);
+            } else if (update.getCallbackQuery().getData().equals("/homeImprovementOldAnimal")) {
+                recomCatMenuService.recomHomeImprovementOldAnimal(chatId, name, 1L);;
+            } else if (update.getCallbackQuery().getData().equals("/homeImprovementLimitedCapabilities")) {
+                recomCatMenuService.recomHomeImprovementLimitedCapabilitiesCat(chatId, name, 1L);
+            } else if (update.getCallbackQuery().getData().equals("/reasonsRefuse")) {
+                recomCatMenuService.recomReasonsRefusalCat(chatId, name, 1L);
             }
         }
     }

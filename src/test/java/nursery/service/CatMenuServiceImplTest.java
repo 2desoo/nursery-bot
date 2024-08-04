@@ -23,6 +23,8 @@ class CatMenuServiceImplTest {
 
     @Mock
     private CatKeyboardService catKeyboardService;
+    @Mock
+    private RecomCatKeyboardService recomCatKeyboardService;
     private CatRepository catRepository;
 
     @InjectMocks
@@ -34,7 +36,7 @@ class CatMenuServiceImplTest {
 
     @BeforeEach
     public void setUp() {
-        catMenuServiceImpl = new CatMenuServiceImpl(config, shelterCatService, catKeyboardService, catRepository);
+        catMenuServiceImpl = new CatMenuServiceImpl(config, shelterCatService, catKeyboardService, catRepository, recomCatKeyboardService);
     }
 
     @Test

@@ -42,4 +42,16 @@ CREATE TABLE volunteer
   id BIGSERIAL,
   name_volunteer VARCHAR,
   phone_volunteer VARCHAR
+);
+CREATE TABLE recom_shelter_cat
+(
+  id BIGSERIAL PRIMARY KEY,
+  name varchar,
+  rules_dating varchar,
+  list_documents varchar,
+  transport_animal varchar,
+  home_improvement varchar,
+  home_improvement_old_animal varchar,
+  home_improvement_limited_capabilities varchar,
+  reasons_refusal varchar
 )
