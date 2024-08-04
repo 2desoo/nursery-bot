@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class RecomShelterCat {
+public class RecommendShelterCat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -149,6 +149,18 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
         return catRepository.findById(id).orElseThrow();
     }
 
+    public Cat createCat(Cat cat) {
+        return catRepository.save(cat);
+    }
+
+    public Cat updateCat(Long id, Cat cat) {
+        return catRepository.save(cat);
+    }
+
+    public void deleteCat(Long id) {
+        catRepository.deleteById(id);
+    }
+
     public void getStartCat(Long chatId) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
         Long catId = catRepository.findFirstIdCat();

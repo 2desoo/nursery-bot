@@ -33,4 +33,10 @@ public interface CatMenuService {
     void getStartCat(Long chatId);
 
     void startCats(Long chatId);
+
+    Cat createCat(Cat cat);
+
+    Cat updateCat(Long id, Cat cat);
+
+    void deleteCat(Long id);
 }
