@@ -49,7 +49,7 @@ public class RecommendShelterCat {
      */
     private String reasonsRefusal;
 
-    public RecomShelterCat(Long id, String name, String rulesDating, String listDocuments,
+    public RecommendShelterCat(Long id, String name, String rulesDating, String listDocuments,
                            String transportAnimal, String homeImprovement, String homeImprovementOldAnimal,
                            String homeImprovementLimitedCapabilities, String reasonsRefusal) {
         this.id = id;
@@ -61,6 +61,10 @@ public class RecommendShelterCat {
         this.homeImprovementOldAnimal = homeImprovementOldAnimal;
         this.homeImprovementLimitedCapabilities = homeImprovementLimitedCapabilities;
         this.reasonsRefusal = reasonsRefusal;
+    }
+
+    public RecommendShelterCat() {
+
     }
 
     public Long getId() {
@@ -139,7 +143,7 @@ public class RecommendShelterCat {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RecomShelterCat that = (RecomShelterCat) o;
+        RecommendShelterCat that = (RecommendShelterCat) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(rulesDating, that.rulesDating) && Objects.equals(listDocuments, that.listDocuments) && Objects.equals(transportAnimal, that.transportAnimal) && Objects.equals(homeImprovement, that.homeImprovement) && Objects.equals(homeImprovementOldAnimal, that.homeImprovementOldAnimal) && Objects.equals(homeImprovementLimitedCapabilities, that.homeImprovementLimitedCapabilities) && Objects.equals(reasonsRefusal, that.reasonsRefusal);
     }
 

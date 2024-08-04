@@ -56,6 +56,22 @@ public class VolunteerServiceImpl extends TelegramLongPollingBot implements Volu
         }
     }
 
+    public Volunteer createVolunteer(Volunteer volunteer) {
+        return volunteerRepository.save(volunteer);
+    }
+
+    public Volunteer findVolunteer(Long id) {
+        return volunteerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public void deleteVolunteer(Long id) {
+        volunteerRepository.deleteById(id);
+    }
+
+    public Volunteer updateVolunteer(Long id, Volunteer volunteer) {
+        return volunteerRepository.save(volunteer);
+    }
+
     private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
