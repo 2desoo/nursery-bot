@@ -46,90 +46,41 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
         this.recomCatKeyboardService = recomCatKeyboardService;
     }
 
-    /**
-     * Метод для вывода приветственного сообщения из приюта кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void startShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button shelter cat");
         String answer = shelterCatService.welcomesUser(id);
         sendMessage(chatId, answer, catKeyboardService.startCatKeyboard());
     }
 
-    /**
-     * Метод для вывода информационного сообщения из приюта кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void infoShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button info for shelter cat");
         String answer = shelterCatService.info(id);
         sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения рабочих дней в приюте для кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void workShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
         String answer = shelterCatService.workShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения с адресом приюта для кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void addressShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
         String answer = shelterCatService.addressShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
-    /**
-     * Метод для вывода картинки со схемой проезда в приют для кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void travelMapShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button Travel Map for shelter cat");
         sendPhoto(chatId, catKeyboardService.infoCatKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения с контактной информацией охраны в приюте для кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
         String answer = shelterCatService.contactInfoSecurityShelterCat(id);
         sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения о технике безопасности в приюте для кошек
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterCatServiceImpl}
-     */
     public void safetyMeasuresCat(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
         String answer = shelterCatService.safetyRecommendationsShelterCat(id);
