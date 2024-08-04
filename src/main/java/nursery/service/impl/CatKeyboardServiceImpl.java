@@ -27,20 +27,20 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
      * @return Возвращает клавиатуру состоящею из 5 кнопок
      * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
      * от выбранной кнопке реализуется метод из
-     * @see nursery.service.CatMenuService
+     * @see CatMenuServiceImpl
      */
     public InlineKeyboardMarkup startCatKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> rowFirst = new ArrayList<>();
-        rowFirst.add(createButtonWithCallbackData("Информацию о приюте.", "/infoCat"));
-        rowFirst.add(createButtonWithCallbackData("Как взять животное.", "/animalisticCat"));
+        rowFirst.add(createButtonWithCallbackData("Информацию о приюте", "/infoCat"));
+        rowFirst.add(createButtonWithCallbackData("Как взять животное", "/animalisticCat"));
         StartKeyboard.add(rowFirst);
 
         List<InlineKeyboardButton> rowSecond  = new ArrayList<>();
-        rowSecond.add(createButtonWithCallbackData("Отчет.", "/reportCat"));
-        rowSecond.add(createButtonWithCallbackData("Волонтер.  ", "/helpCat"));
+        rowSecond.add(createButtonWithCallbackData("Отчет", "/reportCat"));
+        rowSecond.add(createButtonWithCallbackData("Волонтер", "/helpStartCat"));
         StartKeyboard.add(rowSecond);
 
         List<InlineKeyboardButton> rowThird  = new ArrayList<>();
@@ -59,7 +59,7 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
      * @return Возвращает клавиатуру состоящею из 8 кнопок
      * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
      * от выбранной кнопке реализуется метод из
-     * @see nursery.service.CatMenuService
+     * @see CatMenuServiceImpl
      */
     public InlineKeyboardMarkup infoCatKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
@@ -77,14 +77,97 @@ public class CatKeyboardServiceImpl implements CatKeyboardService {
 
         List<InlineKeyboardButton> row3  = new ArrayList<>();
         row3.add(createButtonWithCallbackData("Тех. безопасности в приюте ", "/safetyMeasuresShelter"));
-        row3.add(createButtonWithCallbackData("Запись", "/record"));
+        row3.add(createButtonWithCallbackData("Запись", "/recordCat"));
         StartKeyboard.add(row3);
 
         List<InlineKeyboardButton> row4  = new ArrayList<>();
         //Вернутся в меню (Приветственное сообщения приюта кота)
         row4.add(createButtonWithCallbackData("Назад", "/backStartCat"));
-        row4.add(createButtonWithCallbackData("Волонтер", "/help"));
+        row4.add(createButtonWithCallbackData("Волонтер", "/helpCatInfo"));
         StartKeyboard.add(row4);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup takeAnimalCatKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Животные для усыновления", "/animalsAdoptionCat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Назад", "/backStartCat"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup showingCatsKeyboard() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> rowFirst = new ArrayList<>();
+        rowFirst.add(createButtonWithCallbackData("Назад","/animalisticCat"));
+        rowFirst.add(createButtonWithCallbackData("Посмотреть котов","/SeeСat"));
+        StartKeyboard.add(rowFirst);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup catsStart() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Дальше","/nextСat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticCat"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup cats() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backСat"));
+        row1.add(createButtonWithCallbackData("Дальше","/nextСat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticCat"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup catsEnd() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backСat"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticCat"));
+        StartKeyboard.add(row2);
 
         keyboardMarkup.setKeyboard(StartKeyboard);
 

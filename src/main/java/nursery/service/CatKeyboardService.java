@@ -9,4 +9,14 @@ public interface CatKeyboardService {
     InlineKeyboardMarkup startCatKeyboard();
     //Info Cat Keyboard
     InlineKeyboardMarkup infoCatKeyboard();
+
+    InlineKeyboardMarkup takeAnimalCatKeyboard();
+
+    InlineKeyboardMarkup showingCatsKeyboard();
+
+    InlineKeyboardMarkup catsStart();
+
+    InlineKeyboardMarkup cats();
+
+    InlineKeyboardMarkup catsEnd();
 }
