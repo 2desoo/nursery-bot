@@ -1,13 +1,13 @@
 package nursery.service;
 
-import nursery.entity.RecomShelterCat;
+import nursery.entity.RecommendShelterCat;
 
 public interface RecomShelterCatService {
 
-    RecomShelterCat createRecomShelterCat(RecomShelterCat recomShelterCat);
-    RecomShelterCat findRecomShelterCat(Long id);
+    RecommendShelterCat createRecomShelterCat(RecommendShelterCat recomShelterCat);
+    RecommendShelterCat findRecomShelterCat(Long id);
 
-    RecomShelterCat updateRecomShelterCat(Long id, RecomShelterCat recomShelterCat);
+    RecommendShelterCat updateRecomShelterCat(Long id, RecommendShelterCat recomShelterCat);
 
     void deleteRecomShelterCat(Long id);
 

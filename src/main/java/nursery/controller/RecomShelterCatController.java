@@ -2,7 +2,7 @@ package nursery.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import nursery.entity.RecomShelterCat;
+import nursery.entity.RecommendShelterCat;
 import nursery.service.RecomShelterCatService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,22 +20,22 @@ public class RecomShelterCatController {
 
     @PostMapping
     @Operation(summary = "Create of the recommendations")
-    public ResponseEntity<RecomShelterCat> createRecomShelterCat(@RequestBody RecomShelterCat recomShelterCat) {
-        RecomShelterCat createdRecomShelterCat = recomShelterCatService.createRecomShelterCat(recomShelterCat);
+    public ResponseEntity<RecommendShelterCat> createRecomShelterCat(@RequestBody RecommendShelterCat recomShelterCat) {
+        RecommendShelterCat createdRecomShelterCat = recomShelterCatService.createRecomShelterCat(recomShelterCat);
         return ResponseEntity.ok(createdRecomShelterCat);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Find recommendations by id")
-    public ResponseEntity<RecomShelterCat> findRecomShelterCat(@PathVariable Long id) {
-        RecomShelterCat recomShelterCat = recomShelterCatService.findRecomShelterCat(id);
+    public ResponseEntity<RecommendShelterCat> findRecomShelterCat(@PathVariable Long id) {
+        RecommendShelterCat recomShelterCat = recomShelterCatService.findRecomShelterCat(id);
         return ResponseEntity.ok(recomShelterCat);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update of the recommendations")
-    public ResponseEntity<RecomShelterCat> updateRecomShelterCat(@PathVariable Long id, @RequestBody RecomShelterCat recomShelterCat) {
-        RecomShelterCat updatedRecomShelterCat = recomShelterCatService.updateRecomShelterCat(id, recomShelterCat);
+    public ResponseEntity<RecommendShelterCat> updateRecomShelterCat(@PathVariable Long id, @RequestBody RecommendShelterCat recomShelterCat) {
+        RecommendShelterCat updatedRecomShelterCat = recomShelterCatService.updateRecomShelterCat(id, recomShelterCat);
         return ResponseEntity.ok(updatedRecomShelterCat);
     }
 

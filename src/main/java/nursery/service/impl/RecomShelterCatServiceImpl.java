@@ -1,7 +1,7 @@
 package nursery.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
-import nursery.entity.RecomShelterCat;
+import nursery.entity.RecommendShelterCat;
 import nursery.repository.RecomShelterCatRepository;
 import nursery.service.RecomShelterCatService;
 import org.slf4j.Logger;
@@ -19,11 +19,11 @@ public class RecomShelterCatServiceImpl implements RecomShelterCatService {
         this.recomShelterCatRepository = recomShelterCatRepository;
     }
 
-    public RecomShelterCat createRecomShelterCat(RecomShelterCat recomShelterCat) {
+    public RecommendShelterCat createRecomShelterCat(RecommendShelterCat recomShelterCat) {
         return recomShelterCatRepository.save(recomShelterCat);
     }
 
-    public RecomShelterCat findRecomShelterCat(Long id) {
+    public RecommendShelterCat findRecomShelterCat(Long id) {
         return recomShelterCatRepository.findById(id).orElseThrow(
                 () -> {
                     logger.error("There are no RecomShelterCat with id =" + id);
@@ -31,8 +31,8 @@ public class RecomShelterCatServiceImpl implements RecomShelterCatService {
                 });
     }
 
-    public RecomShelterCat updateRecomShelterCat(Long id, RecomShelterCat recomShelterCat) {
-        RecomShelterCat existingRecomShelterCat = findRecomShelterCat(id);
+    public RecommendShelterCat updateRecomShelterCat(Long id, RecommendShelterCat recomShelterCat) {
+        RecommendShelterCat existingRecomShelterCat = findRecomShelterCat(id);
         existingRecomShelterCat.setName(recomShelterCat.getName());
         existingRecomShelterCat.setRulesDating(recomShelterCat.getRulesDating());
         existingRecomShelterCat.setListDocuments(recomShelterCat.getListDocuments());

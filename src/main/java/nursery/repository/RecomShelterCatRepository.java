@@ -1,11 +1,11 @@
 package nursery.repository;
 
-import nursery.entity.RecomShelterCat;
+import nursery.entity.RecommendShelterCat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface RecomShelterCatRepository extends JpaRepository<RecomShelterCat, Long> {
+public interface RecomShelterCatRepository extends JpaRepository<RecommendShelterCat, Long> {
     //Methods for find information about shelter by id
     @Query(value = "SELECT r.rules_dating FROM recom_shelter_cat r WHERE r.id = :id", nativeQuery = true)
     String findRulesDatingCatById(@Param("id") Long id);
