@@ -2,7 +2,7 @@ package nursery.service;
 
 import nursery.entity.RecomShelterCat;
 
-public interface RecomShelterService {
+public interface RecomShelterCatService {
 
     RecomShelterCat createRecomShelterCat(RecomShelterCat recomShelterCat);
     RecomShelterCat findRecomShelterCat(Long id);

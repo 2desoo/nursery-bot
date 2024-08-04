@@ -49,6 +49,9 @@ public class RecomShelterCat {
      */
     private String reasonsRefusal;
 
+    public RecomShelterCat() {
+    }
+
     public RecomShelterCat(Long id, String name, String rulesDating, String listDocuments,
                            String transportAnimal, String homeImprovement, String homeImprovementOldAnimal,
                            String homeImprovementLimitedCapabilities, String reasonsRefusal) {

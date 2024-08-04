@@ -3,7 +3,7 @@ package nursery.service.impl;
 import nursery.bot.BotConfig;
 import nursery.service.RecomCatKeyboardService;
 import nursery.service.RecomCatMenuService;
-import nursery.service.RecomShelterService;
+import nursery.service.RecomShelterCatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,55 +19,55 @@ public class RecomCatMenuServiceImpl extends TelegramLongPollingBot implements R
     private final Logger logger = LoggerFactory.getLogger(CatMenuServiceImpl.class);
 
     private final BotConfig config;
-    private final RecomShelterService recomShelterService;
+    private final RecomShelterCatService recomShelterCatService;
     private final RecomCatKeyboardService recomCatKeyboardService;
 
-    public RecomCatMenuServiceImpl(BotConfig config,  RecomShelterService recomShelterService,
+    public RecomCatMenuServiceImpl(BotConfig config,  RecomShelterCatService recomShelterCatService,
                                    RecomCatKeyboardService recomCatKeyboardService) {
         this.config = config;
-        this.recomShelterService = recomShelterService;
+        this.recomShelterCatService = recomShelterCatService;
         this.recomCatKeyboardService = recomCatKeyboardService;
     }
 
     public void recomRulesDating(Long chatId, String name, Long id) {
         logger.info("Select the button recomRulesDating");
-        String answer = recomShelterService.recomRulesDatingCat(id);
+        String answer = recomShelterCatService.recomRulesDatingCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void recomListDocuments(Long chatId, String name, Long id) {
         logger.info("Select the button recomListDocuments");
-        String answer = recomShelterService.recomListDocumentsCat(id);
+        String answer = recomShelterCatService.recomListDocumentsCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void recomTransportAnimal(Long chatId, String name, Long id) {
         logger.info("Select the button recomTransportAnimal");
-        String answer = recomShelterService.recomTransportAnimalCat(id);
+        String answer = recomShelterCatService.recomTransportAnimalCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void recomHomeImprovement(Long chatId, String name, Long id) {
         logger.info("Select the button recomHomeImprovement");
-        String answer = recomShelterService.recomHomeImprovementCat(id);
+        String answer = recomShelterCatService.recomHomeImprovementCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void recomHomeImprovementOldAnimal(Long chatId, String name, Long id) {
         logger.info("Select the button recomHomeImprovementOldAnimal");
-        String answer = recomShelterService.recomHomeImprovementOldAnimalCat(id);
+        String answer = recomShelterCatService.recomHomeImprovementOldAnimalCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void recomHomeImprovementLimitedCapabilitiesCat(Long chatId, String name, Long id) {
         logger.info("Select the button recomHomeImprovementLimitedCapabilitiesCat");
-        String answer = recomShelterService.recomHomeImprovementLimitedCapabilitiesCat(id);
+        String answer = recomShelterCatService.recomHomeImprovementLimitedCapabilitiesCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 
     public void recomReasonsRefusalCat(Long chatId, String name, Long id) {
         logger.info("Select the button recomReasonsRefusalCat");
-        String answer = recomShelterService.recomReasonsRefusalCat(id);
+        String answer = recomShelterCatService.recomReasonsRefusalCat(id);
         sendMessage(chatId, answer, recomCatKeyboardService.recomCatKeyboard());
     }
 

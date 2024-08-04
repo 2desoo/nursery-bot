@@ -3,19 +3,19 @@ package nursery.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import nursery.entity.RecomShelterCat;
 import nursery.repository.RecomShelterCatRepository;
-import nursery.service.RecomShelterService;
+import nursery.service.RecomShelterCatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RecomShelterServiceImpl implements RecomShelterService {
+public class RecomShelterCatServiceImpl implements RecomShelterCatService {
 
-    private final Logger logger = LoggerFactory.getLogger(RecomShelterServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(RecomShelterCatServiceImpl.class);
 
     private final RecomShelterCatRepository recomShelterCatRepository;
 
-    public RecomShelterServiceImpl(RecomShelterCatRepository recomShelterCatRepository) {
+    public RecomShelterCatServiceImpl(RecomShelterCatRepository recomShelterCatRepository) {
         this.recomShelterCatRepository = recomShelterCatRepository;
     }
 
