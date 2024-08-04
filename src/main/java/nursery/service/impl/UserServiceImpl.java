@@ -2,6 +2,7 @@ package nursery.service.impl;
 
 import nursery.bot.BotConfig;
 import nursery.entity.Users;
+import nursery.exception.EntityNotFoundException;
 import nursery.repository.UserRepository;
 import nursery.service.UserKeyboardService;
 import nursery.service.UserService;
@@ -74,6 +75,22 @@ public class UserServiceImpl extends TelegramLongPollingBot implements UserServi
         } catch (TelegramApiException e) {
             logger.error("Error: " + e.getMessage());
         }
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public Users updateUser(Long id, Users user) {
+        return userRepository.save(user);
+    }
+
+    public Users findUser(Long id) {
+        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public Users createUser(Users users) {
+        return userRepository.save(users);
     }
 
     @Override
