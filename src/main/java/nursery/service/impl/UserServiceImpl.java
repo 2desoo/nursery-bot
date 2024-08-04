@@ -54,6 +54,7 @@ public class UserServiceImpl extends TelegramLongPollingBot implements UserServi
      * @param shelterId id shelter
      */
     public void savePhone(Long chatId, String phoneNumber, Long shelterId) {
+        logger.info("Phone number is saved");
         Users user = userRepository.findByChatId(chatId);
         user.setPhone(phoneNumber);
         userRepository.save(user);
@@ -64,7 +65,7 @@ public class UserServiceImpl extends TelegramLongPollingBot implements UserServi
         }
     }
 
-    private void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+    public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage massage = new SendMessage();
         massage.setChatId(String.valueOf(chatId));
         massage.setText(textToSend);
@@ -78,18 +79,22 @@ public class UserServiceImpl extends TelegramLongPollingBot implements UserServi
     }
 
     public void deleteUser(Long id) {
+        logger.info("User is deleted");
         userRepository.deleteById(id);
     }
 
     public Users updateUser(Long id, Users user) {
+        logger.info("User is updated");
         return userRepository.save(user);
     }
 
     public Users findUser(Long id) {
+        logger.info("User is found");
         return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public Users createUser(Users users) {
+        logger.info("User is created");
         return userRepository.save(users);
     }
 

@@ -35,6 +35,7 @@ public class VolunteerServiceImpl extends TelegramLongPollingBot implements Volu
     }
 
     public void volunteerStart(Long chatId, String name, Long id) {
+        logger.info("Start commands volunteer");
         Long idVolunteer = 1L;
         Volunteer volunteer1 = volunteerRepository.findById(idVolunteer).orElseThrow(EntityNotFoundException::new);
         String answer = "Волонтер " + volunteer1.getNameVolunteer() + ". Связаться можно по номеру телефона: " + volunteer1.getPhoneVolunteer();
@@ -46,6 +47,7 @@ public class VolunteerServiceImpl extends TelegramLongPollingBot implements Volu
     }
 
     public void volunteerInfo(Long chatId, String name, Long id) {
+        logger.info("Volunteer called with information menu");
         Long idVolunteer = 1L;
         Volunteer volunteer1 = volunteerRepository.findById(idVolunteer).orElseThrow(EntityNotFoundException::new);
         String answer = "Волонтер " + volunteer1.getNameVolunteer() + ". Связаться можно по номеру телефона: " + volunteer1.getPhoneVolunteer();
@@ -57,18 +59,22 @@ public class VolunteerServiceImpl extends TelegramLongPollingBot implements Volu
     }
 
     public Volunteer createVolunteer(Volunteer volunteer) {
+        logger.info("Volunteer created");
         return volunteerRepository.save(volunteer);
     }
 
     public Volunteer findVolunteer(Long id) {
+        logger.info("Volunteer found");
         return volunteerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public void deleteVolunteer(Long id) {
+        logger.info("Volunteer deleted");
         volunteerRepository.deleteById(id);
     }
 
     public Volunteer updateVolunteer(Long id, Volunteer volunteer) {
+        logger.info("Volunteer updated");
         return volunteerRepository.save(volunteer);
     }
 
