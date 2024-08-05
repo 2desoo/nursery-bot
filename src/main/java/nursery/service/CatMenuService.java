@@ -3,10 +3,12 @@ package nursery.service;
 import nursery.entity.Cat;
 import nursery.repository.CatRepository;
 import nursery.service.impl.CatKeyboardServiceImpl;
-import nursery.service.impl.CatMenuServiceImpl;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
+/**
+ * Класс создания и взаимодействий с сообщениями для приюта для кошек.
+ */
 public interface CatMenuService {
 
     /**
@@ -95,7 +97,6 @@ public interface CatMenuService {
      * Находим его с помощью {@link CatRepository#findById(Object)}
      * @param id кота по которому осуществятся поиск.
      * Метод используется в {@link nursery.service.impl.CatMenuServiceImpl#getCat(Long, Long)}
-     * {@link nursery.service.impl.CatMenuServiceImpl#startCats(Long)}
      * {@link nursery.service.impl.CatMenuServiceImpl#getLastCat(Long)}
      */
     Cat findCat(Long id);
@@ -129,12 +130,23 @@ public interface CatMenuService {
      * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
      */
     void getStartCat(Long chatId);
-
-    void startCats(Long chatId);
-
+    /**
+     * Метод для создания кота использование этого метода можно посмотреть в
+     * @see nursery.controller.CatController#createCat(Cat)
+     * @param cat объект, который будет сохранен
+     */
     Cat createCat(Cat cat);
-
+    /**
+     * Метод для изменения кота использование этого метода можно посмотреть в
+     * @see nursery.controller.CatController#updateCat(Long, Cat) )
+     * @param id объекта, который будет изменен
+     * @param cat объект, который будет изменен
+     */
     Cat updateCat(Long id, Cat cat);
-
+    /**
+     * Метод для удаления кота использование этого метода можно посмотреть в
+     * @see nursery.controller.CatController#updateCat(Long, Cat) )
+     * @param id объекта, который будет удален
+     */
     void deleteCat(Long id);
 }

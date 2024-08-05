@@ -20,9 +20,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.File;
 
-/**
- * Класс создания и взаимодействий с сообщениями для приюта для кошек.
- */
 @Service
 public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMenuService {
 
@@ -61,13 +58,13 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
     public void workShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button work for shelter cat");
         String answer = shelterCatService.workShelterCat(id);
-        sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
+        sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
     public void addressShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button address for shelter cat");
         String answer = shelterCatService.addressShelterCat(id);
-        sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
+        sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
     public void travelMapShelterCat(Long chatId, String name, Long id) {
@@ -78,13 +75,13 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
     public void contactInfoSecurityShelterCat(Long chatId, String name, Long id) {
         logger.info("Select the button InfoSecurityCat for shelter cat");
         String answer = shelterCatService.contactInfoSecurityShelterCat(id);
-        sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
+        sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
     public void safetyMeasuresCat(Long chatId, String name, Long id) {
         logger.info("Select the button safetyMeasuresCat for shelter cat");
         String answer = shelterCatService.safetyRecommendationsShelterCat(id);
-        sendMessage(chatId, answer,  catKeyboardService.infoCatKeyboard());
+        sendMessage(chatId, answer, catKeyboardService.infoCatKeyboard());
     }
 
     public void welcomeTakeAnimal(Long chatId, String name, Long id) {
@@ -140,10 +137,6 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
         sendPhotoCat(chatId, cat.getId(), answer, catKeyboardService.catsEnd());
     }
 
-    public void startCats(Long chatId) {
-        getStartCat(chatId);
-    }
-
     public void Cats(Long chatId, Long catId) {
 
         Long catIdFirst = catRepository.findFirstIdCat();
@@ -158,14 +151,6 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
         }
     }
 
-    /**
-     * Метод для сообщения которое получит пользователь
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param textToSend текст сообщения которое будет видеть пользователь
-     * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
-     * @see nursery.service.impl.CatKeyboardServiceImpl
-     */
     public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
@@ -179,11 +164,6 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
         }
     }
 
-    /**
-     * Метод для вывода картинки при запросе пользователя о схеме проезда в методе {@link CatMenuServiceImpl#travelMapShelterCat(Long, String, Long)}
-     * @param chatId ользователя с которым взаимодействует бот.
-     * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
-     */
     public void sendPhoto(Long chatId, InlineKeyboardMarkup createKeyboard1) {
         try {
             String filePath = filePathCatShelterCat;
@@ -216,7 +196,6 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
             logger.error("Error sending photo", e);
         }
     }
-
     @Override
     public void onUpdateReceived(Update update) {
     }

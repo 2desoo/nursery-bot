@@ -30,11 +30,6 @@ public class UserServiceImpl extends TelegramLongPollingBot implements UserServi
         this.userRepository = userRepository;
     }
 
-    /**
-     * Methods for saving new users in the database
-     * @param name Name user
-     * @param chatId chat ID user
-     */
     public void saveNewUser(String name, Long chatId) {
         if (userRepository.findByChatId(chatId) == null) {
             logger.info("User is saved");
@@ -47,12 +42,6 @@ public class UserServiceImpl extends TelegramLongPollingBot implements UserServi
         }
     }
 
-    /**
-     * Methods for saving phone number
-     * @param chatId chat ID user
-     * @param phoneNumber phone number user
-     * @param shelterId id shelter
-     */
     public void savePhone(Long chatId, String phoneNumber, Long shelterId) {
         logger.info("Phone number is saved");
         Users user = userRepository.findByChatId(chatId);
