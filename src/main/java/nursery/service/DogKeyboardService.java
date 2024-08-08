@@ -31,4 +31,12 @@ public interface DogKeyboardService {
      * @see DogMenuServiceImpl
      */
     InlineKeyboardMarkup infoDogKeyboard();
+
+    InlineKeyboardMarkup showDog();
+
+    InlineKeyboardMarkup dogsStart();
+
+    InlineKeyboardMarkup dogsEnd();
+
+    InlineKeyboardMarkup dogs();
 }

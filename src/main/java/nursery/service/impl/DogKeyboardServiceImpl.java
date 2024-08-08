@@ -70,6 +70,71 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
         return keyboardMarkup;
     }
 
+    public InlineKeyboardMarkup showDog() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад", "/animisticDog"));
+        row1.add(createButtonWithCallbackData("Посмотреть собак","/seeDog"));
+        StartKeyboard.add(row1);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup dogsStart() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Дальше","/nextDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticDog"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup dogs() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backDog"));
+        row1.add(createButtonWithCallbackData("Дальше","/nextDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticDog"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup dogsEnd() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticDog"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
     private static InlineKeyboardButton createButtonWithCallbackData(String text, String callbackData) {
         InlineKeyboardButton button = new InlineKeyboardButton();
         button.setText(text);

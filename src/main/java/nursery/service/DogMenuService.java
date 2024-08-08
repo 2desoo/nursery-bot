@@ -1,5 +1,6 @@
 package nursery.service;
 
+import nursery.entity.Dog;
 import nursery.service.impl.DogMenuServiceImpl;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -65,10 +66,29 @@ public interface DogMenuService {
      * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterDogServiceImpl}
      */
     void safetyMeasuresDog(Long chatId, String name, Long id);
+
     /**
      * Метод для вывода картинки при запросе пользователя о схеме проезда в методе {@link DogMenuServiceImpl#travelMapShelterDog(Long, String, Long)}
-     * @param chatId ользователя с которым взаимодействует бот.
+     *
+     * @param chatId          ользователя с которым взаимодействует бот.
      * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
      */
-    void sendPhotoDog(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1);
+    void sendPhotoDog(Long chatId, Long id, String textToSend, InlineKeyboardMarkup createKeyboard1);
+
+    void getDog(Long chatId, Long id);
+
+    void getLastDog(Long chatId);
+
+    void welcomeTakeAnimal(Long chatId, String name, Long id);
+
+    void dogs(Long chatId, Long catId);
+
+    void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1);
+
+    void animalAdoptionDog(Long chatId, String name, Long id);
+
+    Dog findDog(Long id);
+
+    void getStartDog(Long chatId);
+
 }

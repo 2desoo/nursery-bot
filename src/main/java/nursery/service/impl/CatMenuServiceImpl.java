@@ -31,7 +31,7 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
     private final CatRepository catRepository;
     private final RecomCatKeyboardService recomCatKeyboardService;
 
-    private final String filePathCatShelterCat = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\cat_shelter.png";
+    private final String filePathCatShelterCat = "C:\\Users\\Vova\\IdeaProjects\\nursery-bot\\image\\row.webp";
 
     public CatMenuServiceImpl(BotConfig config, ShelterCatService shelterCatService,
                               CatKeyboardService catKeyboardService, CatRepository catRepository,
@@ -185,13 +185,13 @@ public class CatMenuServiceImpl extends TelegramLongPollingBot implements CatMen
             sendPhotoRequest.setChatId(chatId);
             sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
 
-            SendMessage massage = new SendMessage();
-            massage.setChatId(String.valueOf(chatId));
-            massage.setText(textToSend);
-            massage.setReplyMarkup(createKeyboard1);
+            SendMessage message = new SendMessage();
+            message.setChatId(String.valueOf(chatId));
+            message.setText(textToSend);
+            message.setReplyMarkup(createKeyboard1);
 
             execute(sendPhotoRequest);
-            execute(massage);
+            execute(message);
         } catch (TelegramApiException e) {
             logger.error("Error sending photo", e);
         }
