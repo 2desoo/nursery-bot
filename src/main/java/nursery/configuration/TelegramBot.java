@@ -1,7 +1,9 @@
 package nursery.configuration;
 
 import nursery.bot.BotConfig;
+import nursery.entity.Report;
 import nursery.repository.CatRepository;
+import nursery.repository.ReportRepository;
 import nursery.repository.UserRepository;
 import nursery.service.*;
 import nursery.service.impl.CatMenuServiceImpl;
@@ -12,16 +14,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.File;
+import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 
 
 @Component
@@ -44,6 +52,8 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final UserKeyboardService userKeyboardService;
     private final CatRepository catRepository;
     private final RecomCatMenuService recomCatMenuService;
+    private final ReportService reportService;
+    private ReportRepository reportRepository;
 
     private Map<Long, String> userState = new HashMap<>();
     // catCount - count of cats
@@ -58,7 +68,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                        CatMenuServiceImpl catMenuServiceImpl, DogMenuServiceImpl dogMenuServiceImpl,
                        MenuButtons menuButtons, UserServiceImpl userService, VolunteerServiceImpl volunteerServiceImpl,
                        UserKeyboardService userKeyboardService, CatRepository catRepository,
-                       RecomCatMenuService recomCatMenuService) {
+                       RecomCatMenuService recomCatMenuService, ReportService reportService,
+                       ReportRepository reportRepository) {
         this.config = config;
         this.shelterCatService = shelterCatService;
         this.shelterDogService = shelterDogService;
@@ -74,6 +85,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         this.userKeyboardService = userKeyboardService;
         this.catRepository = catRepository;
         this.recomCatMenuService = recomCatMenuService;
+        this.reportService = reportService;
+        this.reportRepository = reportRepository;
         try {
             this.execute(new SetMyCommands(menuButtons.listOfCommands(), new BotCommandScopeDefault(), null));
         } catch (TelegramApiException e) {
@@ -126,6 +139,44 @@ public class TelegramBot extends TelegramLongPollingBot {
                     sendMessage(chatId, "Номер телефона введен неверно. Пожалуйста, попробуйте ещё раз:", null);
                 }
                 return;
+            }
+        }
+
+        if (update.hasMessage() && update.getMessage().hasPhoto()) {
+
+            Long chatId = update.getMessage().getChatId();
+            String name = update.getCallbackQuery().getFrom().getFirstName();
+
+
+            if (userState.containsKey(chatId) && "WAITING_FOR_PHOTO_ANIMAL".equals(userState.get(chatId))) {
+                List<PhotoSize> photos = update.getMessage().getPhoto();
+
+                PhotoSize photo = photos
+                        .stream()
+                        .max(Comparator.comparing(PhotoSize::getFileSize)).orElse(null);
+
+                if (photo != null) {
+                    GetFile getFile = new GetFile();
+                    getFile.setFileId(photo.getFileId());
+                    try {
+
+                        File file = execute(getFile);
+                        String filePath = file.getFilePath();
+                        java.io.File downloadedFile = downloadFile(filePath);
+
+                        byte[] photoBytes = Files.readAllBytes(downloadedFile.toPath());
+
+                        LocalDateTime reportTime = LocalDateTime.ofInstant(
+                                Instant.ofEpochSecond(update.getMessage().getDate()),
+                                ZoneId.systemDefault()
+                        );
+
+                        reportService.reportPhoto(chatId, photoBytes, name, reportTime);
+                        userState.remove(chatId);
+                    } catch (TelegramApiException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
 
@@ -235,6 +286,17 @@ public class TelegramBot extends TelegramLongPollingBot {
                 recomCatMenuService.recomHomeImprovementLimitedCapabilitiesCat(chatId, name, 1L);
             } else if (update.getCallbackQuery().getData().equals("/reasonsRefuse")) {
                 recomCatMenuService.recomReasonsRefusalCat(chatId, name, 1L);
+            }
+
+            if (update.getCallbackQuery().getData().equals("/reportCat")) {
+                reportService.startReport(chatId, name);
+            } else if (update.getCallbackQuery().getData().equals("/reportRules")) {
+                reportService.rulesReport(chatId, name);
+            } else if (update.getCallbackQuery().getData().equals("/sendReport")) {
+                reportService.startReportPhoto(chatId, name);
+            } else if (update.getCallbackQuery().getData().equals("/reportSendPhoto")) {
+                sendMessage(chatId, "Отправьте фото кота", null);
+                userState.put(chatId, "WAITING_FOR_PHOTO_ANIMAL");
             }
         }
     }
