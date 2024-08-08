@@ -1,8 +1,13 @@
 package nursery.service.impl;
 
 import nursery.bot.BotConfig;
+import nursery.entity.Cat;
+import nursery.entity.Dog;
+import nursery.exception.EntityNotFoundException;
+import nursery.repository.DogRepository;
 import nursery.service.DogKeyboardService;
 import nursery.service.DogMenuService;
+import nursery.service.RecommendDogKeyboardService;
 import nursery.service.ShelterDogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +20,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.awt.*;
 import java.io.File;
 
-/**
- * Класс создания и взаимодействий с сообщениями для приюта для собак.
- */
 @Service
 public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMenuService {
 
@@ -29,110 +32,102 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
     private final ShelterDogService shelterDogService;
     private final DogKeyboardService dogKeyboardService;
     private final String filePathCatShelterDog = "C:\\Users\\Сергей-PC\\IdeaProjects\\nursery-bot\\travelMap\\dog_shelter.png";
+    private final DogRepository repository;
+    private final RecommendDogKeyboardService recommendDogKeyboardService;
 
     public DogMenuServiceImpl(BotConfig config, ShelterDogService shelterDogService,
-                              DogKeyboardService dogKeyboardService) {
+                              DogKeyboardService dogKeyboardService, DogRepository repository, RecommendDogKeyboardService recommendDogKeyboardService) {
         this.config = config;
         this.shelterDogService = shelterDogService;
         this.dogKeyboardService = dogKeyboardService;
+        this.repository = repository;
+        this.recommendDogKeyboardService = recommendDogKeyboardService;
     }
 
-    /**
-     * Метод для вывода приветственного сообщения из приюта собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void startShelterDog(Long chatId, String name, Long id) {
-        logger.info("Select the button shelter dog");
         String answer = shelterDogService.welcomesUser(id);
         sendMessage(chatId, answer, dogKeyboardService.startDogKeyboard());
     }
 
-    /**
-     * Метод для вывода информационного сообщения из приюта собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void infoShelterDog(Long chatId, String name, Long id) {
-        logger.info("Select the button info for shelter cat");
         String answer = shelterDogService.info(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения рабочих дней в приюте для собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void workShelterDog(Long chatId, String name, Long id) {
-        logger.info("Select the button work for shelter cat");
         String answer = shelterDogService.workShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения с адресом приюта для собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void addressShelterDog(Long chatId, String name, Long id) {
-        logger.info("Select the button address for shelter cat");
         String answer = shelterDogService.addressShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
-    /**
-     * Метод для вывода картинки со схемой проезда в приют для собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void travelMapShelterDog(Long chatId, String name, Long id) {
-        logger.info("Select the button Travel Map for shelter cat");
-        sendPhotoDog(chatId, id, dogKeyboardService.infoDogKeyboard());
+        sendPhoto(chatId, id, dogKeyboardService.infoDogKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения с контактной информацией охраны в приюте для собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void contactInfoSecurityShelterDog(Long chatId, String name, Long id) {
-        logger.info("Select the button InfoSecurityCat for shelter cat");
         String answer = shelterDogService.contactInfoSecurityShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
-    /**
-     * Метод для вывода сообщения о технике безопасности в приюте для собак
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param name имя пользователя
-     * @param id нужного нам приюта который мы будем использовать в {@link nursery.service.impl.ShelterServiceImpl}
-     */
     public void safetyMeasuresDog(Long chatId, String name, Long id) {
-        logger.info("Select the button safetyMeasuresCat for shelter cat");
         String answer = shelterDogService.safetyRecommendationsShelterDog(id);
         sendMessage(chatId, answer, dogKeyboardService.infoDogKeyboard());
     }
 
-    /**
-     * Метод для вывода картинки при запросе пользователя о схеме проезда в методе {@link DogMenuServiceImpl#travelMapShelterDog(Long, String, Long)}
-     * @param chatId ользователя с которым взаимодействует бот.
-     * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
-     */
-    public void sendPhotoDog(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
+    public void animalAdoptionDog(Long chatId, String name, Long id) {
+        String answer = "Собак для усыновления в приюте находится: " + repository.findQuantityDog();
+        sendMessage(chatId, answer, dogKeyboardService.showDog());
+    }
+
+    public void welcomeTakeAnimal(Long chatId, String name, Long id) {
+        String answer = "Добро пожаловать в меню";
+        sendMessage(chatId, answer, recommendDogKeyboardService.recommendDogKeyboard());
+    }
+
+    public Dog findDog(Long id) {
+        return repository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public void getStartDog(Long chatId) {
+        Long catId = repository.findFirstDog();
+        Dog dog = findDog(catId);
+        String answer = "Собака " + dog.getNameDog() + ". " + dog.getInfoDog();
+        sendPhotoDog(chatId, dog.getId(), answer, dogKeyboardService.dogsStart());
+    }
+
+    public void getDog(Long chatId, Long id) {
+        Long idDog = id;
+        Dog dog = findDog(idDog);
+        String answer = "Собака " + dog.getNameDog() + ". " + dog.getInfoDog();
+        sendPhotoDog(chatId, dog.getId(), answer, dogKeyboardService.dogs());
+    }
+
+    public void getLastDog(Long chatId) {
+        Long idDog = repository.findLastDog();
+        Dog dog = findDog(idDog);
+        String answer = "Собака " + dog.getNameDog() + ". " + dog.getInfoDog();
+        sendPhotoDog(chatId, dog.getId(), answer, dogKeyboardService.dogsEnd());
+    }
+
+    public void dogs(Long chatId, Long catId) {
+
+        Long dogFirst = repository.findFirstDog();
+        Long dogLast = repository.findLastDog();
+
+        if (dogFirst >= catId) {
+            getStartDog(chatId);
+        } else if (dogLast <= catId) {
+            getLastDog(chatId);
+        } else {
+            getDog(chatId, catId);
+        }
+    }
+
+    public void sendPhoto(Long chatId, Long id, InlineKeyboardMarkup createKeyboard1) {
         logger.info("Select the button to send a photo of the dog");
         try {
             String filePath = filePathCatShelterDog;
@@ -146,14 +141,26 @@ public class DogMenuServiceImpl extends TelegramLongPollingBot implements DogMen
         }
     }
 
-    /**
-     * Метод для сообщения которое получит пользователь
-     * @param chatId пользователя с которым взаимодействует бот.
-     * Получаем мы его с {@link nursery.configuration.TelegramBot#onUpdateReceived(Update)}
-     * @param textToSend текст сообщения которое будет видеть пользователь
-     * @param createKeyboard1 Клавиатура с которой будет взаимодействовать пользователь после полученного сообщения от бота.
-     * @see nursery.service.impl.DogKeyboardServiceImpl
-     */
+    public void sendPhotoDog(Long chatId, Long id, String textToSend, InlineKeyboardMarkup createKeyboard1) {
+        try {
+            Dog dog = findDog(id);
+            String filePath = dog.getPhotoDog();
+            SendPhoto sendPhotoRequest = new SendPhoto();
+            sendPhotoRequest.setChatId(chatId);
+            sendPhotoRequest.setPhoto(new InputFile(new File(filePath)));
+
+            SendMessage message = new SendMessage();
+            message.setChatId(String.valueOf(chatId));
+            message.setText(textToSend);
+            message.setReplyMarkup(createKeyboard1);
+
+            execute(sendPhotoRequest);
+            execute(message);
+        } catch (TelegramApiException e) {
+            logger.error("Error sending photo", e);
+        }
+    }
+
     public void sendMessage(Long chatId, String textToSend, InlineKeyboardMarkup createKeyboard1) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));

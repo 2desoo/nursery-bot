@@ -39,13 +39,6 @@ public class UserKeyboardServiceImpl implements UserKeyboardService {
         return keyboardMarkup;
     }
 
-    /**
-     *Метод для создания кнопки в клавиатуре
-     * @param text параметр, который будет видеть пользователь. Название кнопки
-     * @param callbackData параметр, который будет обрабатываться программой в методе
-     * @see TelegramBot#onUpdateReceived(Update)
-     * @return кнопку которую мы будем использовать для создания клавиатуры
-     */
     private static InlineKeyboardButton createButtonWithCallbackData(String text, String callbackData) {
         InlineKeyboardButton button = new InlineKeyboardButton();
         button.setText(text);

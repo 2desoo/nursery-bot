@@ -12,23 +12,11 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Класс создания и взаимодействий с клавиатурой для приюта для собак.
- */
 @Service
 public class DogKeyboardServiceImpl implements DogKeyboardService {
 
     private final Logger logger = LoggerFactory.getLogger(TelegramBot.class);
 
-    /**
-     * Клавиатура приветствующая пользователя после выбора приюта для собак.
-     * В классе {@link DogKeyboardServiceImpl#createButtonWithCallbackData(String text, String callbackData)}
-     * создаем кнопку которую будем использовать для создания клавиатуры.
-     * @return Возвращает клавиатуру состоящею из 5 кнопок
-     * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
-     * от выбранной кнопке реализуется метод из
-     * @see DogMenuServiceImpl
-     */
     public InlineKeyboardMarkup startDogKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
@@ -52,15 +40,6 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
         return keyboardMarkup;
     }
 
-    /**
-     * Клавиатура с кнопками информации о приюте для собак.
-     * В классе {@link DogKeyboardServiceImpl#createButtonWithCallbackData(String text, String callbackData)}
-     * создаем кнопку которую будем использовать для создания клавиатуры.
-     * @return Возвращает клавиатуру состоящею из 8 кнопок
-     * который используется в {@link  TelegramBot#onUpdateReceived(Update)}
-     * от выбранной кнопке реализуется метод из
-     * @see DogMenuServiceImpl
-     */
     public InlineKeyboardMarkup infoDogKeyboard() {
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
@@ -91,13 +70,71 @@ public class DogKeyboardServiceImpl implements DogKeyboardService {
         return keyboardMarkup;
     }
 
-    /**
-     *Метод для создания кнопки в клавиатуре
-     * @param text параметр, который будет видеть пользователь. Название кнопки
-     * @param callbackData параметр, который будет обрабатываться программой в методе
-     * @see TelegramBot#onUpdateReceived(Update)
-     * @return кнопку которую мы будем использовать для создания клавиатуры
-     */
+    public InlineKeyboardMarkup showDog() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад", "/animisticDog"));
+        row1.add(createButtonWithCallbackData("Посмотреть собак","/seeDog"));
+        StartKeyboard.add(row1);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup dogsStart() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Дальше","/nextDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticDog"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup dogs() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backDog"));
+        row1.add(createButtonWithCallbackData("Дальше","/nextDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticDog"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup dogsEnd() {
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> StartKeyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(createButtonWithCallbackData("Назад","/backDog"));
+        StartKeyboard.add(row1);
+
+        List<InlineKeyboardButton> row2  = new ArrayList<>();
+        row2.add(createButtonWithCallbackData("Меню как взять животное","/animalisticDog"));
+        StartKeyboard.add(row2);
+
+        keyboardMarkup.setKeyboard(StartKeyboard);
+
+        return keyboardMarkup;
+    }
+
     private static InlineKeyboardButton createButtonWithCallbackData(String text, String callbackData) {
         InlineKeyboardButton button = new InlineKeyboardButton();
         button.setText(text);
